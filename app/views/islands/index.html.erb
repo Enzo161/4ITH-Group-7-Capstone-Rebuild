@@ -13,7 +13,8 @@
   <tbody>
     <% @islands.each do |island| %>
       <tr>
-        <td><%= island.name %></td>
+        <td><%= link_to island.name, island_client_path(island, :clients)%></td>
+
         <td><%= link_to 'Show', island %></td>
         <td><%= link_to 'Edit', edit_island_path(island) %></td>
         <td><%= link_to 'Destroy', island, method: :delete, data: { confirm: 'Are you sure?' } %></td>

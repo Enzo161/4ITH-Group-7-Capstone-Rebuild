@@ -16,9 +16,8 @@
       <tr>
         <td><%= deep_well.name %></td>
         <td><%= deep_well.client_id %></td>
-        <td><%= link_to 'Show', deep_well %></td>
-        <td><%= link_to 'Edit', edit_deep_well_path(deep_well) %></td>
-        <td><%= link_to 'Destroy', deep_well, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', [@client, deep_well] %></td>
+        <td><%= link_to 'Destroy', [@client, deep_well], method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +25,4 @@
 
 <br>
 
-<%= link_to 'New Deep Well', new_deep_well_path %>
+<%= link_to 'New Deep Well', new_client_deep_well_path %>

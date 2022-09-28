@@ -1,4 +1,4 @@
-<%= form_with(model: deep_well, local: true) do |form| %>
+<%= form_with(model: [@client, deep_well], local: true) do |form| %>
   <% if deep_well.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(deep_well.errors.count, "error") %> prohibited this deep_well from being saved:</h2>

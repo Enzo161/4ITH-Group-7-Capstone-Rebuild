@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_28_040753) do
+ActiveRecord::Schema.define(version: 2022_09_28_040921) do
 
   create_table "clients", force: :cascade do |t|
     t.string "name"
@@ -20,6 +20,14 @@ ActiveRecord::Schema.define(version: 2022_09_28_040753) do
     t.index ["island_id"], name: "index_clients_on_island_id"
   end
 
+  create_table "deep_wells", force: :cascade do |t|
+    t.string "name"
+    t.integer "client_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["client_id"], name: "index_deep_wells_on_client_id"
+  end
+
   create_table "islands", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
@@ -27,4 +35,5 @@ ActiveRecord::Schema.define(version: 2022_09_28_040753) do
   end
 
   add_foreign_key "clients", "islands"
+  add_foreign_key "deep_wells", "clients"
 end
