@@ -13,7 +13,7 @@
   <tbody>
     <% @islands.each do |island| %>
       <tr>
-        <td><%= link_to island.name, island_client_path(island, :clients)%></td>
+        <td><%= link_to island.name, island_clients_path(island)%></td>
 
         <td><%= link_to 'Show', island %></td>
         <td><%= link_to 'Edit', edit_island_path(island) %></td>
