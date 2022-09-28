@@ -1,0 +1,27 @@
+<%= form_with(model: deep_well, local: true) do |form| %>
+  <% if deep_well.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(deep_well.errors.count, "error") %> prohibited this deep_well from being saved:</h2>
+
+      <ul>
+        <% deep_well.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :client_id %>
+    <%= form.text_field :client_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

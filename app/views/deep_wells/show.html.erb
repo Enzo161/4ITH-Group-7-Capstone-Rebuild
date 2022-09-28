@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @deep_well.name %>
+</p>
+
+<p>
+  <strong>Client:</strong>
+  <%= @deep_well.client_id %>
+</p>
+
+<%= link_to 'Edit', edit_deep_well_path(@deep_well) %> |
+<%= link_to 'Back', deep_wells_path %>
