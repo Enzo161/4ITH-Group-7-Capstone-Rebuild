@@ -14,7 +14,7 @@
   <tbody>
     <% @clients.each do |client| %>
       <tr>
-        <td><%= client.name %></td>
+        <td><%= link_to client.name, client_deep_wells_path(client) %></td>
         <td><%= client.island_id %></td>
         <td><%= link_to 'Show', [@island, client] %></td>
         <td><%= link_to 'Delete', [@island, client], method: :delete, data: { confirm: 'Are you sure?' } %></td>
