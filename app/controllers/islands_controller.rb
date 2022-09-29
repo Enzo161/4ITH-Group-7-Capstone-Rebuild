@@ -1,4 +1,5 @@
 class IslandsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_island, only: %i[ show edit update destroy ]
 
   # GET /islands or /islands.json

@@ -1,4 +1,5 @@
 class DeepWellsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_client
   before_action :set_deep_well, only: %i[ show edit update destroy ]
 

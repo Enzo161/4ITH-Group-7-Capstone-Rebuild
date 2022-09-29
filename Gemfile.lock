@@ -230,7 +230,7 @@ DEPENDENCIES
   bootsnap (>= 1.4.2)
   byebug
   capybara (>= 2.15)
-  devise
+  devise (~> 4.8, >= 4.8.1)
   devise-two-factor
   figaro
   jbuilder (~> 2.7)

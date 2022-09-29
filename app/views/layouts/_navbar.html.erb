@@ -12,7 +12,7 @@
         <li class="nav-item">
           <%= link_to "Documents", root_path, class:"nav-link" %>
         </li>
-        <%# if current_user && current_user.admin %>
+        <% if current_user && current_user.admin %>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Administrative Tools
@@ -23,13 +23,13 @@
             <li><%= link_to "Database Backups", root_path, class:"dropdown-item" %></li>
           </ul>
         </li>
-        <%# end %>
+        <% end %>
         <li class="nav-item">
           <%= link_to "Settings", root_path, class:"nav-link" %>
         </li>
 
         <li class="nav-item">
-          <%= link_to 'Log Out', root_path, class:"nav-link", method: :delete %>
+          <%= link_to 'Log Out', destroy_user_session_path, class:"nav-link", method: :delete %>
         </li>
         
       </ul>

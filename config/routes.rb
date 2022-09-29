@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  root 'islands#index'
+  devise_for :users
+  root to: 'islands#index'
   resources :islands do
     resources :clients
   end
