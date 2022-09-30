@@ -12,6 +12,7 @@
     <% @clients.each do |client| %>
       <tr>
         <td><%= link_to client.name, client_deep_wells_path(client) %></td>
+        <td><%= DeepWell.where(:client_id => client).count %></td>
         <td><%= link_to 'Edit', edit_island_client_path(@island, client) %></td>
         <td><%= link_to 'Delete', [@island, client], method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
@@ -22,3 +23,4 @@
 <br>
 
 <%= link_to 'New Client', new_island_client_path %>
+<%= link_to 'Back', islands_path %>

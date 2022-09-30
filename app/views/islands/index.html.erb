@@ -4,6 +4,7 @@
   <thead>
     <tr>
       <th>Name</th>
+      <th>Number of Clients</th>
       <th colspan="2"></th>
     </tr>
   </thead>
@@ -12,6 +13,7 @@
     <% @islands.each do |island| %>
       <tr>
         <td><%= link_to island.name, island_clients_path(island)%></td>
+        <td><%= Client.where(:island_id => island).count %></td>
         <td><%= link_to 'Edit', edit_island_path(island) %></td>
         <td><%= link_to 'Destroy', island, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
