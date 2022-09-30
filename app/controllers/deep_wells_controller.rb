@@ -30,7 +30,7 @@ class DeepWellsController < ApplicationController
 
     respond_to do |format|
       if @deep_well.save
-        format.html { redirect_to [@client, @deep_well], notice: "Deep well was successfully created." }
+        format.html { redirect_to [@client, :deep_wells], notice: "Deep well was successfully created." }
         format.json { render :show, status: :created, location: @deep_well }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -43,7 +43,7 @@ class DeepWellsController < ApplicationController
   def update
     respond_to do |format|
       if @deep_well.update(deep_well_params)
-        format.html { redirect_to [@client, @deep_well], notice: "Deep well was successfully updated." }
+        format.html { redirect_to [@client, :deep_wells], notice: "Deep well was successfully updated." }
         format.json { render :show, status: :ok, location: @deep_well }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -74,6 +74,6 @@ class DeepWellsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def deep_well_params
-      params.require(:deep_well).permit(:name, :client_id)
+      params.require(:deep_well).permit(:name, :client_id, :dateGranted, :clientName, :wellLocation, :wellCoodinates, :waterPermitNo, :contractor, :depthTotal, :dateofUTVI, :reason)
     end
 end

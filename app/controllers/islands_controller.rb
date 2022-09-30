@@ -26,7 +26,7 @@ class IslandsController < ApplicationController
 
     respond_to do |format|
       if @island.save
-        format.html { redirect_to island_url(@island), notice: "Island was successfully created." }
+        format.html { redirect_to island_url, notice: "Island was successfully created." }
         format.json { render :show, status: :created, location: @island }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -39,7 +39,7 @@ class IslandsController < ApplicationController
   def update
     respond_to do |format|
       if @island.update(island_params)
-        format.html { redirect_to island_url(@island), notice: "Island was successfully updated." }
+        format.html { redirect_to island_url, notice: "Island was successfully updated." }
         format.json { render :show, status: :ok, location: @island }
       else
         format.html { render :edit, status: :unprocessable_entity }

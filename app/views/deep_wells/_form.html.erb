@@ -12,8 +12,44 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :name %>
+    <%= form.label "Deep Well Name:" %>
     <%= form.text_field :name %>
+  </div>
+  <div class="field">
+    <%= form.label "Date Granted:" %>
+    <%= form.date_field :dateGranted %>
+  </div>
+  <div class="field">
+    <%= form.label "Client Name:" %>
+    <%= form.text_field :clientName %>
+  </div>
+  <div class="field">
+    <%= form.label "Well Location:" %>
+    <%= form.text_field :wellLocation %>
+  </div>
+  <div class="field">
+    <%= form.label "Well Coordinates:" %>
+    <%= form.text_field :wellCoodinates %>
+  </div>
+  <div class="field">
+    <%= form.label "Water Permit Number:" %>
+    <%= form.text_field :waterPermitNo %>
+  </div>
+  <div class="field">
+    <%= form.label "Name of Contractor:" %>
+    <%= form.text_field :contractor %>
+  </div>
+  <div class="field">
+    <%= form.label "Total Depth:" %>
+    <%= form.text_field :depthTotal %>
+  </div>
+  <div class="field">
+    <%= form.label "Date of UTVI:" %>
+    <%= form.date_field :dateofUTVI %>
+  </div>
+  <div class="field">
+    <%= form.label "Reason:" %>
+    <%= form.text_field :reason %>
   </div>
 
   <div class="actions">
