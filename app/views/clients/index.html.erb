@@ -4,8 +4,7 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th>Island</th>
-      <th colspan="3"></th>
+      <th colspan="2"></th>
     </tr>
   </thead>
 
@@ -13,8 +12,7 @@
     <% @clients.each do |client| %>
       <tr>
         <td><%= link_to client.name, client_deep_wells_path(client) %></td>
-        <td><%= client.island_id %></td>
-        <td><%= link_to 'Show', [@island, client] %></td>
+        <td><%= link_to 'Edit', edit_island_client_path(@island, client) %></td>
         <td><%= link_to 'Delete', [@island, client], method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

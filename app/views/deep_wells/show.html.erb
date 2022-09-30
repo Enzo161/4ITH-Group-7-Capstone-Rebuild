@@ -5,10 +5,5 @@
   <%= @deep_well.name %>
 </p>
 
-<p>
-  <strong>Client:</strong>
-  <%= @deep_well.client_id %>
-</p>
-
 <%= link_to 'Edit', edit_client_deep_well_path([@client, @deep_well]) %> |
 <%= link_to 'Back', [@client, :deep_wells] %>

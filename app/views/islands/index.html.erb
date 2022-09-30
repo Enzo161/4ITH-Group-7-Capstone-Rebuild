@@ -4,7 +4,7 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th colspan="3"></th>
+      <th colspan="2"></th>
     </tr>
   </thead>
 
@@ -12,8 +12,6 @@
     <% @islands.each do |island| %>
       <tr>
         <td><%= link_to island.name, island_clients_path(island)%></td>
-
-        <td><%= link_to 'Show', island %></td>
         <td><%= link_to 'Edit', edit_island_path(island) %></td>
         <td><%= link_to 'Destroy', island, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
