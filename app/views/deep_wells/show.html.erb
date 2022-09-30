@@ -5,40 +5,52 @@
   <%= @deep_well.name %>
 </p>
 <p>
-  <strong>Name:</strong>
+  <strong>Date Granted:</strong>
   <%= @deep_well.dateGranted %>
 </p>
 <p>
-  <strong>Name:</strong>
+  <strong>Client Name:</strong>
   <%= @deep_well.clientName %>
 </p>
 <p>
-  <strong>Name:</strong>
+  <strong>Well Location:</strong>
   <%= @deep_well.wellLocation %>
 </p>
 <p>
-  <strong>Name:</strong>
+  <strong>Well Coordinates:</strong>
   <%= @deep_well.wellCoodinates %>
 </p>
 <p>
-  <strong>Name:</strong>
+  <strong>Water Permit Number:</strong>
   <%= @deep_well.waterPermitNo %>
 </p>
 <p>
-  <strong>Name:</strong>
+  <strong>Name of Contractor:</strong>
   <%= @deep_well.contractor %>
 </p>
 <p>
-  <strong>Name:</strong>
+  <strong>Total Depth:</strong>
   <%= @deep_well.depthTotal %>
 </p>
 <p>
-  <strong>Name:</strong>
+  <strong>Date of UTVI:</strong>
   <%= @deep_well.dateofUTVI %>
 </p>
 <p>
-  <strong>Name:</strong>
+  <strong>Reason:</strong>
   <%= @deep_well.reason %>
+</p>
+<p>
+  <strong>Lithologic Log:</strong>
+  <%= link_to 'View', @deep_well.log %>
+</p>
+<p>
+  <strong>As-Built Design:</strong>
+  <%= link_to 'View', @deep_well.asbuilt %>
+</p>
+<p>
+  <strong>Deepwell Design:</strong>
+  <%= link_to 'View', @deep_well.design %>
 </p>
 
 <%= link_to 'Edit', edit_client_deep_well_path([@client, @deep_well]) %> |

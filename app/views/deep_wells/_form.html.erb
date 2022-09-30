@@ -51,6 +51,20 @@
     <%= form.label "Reason:" %>
     <%= form.text_field :reason %>
   </div>
+  <div class="mb-3">
+    <%= form.label "Lithologic Log:" %>
+    <%= form.file_field :log, class:"form-control" %>
+  </div>
+    <div class="mb-3">
+    <%= form.label "As-Built Design:" %>
+    <%= form.file_field :asbuilt, class:"form-control" %>
+  </div>
+    <div class="mb-3">
+    <%= form.label "Deepwell Design:", class:"form-label" %>
+    <%= form.file_field :design, class:"form-control" %>
+  </div>
+
+
 
   <div class="actions">
     <%= form.submit %>

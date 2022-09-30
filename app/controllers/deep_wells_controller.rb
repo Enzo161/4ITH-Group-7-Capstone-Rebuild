@@ -74,6 +74,6 @@ class DeepWellsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def deep_well_params
-      params.require(:deep_well).permit(:name, :client_id, :dateGranted, :clientName, :wellLocation, :wellCoodinates, :waterPermitNo, :contractor, :depthTotal, :dateofUTVI, :reason)
+      params.require(:deep_well).permit(:log, :asbuilt, :design, :name, :client_id, :dateGranted, :clientName, :wellLocation, :wellCoodinates, :waterPermitNo, :contractor, :depthTotal, :dateofUTVI, :reason)
     end
 end
