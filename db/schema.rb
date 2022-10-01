@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_30_071033) do
+ActiveRecord::Schema.define(version: 2022_10_01_133613) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -46,7 +46,6 @@ ActiveRecord::Schema.define(version: 2022_09_30_071033) do
     t.integer "client_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "island_id"
     t.date "dateGranted"
     t.string "clientName"
     t.string "wellLocation"
@@ -57,11 +56,17 @@ ActiveRecord::Schema.define(version: 2022_09_30_071033) do
     t.date "dateofUTVI"
     t.text "reason"
     t.index ["client_id"], name: "index_deep_wells_on_client_id"
-    t.index ["island_id"], name: "index_deep_wells_on_island_id"
   end
 
   create_table "islands", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "usermanages", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -87,5 +92,4 @@ ActiveRecord::Schema.define(version: 2022_09_30_071033) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "clients", "islands"
   add_foreign_key "deep_wells", "clients"
-  add_foreign_key "deep_wells", "islands"
 end

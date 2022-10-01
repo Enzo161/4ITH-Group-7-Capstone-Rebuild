@@ -1,0 +1,27 @@
+<%= form_with(model: usermanage, local: true) do |form| %>
+  <% if usermanage.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(usermanage.errors.count, "error") %> prohibited this usermanage from being saved:</h2>
+
+      <ul>
+        <% usermanage.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field form-group">
+    <%= form.label :name %>
+    <%= form.text_field :name, class:"form-control", placeholder:"Name"%>
+  </div>
+
+  <div class="field form-group">
+    <%= form.label :email %>
+    <%= form.text_field :email, class:"form-control", placeholder:"Email" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit class:"btn btn-info" %>
+  </div>
+<% end %>

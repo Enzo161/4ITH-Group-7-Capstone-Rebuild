@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<h1>User Management</h1>
+<div class="topnav">
+  <input type="text" placeholder="Search User">
+</div>
+<i class=fa-solid fa-trash></i>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @usermanages.each do |usermanage| %>
+      <tr>
+        <td><%= usermanage.name %></td>
+        <td><%= usermanage.email %></td>
+        <td><%= link_to ' ', usermanage, class: "fa-solid fa-eye" %></td>
+        <td><%= link_to ' ', edit_usermanage_path(usermanage), class: "fa-solid fa-user-pen" %></td>
+        <td><%= link_to ' ', usermanage, class: "fa-solid fa-trash" , method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to ' ', new_usermanage_path, class: "fa-sharp fa-solid fa-user-plus" %>
