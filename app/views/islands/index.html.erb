@@ -1,26 +1,34 @@
-<h1>Islands</h1>
-
-<table>
+<div class="container">
+  <h1>Islands</h1>
+    <form class="d-flex" role="search" style="width: 25%">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-light text-right float-end" type="submit">Search</button>
+        </form> <br>
+  
+  <table class="table table-hover table-bordered ">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Number of Clients</th>
-      <th colspan="2"></th>
+      <th style="width: 60%">Island Name</th>
+      <th style="width: auto;">Number of Clients</th>
+      <th colspan="1">Edit</th>
+      <th style="width: auto;">Delete</th>
+
     </tr>
   </thead>
-
   <tbody>
     <% @islands.each do |island| %>
       <tr>
         <td><%= link_to island.name, island_clients_path(island)%></td>
         <td><%= Client.where(:island_id => island).count %></td>
         <td><%= link_to 'Edit', edit_island_path(island) %></td>
-        <td><%= link_to 'Destroy', island, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Delete', island, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
 <br>
 
-<%= link_to 'New Island', new_island_path %>
+<button type="button" class="btn btn-light text-right float-end" >
+  <%= link_to 'New Island', new_island_path %>
+</button>
+</div>
