@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_01_133613) do
+ActiveRecord::Schema.define(version: 2022_10_04_093320) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 2022_10_01_133613) do
     t.integer "client_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "island_id"
     t.date "dateGranted"
     t.string "clientName"
     t.string "wellLocation"
@@ -56,6 +57,7 @@ ActiveRecord::Schema.define(version: 2022_10_01_133613) do
     t.date "dateofUTVI"
     t.text "reason"
     t.index ["client_id"], name: "index_deep_wells_on_client_id"
+    t.index ["island_id"], name: "index_deep_wells_on_island_id"
   end
 
   create_table "islands", force: :cascade do |t|
@@ -85,11 +87,16 @@ ActiveRecord::Schema.define(version: 2022_10_01_133613) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "admin", default: false
+    t.string "first_name"
+    t.string "last_name"
+    t.string "username"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["username"], name: "index_users_on_username", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "clients", "islands"
   add_foreign_key "deep_wells", "clients"
+  add_foreign_key "deep_wells", "islands"
 end

@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :usermanages
   devise_for :users
+  resources :users
   root to: 'islands#index'
   resources :islands do
     resources :clients

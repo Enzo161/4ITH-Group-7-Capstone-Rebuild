@@ -1,0 +1,41 @@
+<div class="container">
+  <h1>User Management</h1>
+  <form class="d-flex" role="search" style="width: 25%">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-light text-right float-end" type="submit">Search</button>
+        </form> <br>
+
+<table class="table table-hover table-bordered ">
+  <thead>
+    <tr>
+      <th width="Auto">Name</th>
+      <th width="Auto">Email</th>
+      <th width="Auto">Role</th>
+      <th width="10%">Delete</th>
+     <!--  <th scope="col" class="fa-solid fa-trash"></th> -->
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.first_name + " " + user.last_name %></td>
+        <td><%= user.email %></td>
+        <td>
+          <% if user.admin? %>
+          Admin
+          <% else %>
+          User
+          <% end %>
+        <td>
+          <% if current_user.email != user.email %>
+            <%= link_to ' ', user, class:"fa-solid fa-trash", method: :delete, data: { confirm: 'Are you sure?' }  %>
+          <% else %>
+            Current Account
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
