@@ -1,13 +1,19 @@
-<h1>Clients</h1>
-
-<table>
+<div class="container">
+  <h1>Clients</h1>
+    <form class="d-flex" role="search" style="width: 25%">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-light text-right float-end" type="submit">Search</button>
+        </form> <br>
+  
+  <table class="table table-hover table-bordered ">
   <thead>
     <tr>
       <th>Name</th>
-      <th colspan="2"></th>
+      <th>Number of Deep Wells</th>
+      <th style="width: auto;">Edit</th>
+      <th style="width: auto;">Delete</th>
     </tr>
   </thead>
-
   <tbody>
     <% @clients.each do |client| %>
       <tr>
@@ -19,8 +25,10 @@
     <% end %>
   </tbody>
 </table>
-
 <br>
 
-<%= link_to 'New Client', new_island_client_path %>
-<%= link_to 'Back', islands_path %>
+<button type="button" class="btn btn-light text-right float-end" >
+  <%= link_to 'New Client', new_island_client_path %>
+  <%= link_to 'Back', islands_path %>
+</button>
+</div>
