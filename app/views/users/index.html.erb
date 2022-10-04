@@ -9,6 +9,7 @@
   <thead>
     <tr>
       <th width="Auto">Name</th>
+      <th width="Auto">Username</th>
       <th width="Auto">Email</th>
       <th width="Auto">Role</th>
       <th width="10%">Delete</th>
@@ -20,6 +21,7 @@
     <% @users.each do |user| %>
       <tr>
         <td><%= user.first_name + " " + user.last_name %></td>
+        <td><%= user.username %></td>
         <td><%= user.email %></td>
         <td>
           <% if user.admin? %>
