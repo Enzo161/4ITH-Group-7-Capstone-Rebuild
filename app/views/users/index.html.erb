@@ -39,5 +39,7 @@
       </tr>
     <% end %>
   </tbody>
+  <%= link_to 'resend invitation', resend_invitation_user_path(user), method: :patch %>
+  <%= link_to 'ban user', ban_user_path(user), method: :patch %>
 </table>
 

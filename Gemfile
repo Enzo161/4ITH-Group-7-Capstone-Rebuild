@@ -49,6 +49,7 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise', '~> 4.8', '>= 4.8.1'
+gem 'devise_invitable', '~> 2.0.0'
 gem 'devise-two-factor'
 gem 'rqrcode'
 gem 'figaro'

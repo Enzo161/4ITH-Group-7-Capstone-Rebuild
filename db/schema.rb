@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_04_093320) do
+ActiveRecord::Schema.define(version: 2022_10_04_122226) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -46,7 +46,6 @@ ActiveRecord::Schema.define(version: 2022_10_04_093320) do
     t.integer "client_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "island_id"
     t.date "dateGranted"
     t.string "clientName"
     t.string "wellLocation"
@@ -57,7 +56,6 @@ ActiveRecord::Schema.define(version: 2022_10_04_093320) do
     t.date "dateofUTVI"
     t.text "reason"
     t.index ["client_id"], name: "index_deep_wells_on_client_id"
-    t.index ["island_id"], name: "index_deep_wells_on_island_id"
   end
 
   create_table "islands", force: :cascade do |t|
@@ -90,7 +88,18 @@ ActiveRecord::Schema.define(version: 2022_10_04_093320) do
     t.string "first_name"
     t.string "last_name"
     t.string "username"
+    t.string "invitation_token"
+    t.datetime "invitation_created_at"
+    t.datetime "invitation_sent_at"
+    t.datetime "invitation_accepted_at"
+    t.integer "invitation_limit"
+    t.string "invited_by_type"
+    t.integer "invited_by_id"
+    t.integer "invitations_count", default: 0
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["invitation_token"], name: "index_users_on_invitation_token", unique: true
+    t.index ["invited_by_id"], name: "index_users_on_invited_by_id"
+    t.index ["invited_by_type", "invited_by_id"], name: "index_users_on_invited_by_type_and_invited_by_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
   end
@@ -98,5 +107,4 @@ ActiveRecord::Schema.define(version: 2022_10_04_093320) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "clients", "islands"
   add_foreign_key "deep_wells", "clients"
-  add_foreign_key "deep_wells", "islands"
 end
