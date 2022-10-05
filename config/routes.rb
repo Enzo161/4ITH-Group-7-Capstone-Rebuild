@@ -10,4 +10,5 @@ Rails.application.routes.draw do
   resources :clients do
     resources :deep_wells
   end
+
 end
