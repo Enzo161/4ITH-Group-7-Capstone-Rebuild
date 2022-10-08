@@ -14,14 +14,13 @@
       <th width="Auto">Role</th>
       <th width="10%">Delete</th>
      <!--  <th scope="col" class="fa-solid fa-trash"></th> -->
-     <th width="10%">Invited</th>
     </tr>
   </thead>
 
   <tbody>
     <% @users.each do |user| %>
       <tr>
-        <td><%= user.first_name + " " + user.last_name %></td>
+        <td><%= user.first_name %> <%= user.last_name %></td>
         <td><%= user.username %></td>
         <td><%= user.email %></td>
         <td>
@@ -37,7 +36,6 @@
             Current Account
           <% end %>
         </td>
-        <td><%= user.created_by_invite? %></td>
         <!--
         <td><%#= link_to 'resend invitation', resend_invitation_user_path(user), method: :patch %></td>
         <td><%#= link_to 'ban user', ban_user_path(user), method: :patch %></td>-->

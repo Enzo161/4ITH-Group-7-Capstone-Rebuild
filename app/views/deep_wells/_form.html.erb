@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= form.label "Deep Well Name:" %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, autofocus:true %>
   </div>
   <div class="field">
     <%= form.label "Date Granted:" %>
@@ -53,6 +53,9 @@
   </div>
   <div class="mb-3">
     <%= form.label "Lithologic Log:" %>
+    <% if @deep_well.log.attached? %>
+      <%= link_to 'current file', @deep_well.log, html_options = { target: "_blank"} %>
+    <% end %>
     <%= form.file_field :log, class:"form-control" %>
   </div>
     <div class="mb-3">
@@ -63,8 +66,6 @@
     <%= form.label "Deepwell Design:", class:"form-label" %>
     <%= form.file_field :design, class:"form-control" %>
   </div>
-
-
 
   <div class="actions">
     <%= form.submit %>

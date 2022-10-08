@@ -11,8 +11,9 @@
     </div>
   <% end %>
 
-    <%= form.label :name %>
-    <%= form.text_field :name, class:"form-control" %>
+  <div class="field">
+    <%= form.label "Client" %>
+    <%= form.text_field :name, class:"form-control", autofocus:true %>
   </div>
 
   <div class="actions">

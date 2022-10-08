@@ -40,18 +40,28 @@
   <strong>Reason:</strong>
   <%= @deep_well.reason %>
 </p>
-<p>
-  <strong>Lithologic Log:</strong>
-  <%= link_to 'View', @deep_well.log %>
-</p>
-<p>
-  <strong>As-Built Design:</strong>
-  <%= link_to 'View', @deep_well.asbuilt %>
-</p>
-<p>
-  <strong>Deepwell Design:</strong>
-  <%= link_to 'View', @deep_well.design %>
-</p>
+
+<% if @deep_well.log.attached? %>
+  <p>
+    <strong>Lithologic Log:</strong>
+    <%= link_to 'View', @deep_well.log, html_options = { target: "_blank"} if @deep_well.log.attached? %>
+  </p>
+<% end %>
+
+<% if @deep_well.asbuilt.attached? %>
+  <p>
+    <strong>As-Built Design:</strong>
+    <%= link_to 'View', @deep_well.asbuilt, html_options = { target: "_blank"} if @deep_well.asbuilt.attached? %>
+  </p>
+<% end %>
+
+
+<% if @deep_well.design.attached? %>
+  <p>
+    <strong>Deepwell Design:</strong>
+    <%= link_to 'View', @deep_well.design, html_options = { target: "_blank"} %>
+  </p>
+<% end %>
 
 <%= link_to 'Edit', edit_client_deep_well_path([@client, @deep_well]) %> |
 <%= link_to 'Back', [@client, :deep_wells] %>
