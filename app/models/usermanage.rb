@@ -1,2 +1,0 @@
-class Usermanage < ApplicationRecord
-end
