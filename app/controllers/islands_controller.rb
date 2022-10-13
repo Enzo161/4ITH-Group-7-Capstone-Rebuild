@@ -38,7 +38,9 @@ class IslandsController < ApplicationController
   # PATCH/PUT /islands/1 or /islands/1.json
   def update
     respond_to do |format|
+      #Island.public_activity_off
       if @island.update(island_params)
+        Island.public_activity_on
         format.html { redirect_to islands_url, notice: "Island was successfully updated." }
         format.json { render :show, status: :ok, location: @island }
       else
