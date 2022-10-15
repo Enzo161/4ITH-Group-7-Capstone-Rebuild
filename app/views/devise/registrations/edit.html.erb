@@ -15,11 +15,6 @@
     </div>
 
     <div class="field form-group">
-      <%= f.label :username %><br />
-      <%= f.text_field :username, class:"form-control col-sm-10", autocomplete: "email" %>
-    </div>
-
-    <div class="field form-group">
       <%= f.label :email %><br />
       <%= f.email_field :email, class:"form-control", autocomplete: "email" %>
     </div>
@@ -36,11 +31,13 @@
       <%= f.password_field :password,  class:"form-control", autocomplete: "new-password", 
       placeholder:"(leave blank if you don't want to change it)"%>
     </div>
-      <br/>
+
     <div class="field form-group">
       <%= f.label :password_confirmation %>
       <%= f.password_field :password_confirmation, class:"form-control",  autocomplete: "new-password" %>
     </div>
+
+    <br/>
 
     <div class="field">
       <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />

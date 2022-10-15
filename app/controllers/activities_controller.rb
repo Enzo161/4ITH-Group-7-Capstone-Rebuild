@@ -67,4 +67,8 @@ class ActivitiesController < ApplicationController
     def activity_params
       params.fetch(:activity, {})
     end
+
+    def set_island
+      @island = Island.find(params[:island_id])
+    end
 end

@@ -19,13 +19,15 @@
         <td><%= a.key %></td>
         <td><%= a.owner&.email %></td>
         <td>
-          <% if a.trackable&.name = nil || a.key != 'island.destroy' && a.trackable_type == 'Island' %>
-            <%= a.trackable&.name %>
+          <% if a.trackable&.id == nil %>
+            <%= "This object has been deleted" %>
           <% else %>
-            <%= "This has been deleted" %>
+            <% if a.trackable_type == 'User' %>
+              <%= link_to a.trackable&.email, users_path %>
+            <% else %>
+              <%= a.trackable&.name %>
+            <% end %>
           <% end %>
-          <%= a.trackable if a.trackable_type == 'Client' %>
-          <%= a.trackable if a.trackable_type == 'User' %>
         </td>
         <!-- <td><%#= a.key != "island.destroy" %></td>
         <td><%#= link_to 'Show', activity %></td>
