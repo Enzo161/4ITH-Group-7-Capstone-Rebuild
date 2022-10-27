@@ -11,12 +11,18 @@
     </div>
   <% end %>
 
+  
+  
   <div class="field">
-    <%= form.label "Client" %>
     <%= form.text_field :name, class:"form-control", autofocus:true %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <br>
+  <div class="actions " style="float:right">
+    <%= form.submit :Submit, class: 'btn btn-light'%>
+        <button type="button" class="btn btn-light" >
+          <%= link_to 'Back', island_clients_path %>
+        </button>
   </div>
+
 <% end %>
