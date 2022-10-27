@@ -2,7 +2,6 @@
   <% if deep_well.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(deep_well.errors.count, "error") %> prohibited this deep_well from being saved:</h2>
-
       <ul>
         <% deep_well.errors.full_messages.each do |message| %>
           <li><%= message %></li>
@@ -11,46 +10,60 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label "Deep Well Name:" %>
-    <%= form.text_field :name, autofocus:true %>
+<!--Form Start-->
+
+  <div class="row">
+    <!--Column 1-->
+    <div class="col">
+      <div class="field">
+        <%= form.label "Deep Well Name:" %>
+        <%= form.text_field :name, class:"form-control",autofocus:true %>
+      </div>
+      <div class="field">
+        <%= form.label "Client Name:" %>
+        <%= form.text_field :clientName, class:"form-control" %>
+      </div>
+      <div class="field">
+        <%= form.label "Well Coordinates:" %>
+        <%= form.text_field :wellCoodinates, class:"form-control" %>
+      </div>
+      <div class="field">
+        <%= form.label "Name of Contractor:" %>
+        <%= form.text_field :contractor, class:"form-control" %>
+      </div>
+      <div class="field">
+        <%= form.label "Date of UTVI:" %>
+        <%= form.date_field :dateofUTVI , class:"form-control"%>
+      </div>
+    </div>
+
+    <!--Column 2-->
+    <div class="col">
+      <div class="field">
+        <%= form.label "Date Granted:" %>
+        <%= form.date_field :dateGranted, class:"form-control" %>
+      </div>
+      <div class="field">
+        <%= form.label "Well Location:" %>
+        <%= form.text_field :wellLocation, class:"form-control" %>
+      </div>
+      <div class="field">
+        <%= form.label "Water Permit Number:" %>
+        <%= form.text_field :waterPermitNo, class:"form-control" %>
+      </div>
+      <div class="field">
+        <%= form.label "Total Depth:" %>
+        <%= form.text_field :depthTotal, class:"form-control" %>
+      </div>    
+      <div class="field">
+        <%= form.label "Reason:" %>
+        <%= form.text_field :reason , class:"form-control"%>
+      </div>
+    </div>
   </div>
-  <div class="field">
-    <%= form.label "Date Granted:" %>
-    <%= form.date_field :dateGranted %>
-  </div>
-  <div class="field">
-    <%= form.label "Client Name:" %>
-    <%= form.text_field :clientName %>
-  </div>
-  <div class="field">
-    <%= form.label "Well Location:" %>
-    <%= form.text_field :wellLocation %>
-  </div>
-  <div class="field">
-    <%= form.label "Well Coordinates:" %>
-    <%= form.text_field :wellCoodinates %>
-  </div>
-  <div class="field">
-    <%= form.label "Water Permit Number:" %>
-    <%= form.text_field :waterPermitNo %>
-  </div>
-  <div class="field">
-    <%= form.label "Name of Contractor:" %>
-    <%= form.text_field :contractor %>
-  </div>
-  <div class="field">
-    <%= form.label "Total Depth:" %>
-    <%= form.text_field :depthTotal %>
-  </div>
-  <div class="field">
-    <%= form.label "Date of UTVI:" %>
-    <%= form.date_field :dateofUTVI %>
-  </div>
-  <div class="field">
-    <%= form.label "Reason:" %>
-    <%= form.text_field :reason %>
-  </div>
+
+<br>
+
   <div class="mb-3">
     <%= form.label "Lithologic Log:" %>
     <% if @deep_well.log.attached? %>
@@ -67,7 +80,14 @@
     <%= form.file_field :design, class:"form-control" %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+
+
+    <div class="actions" style="float:right">
+    <%= form.submit :Submit, class: 'btn btn-light'%>
+        <button type="button" class="btn btn-light" >
+          <%= link_to 'Back', client_deep_wells_path %>
+        </button>
   </div>
 <% end %>
+
+<!--Form End-->
