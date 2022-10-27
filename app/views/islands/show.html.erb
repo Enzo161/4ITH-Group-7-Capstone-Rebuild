@@ -1,9 +1,14 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <p id="notice"><%= notice %></p>
 
 <p>
   <strong>Name:</strong>
   <%= @island.name %>
 </p>
-
-<%= link_to 'Edit', edit_island_path(@island) %> |
-<%= link_to 'Back', islands_path %>
+  <button type="button" class="btn text-right float-end" >
+    <%= link_to 'Edit', edit_island_path(@island) %>
+    </button>
+    <button type="button" class="btn text-right float-end" >
+      <%= link_to 'Back', islands_path %>
+    </button>
+  </div>
