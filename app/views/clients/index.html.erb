@@ -25,10 +25,14 @@
     <% end %>
   </tbody>
 </table>
-<br>
 
-<button type="button" class="btn btn-light text-right float-end" >
-  <%= link_to 'New Client', new_island_client_path %>
-  <%= link_to 'Back', islands_path %>
-</button>
+  <div style="float:right">
+    <button type="button" class="btn btn-light" >
+      <%= link_to 'Back', islands_path %>
+    </button>
+
+    <button type="button" class="btn btn-light" >
+      <%= link_to 'New Client', new_island_client_path %>
+    </button>
+  </div>
 </div>
