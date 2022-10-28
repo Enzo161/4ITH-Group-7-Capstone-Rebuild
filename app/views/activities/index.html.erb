@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Activities</h1>
+
+<table class="table table-hover table-bordered ">
+  <thead>
+    <tr>
+      <th>Time</th>
+      <th>Key</th>
+      <th>User</th>
+      <th>Object</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @activities.each do |a| %>
+      <tr>
+        <td><%= a.created_at %></td>
+        <td><%= a.key %></td>
+        <td><%= a.owner&.email %></td>
+        <td>
+          <% if a.trackable&.id == nil %>
+            <%= "This object has been deleted" %>
+          <% else %>
+            <% if a.trackable_type == 'User' %>
+              <%= link_to a.trackable&.email, users_path %>
+            <% else %>
+              <%= a.trackable&.name %>
+            <% end %>
+          <% end %>
+        </td>
+        <!-- <td><%#= a.key != "island.destroy" %></td>
+        <td><%#= link_to 'Show', activity %></td>
+        <td><%#= link_to 'Edit', edit_activity_path(activity) %></td>
+        <td><%#= link_to 'Destroy', activity, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
+      </tr>
+    <% end %>
+  </tbody>
+</table>
