@@ -1,10 +1,17 @@
 <div class="container">
   <h1>Clients</h1>
+
+  <!--
     <form class="d-flex" role="search" style="width: 25%">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-light text-right float-end" type="submit">Search</button>
         </form> <br>
-  
+  -->
+ 
+  <!-- Partial for Search Form-->
+  <%= render 'clients/search_form.html.erb'%>
+
+  <br>
   <table class="table table-hover table-bordered ">
   <thead>
     <tr>
@@ -28,11 +35,10 @@
 
   <div style="float:right">
     <button type="button" class="btn btn-light" >
-      <%= link_to 'Back', islands_path %>
-    </button>
-
-    <button type="button" class="btn btn-light" >
       <%= link_to 'New Client', new_island_client_path %>
+    </button>
+    <button type="button" class="btn btn-light" >
+      <%= link_to 'Back', islands_path %>
     </button>
   </div>
 </div>
