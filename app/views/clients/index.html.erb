@@ -13,7 +13,7 @@
     <table class="table table-hover table-bordered ">
     <thead>
       <tr>
-        <th>Name</th>
+        <th><%= sort_link(@q, :client_name, "Client Name", default_order: :asc)%></th>
         <th>Number of Deep Wells</th>
         <th style="width: auto;">Edit</th>
         <th style="width: auto;">Delete</th>
