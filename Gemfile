@@ -55,3 +55,6 @@ gem 'rqrcode'
 gem 'figaro'
 gem 'pry'
 gem 'public_activity'
+
+#gem for search and filter
+gem 'ransack'
