@@ -5,78 +5,76 @@
     
     <%= render "devise/shared/error_messages", resource: resource %>
 
-    <div class="row" style="flex">
+    <div class="row">
       <div class="col"> 
-          <div class="field form-group"
-            <%= f.label :first_name %><br />
-            <%= f.text_field :first_name, class:"form-control", autofocus: true, autocomplete: "email" %>
+          <div class="field form-group">
+            <%= f.label :first_name %><br/>
+            <%= f.text_field :first_name, class:"form-control", autofocus: true%>
           </div>
           <div class="field form-group">
-            <%= f.label :email %><br />
-            <%= f.email_field :email, class:"form-control", autocomplete: "email" %>
+            <%= f.label :email %><br/>
+            <%= f.email_field :email, class:"form-control" %>
+          </div>
+          <div class="field form-group">
+            <%= f.label :password_confirmation %>
+            <%= f.password_field :password_confirmation, class:"form-control" %>
           </div>
       </div>
       <div class="col">
         <div class="field form-group">
-          <%= f.label :last_name %><br />
-          <%= f.text_field :last_name, class:"form-control col-sm-10", autocomplete: "email" %>
+          <%= f.label :last_name %><br/>
+          <%= f.text_field :last_name, class:"form-control col-sm-10"%>
         </div>
         <div class="field form-group ">
           <%= f.label :password %> 
           <% if @minimum_password_length %>
-            <em><i>(<%= @minimum_password_length %> characters minimum)<i></em>
+            <em><i>(<%= @minimum_password_length %> characters minimum)</i></em>
           <% end %>
-          <%= f.password_field :password,  class:"form-control", autocomplete: "new-password", 
-            placeholder:"(leave blank if you don't want to change it)"%>
+          <%= f.password_field :password, class:"form-control", placeholder:"(leave blank if you don't want to change it)"%>
         </div>
-      </div>
-      <br>
-      <div class="row">
-        <div class="col">
-          <div class="field form-group">
-            <%= f.label :password_confirmation %>
-            <%= f.password_field :password_confirmation, class:"form-control",  autocomplete: "new-password" %>
+        <div class="field form-group">
+            <%= f.label :current_password %> <i>(Will be used to confirm changes)</i><br/>
+            <%= f.password_field :current_password, class:"form-control" %>
           </div>
-        </div>
-        <div class="col">
-          <div class="field">
-            <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-            <%= f.password_field :current_password, class:"form-control",  autocomplete: "current-password" %>
-          </div>
-        </div>        
       </div>
+      <br>     
     </div>
-
-    <div class="actions" style="float:right"> <br>
-      <%= f.submit "Update", class:'btn btn-light .btn-block' %>
+    <br/>
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
       <button type="button" class="btn btn-light" >
         <%= link_to "Back", :back %>
       </button>
+      <%= f.submit "Update", class:'btn btn-light .btn-block' %>
     </div>
-  </div>
+  
     
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
       <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
     <% end %>
   <% end %>
 
-  <br />
-  <div class="card">
-    <div class="card-header">
-      Two factor authentication
+
+    <br />
+    <div class="card" style="width: auto">
+      <div class="card-header">
+        Two factor authentication
+      </div>
+      <div class="card-body">
+        <% if current_user.otp_required_for_login %>
+          <p>Two factor authentication is enabled.</p>
+          <p><%= link_to('Disable Two Factor Authentication', two_factor_settings_path, class: 'btn btn-danger', method: :delete, data: {confirm: 'Are you sure you want to disable two factor authentication?'}) %></p>
+        <% else %>
+          <p>Two factor authentication is NOT enabled.</p>
+          <p><%= link_to('Enable Two Factor Authentication', new_two_factor_settings_path, class: 'btn btn-primary') %></p>
+        <% end %>
+      </div>
     </div>
-    <div class="card-body">
-      <% if current_user.otp_required_for_login %>
-        <p>Two factor authentication is enabled.</p>
-        <p><%= link_to('Disable Two Factor Authentication', two_factor_settings_path, class: 'btn btn-danger', method: :delete, data: {confirm: 'Are you sure you want to disable two factor authentication?'}) %></p>
-      <% else %>
-        <p>Two factor authentication is NOT enabled.</p>
-        <p><%= link_to('Enable Two Factor Authentication', new_two_factor_settings_path, class: 'btn btn-primary') %></p>
-      <% end %>
-    </div>
+    <br />
   </div>
-  <br />
+
 </div>
+
+
 
 
 
