@@ -7,7 +7,11 @@ class UsersController < ApplicationController
 
   # GET /users or /users.json
   def index
-    @users = User.all
+    #search
+    @q = User.ransack(params[:q])
+    @users = @q.result(distinct: true)
+
+    #@users = User.all //original
   end
 
   # GET /users/1 or /users/1.json
