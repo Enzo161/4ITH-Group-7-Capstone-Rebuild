@@ -5,6 +5,7 @@
       <%= f.search_field :client_name_cont, class:"form-control me-2", placeholder:"Search" %>
       <%= f.submit "Search", class:"btn btn-light text-right float-end" %>
       <%= link_to "Reset", request.path, class:"btn btn-light text-right float-end" %>
+    <% end %>
     </form>
     
     <br/>
@@ -18,6 +19,7 @@
         <th style="width: auto;">Delete</th>
       </tr>
     </thead>
+
     <tbody>
       <% @clients.each do |client| %>
         <tr>
@@ -38,4 +40,5 @@
       <%= link_to 'Back', islands_path %>
     </button>
   </div>
+
 </div>
