@@ -5,7 +5,9 @@ class ClientsController < ApplicationController
 
   # GET /clients or /clients.json
   def index
-    @clients = @island.clients
+    @q = @island.clients.ransack(params[:q])
+    @clients = @q.result.includes(:island, :deep_wells)
+    # @clients = @island.clients
     # @clients = Client.all
   end
 
@@ -72,6 +74,6 @@ class ClientsController < ApplicationController
     end
 
     def client_params
-      params.require(:client).permit(:name)
+      params.require(:client).permit(:client_name, :island_id)
     end
 end

@@ -1,30 +1,35 @@
 <div class="container">
   <h1>Clients</h1>
-    <form class="d-flex" role="search" style="width: 25%">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-light text-right float-end" type="submit">Search</button>
-        </form> <br>
-  
-  <table class="table table-hover table-bordered ">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Number of Deep Wells</th>
-      <th style="width: auto;">Edit</th>
-      <th style="width: auto;">Delete</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @clients.each do |client| %>
-      <tr>
-        <td><%= link_to client.name, client_deep_wells_path(client) %></td>
-        <td><%= DeepWell.where(:client_id => client).count %></td>
-        <td><%= link_to 'Edit', edit_island_client_path(@island, client) %></td>
-        <td><%= link_to 'Delete', [@island, client], method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    <form class="d-flex" role="search">
+    <%= search_form_for @q, url: island_clients_path(params[:island_id]) do |f| %>
+      <%= f.search_field :client_name_cont, class:"form-control me-2", placeholder:"Search" %>
+      <%= f.submit "Search", class:"btn btn-light text-right float-end" %>
+      <%= link_to "Reset", request.path, class:"btn btn-light text-right float-end" %>
     <% end %>
-  </tbody>
-</table>
+    </form>
+    
+    <br/>
+
+    <table class="table table-hover table-bordered ">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Number of Deep Wells</th>
+        <th style="width: auto;">Edit</th>
+        <th style="width: auto;">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @clients.each do |client| %>
+        <tr>
+          <td><%= link_to client.client_name, client_deep_wells_path(client) %></td>
+          <td><%= DeepWell.where(:client_id => client).count %></td>
+          <td><%= link_to 'Edit', edit_island_client_path(@island, client) %></td>
+          <td><%= link_to 'Delete', [@island, client], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
   <div style="float:right">
     <button type="button" class="btn btn-light" >
