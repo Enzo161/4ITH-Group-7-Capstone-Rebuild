@@ -5,7 +5,6 @@
       <%= f.search_field :client_name_cont, class:"form-control me-2", placeholder:"Search" %>
       <%= f.submit "Search", class:"btn btn-light text-right float-end" %>
       <%= link_to "Reset", request.path, class:"btn btn-light text-right float-end" %>
-    <% end %>
     </form>
     
     <br/>
@@ -33,11 +32,10 @@
 
   <div style="float:right">
     <button type="button" class="btn btn-light" >
-      <%= link_to 'Back', islands_path %>
-    </button>
-
-    <button type="button" class="btn btn-light" >
       <%= link_to 'New Client', new_island_client_path %>
+    </button>
+    <button type="button" class="btn btn-light" >
+      <%= link_to 'Back', islands_path %>
     </button>
   </div>
 </div>

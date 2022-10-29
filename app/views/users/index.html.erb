@@ -8,7 +8,7 @@
   <thead>
     <tr>
       <th width="Auto"><%= sort_link(@q, :first_name, "Name", default_order: :asc)%></th>  <!-- Sorts through the names in alphabetical order-->
-      <th width="Auto">Email</th>
+      <th width="Auto"><%= sort_link(@q, :email, "Email", default_order: :asc)%></th>
       <th width="Auto">Role</th>
       <th width="10%">Delete</th>
      <!--  <th scope="col" class="fa-solid fa-trash"></th> -->
