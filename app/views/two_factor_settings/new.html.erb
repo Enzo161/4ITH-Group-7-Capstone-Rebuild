@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h2>Two Factor Authentication</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            Confirm 2FA Function
+          </div>
+          <div class="card-body">
+            <p>Please confirm 2FA by entering your current password.</p>
+            <%= simple_form_for(:two_fa, url: two_factor_settings_path, method: :post) do |f| %>
+            <%= f.input :password, label: 'Enter your current password' %>
+            <%= f.submit 'Confirm and Enable Two Factor', class: 'btn btn-primary' %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
