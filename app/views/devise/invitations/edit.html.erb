@@ -3,7 +3,7 @@
     <div class="card-body">
       <img class=" rounded mx-auto d-block" src="<%= asset_path( 'logo.png' ) %>" alt="Card image cap" width="auto" height="100px">
       <br/>
-      <h2 align="center"><%= "Set your account settings and password" %></h2>
+      <h2 align="center"><%= "Set your password" %></h2>
       <br/>
       <h2></h2>
 
@@ -13,7 +13,7 @@
 
         <% if f.object.class.require_password_on_accepting %>
 
-        <div class="field form-group" style="margin:auto; width: 90%">
+<!--         <div class="field form-group" style="margin:auto; width: 90%">
           <%= f.text_field :first_name, class:"form-control", placeholder:"First name", autofocus: true %>
         </div>
 
@@ -23,7 +23,7 @@
           <%= f.text_field :last_name, class:"form-control", placeholder:"Last name" %>
         </div>
 
-        <br>
+        <br> -->
 
         <div class="field form-group" style="margin:auto; width: 90%">
             <%= f.password_field :password, class:"form-control", placeholder:"Password (minimum of 6 characters)", autocomplete: "new-password" %>
