@@ -1,27 +1,25 @@
 <div class="container">
   <h1>Clients</h1>
 
-  <!-- Search Form Start -->
     <form class="d-flex" role="search" style="width: 30%">
-    <%= search_form_for @q, url: island_clients_path(params[:island_id]) do |f| %>
+      <%= search_form_for @q, url: island_clients_path(params[:island_id]) do |f| %>
       <%= f.search_field :client_name_cont, class:"form-control me-2", placeholder:"Search"%>
-
-      <%= f.submit "Search", class:"btn btn-light text-right float-end" %>&nbsp;
-      <%= link_to "Reset", request.path, class:"btn btn-light text-right float-end" %>
-    <% end %>
+      <%= f.submit "Search", class:"btn btn-light" %>&nbsp;
+      <%= link_to "Reset", request.path, class:"btn btn-light" %>
+      <% end %>
     </form>
-<!-- Search Form End -->
 
-  <div style="float:right">
-    <button type="button" class="btn btn-light" >
+    <br>
+    <div>
+      <button type="button" class="btn btn-light" >
       <%= link_to 'New Client', new_island_client_path %> 
-    </button>
-    <button type="button" class="btn btn-light" >
+      </button>
+      <button type="button" class="btn btn-light" >
       <%= link_to 'Back', islands_path %>
-    </button>
-  </div>
+      </button>
+    </div>
+    <br>
 
-    <br><br>
 
     <table class="table table-hover table-bordered ">
     <thead>
@@ -44,14 +42,5 @@
       <% end %>
     </tbody>
   </table>
-
-  <div style="float:right">
-    <button type="button" class="btn btn-light" >
-      <%= link_to 'New Client', new_island_client_path %> 
-    </button>
-    <button type="button" class="btn btn-light" >
-      <%= link_to 'Back', islands_path %>
-    </button>
-  </div>
 
 </div>
