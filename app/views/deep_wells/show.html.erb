@@ -1,67 +1,134 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
 
-<p>
-  <strong>Name:</strong>
-  <%= @deep_well.deep_well_name %>
-</p>
-<p>
-  <strong>Date Granted:</strong>
-  <%= @deep_well.dateGranted %>
-</p>
-<p>
-  <strong>Client Name:</strong>
-  <%= @deep_well.clientName %>
-</p>
-<p>
-  <strong>Well Location:</strong>
-  <%= @deep_well.wellLocation %>
-</p>
-<p>
-  <strong>Well Coordinates:</strong>
-  <%= @deep_well.wellCoodinates %>
-</p>
-<p>
-  <strong>Water Permit Number:</strong>
-  <%= @deep_well.waterPermitNo %>
-</p>
-<p>
-  <strong>Name of Contractor:</strong>
-  <%= @deep_well.contractor %>
-</p>
-<p>
-  <strong>Total Depth:</strong>
-  <%= @deep_well.depthTotal %>
-</p>
-<p>
-  <strong>Date of UTVI:</strong>
-  <%= @deep_well.dateofUTVI %>
-</p>
-<p>
-  <strong>Reason:</strong>
-  <%= @deep_well.reason %>
-</p>
+  <h2> <%= @deep_well.deep_well_name %> Information </h2>
+  <p id="notice"><%= notice %></p>
+   
+  <!--Info. Table Start-->
+  <table class="table table-hover table-bordered" style="">
+    <tbody>
+        <tr>
+          <td>
+            <p>
+              <strong>Name:</strong>
+              <%= @deep_well.deep_well_name %>
+            </p>
+          </td>
+          <td>
+            <p>
+              <strong>Date Granted:</strong>
+              <%= @deep_well.dateGranted %>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>
+              <strong>Client Name:</strong>
+              <%= @deep_well.clientName %>
+            </p>
+          </td>
+          <td>
+            <p>
+              <strong>Well Location:</strong>
+              <%= @deep_well.wellLocation %>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>
+              <strong>Well Coordinates:</strong>
+              <%= @deep_well.wellCoodinates %>
+            </p>
+          </td>
+          <td>
+            <p>
+              <strong>Water Permit Number:</strong>
+              <%= @deep_well.waterPermitNo %>
+            </p>
+          </td>         
+        </tr>
+        <tr>
+          <td>
+            <p>
+              <strong>Name of Contractor:</strong>
+              <%= @deep_well.contractor %>
+            </p>
+          </td>
+          <td>
+            <p>
+              <strong>Total Depth:</strong>
+              <%= @deep_well.depthTotal %>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>
+              <strong>Date of UTVI:</strong>
+              <%= @deep_well.dateofUTVI %>
+            </p>
+          </td>
+          <td>
+            <p>
+              <strong>Reason:</strong>
+              <%= @deep_well.reason %>
+            </p>
+          </td>
+    </tbody>
+  </table>
+  <!-- Info. Table End-->
 
-<% if @deep_well.log.attached? %>
-  <p>
-    <strong>Lithologic Log:</strong>
-    <%= link_to 'View', @deep_well.log, html_options = { target: "_blank"} if @deep_well.log.attached? %>
-  </p>
-<% end %>
+  <br>
+    <h2> File Attachments </h2>
 
-<% if @deep_well.asbuilt.attached? %>
-  <p>
-    <strong>As-Built Design:</strong>
-    <%= link_to 'View', @deep_well.asbuilt, html_options = { target: "_blank"} if @deep_well.asbuilt.attached? %>
-  </p>
-<% end %>
+  <!-- File Attachments Start-->
+<table class="table table-hover table-bordered" style="">
+  <tbody>
+    <tr>
+      <td>
+        <% if @deep_well.log.attached? %>
+          <p>
+            <strong>Lithologic Log:</strong>
+            <%= link_to 'Download', @deep_well.log, html_options = { target: "_blank"} if @deep_well.log.attached? %>
+          </p>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <% if @deep_well.asbuilt.attached? %>
+          <p>
+            <strong>As-Built Design:</strong>
+            <%= link_to 'Download', @deep_well.asbuilt, html_options = { target: "_blank"} if @deep_well.asbuilt.attached? %>
+          </p>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <% if @deep_well.design.attached? %>
+          <p>
+            <strong>Deepwell Design:</strong>
+            <%= link_to 'Download', @deep_well.design, html_options = { target: "_blank"} %>
+          </p>
+        <% end %>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+  <!-- File Attachments End-->
 
 
-<% if @deep_well.design.attached? %>
-  <p>
-    <strong>Deepwell Design:</strong>
-    <%= link_to 'View', @deep_well.design, html_options = { target: "_blank"} %>
-  </p>
-<% end %>
+  <div style="float:right">
 
-<%= link_to 'Edit', edit_client_deep_well_path([@client, @deep_well]) %> |
-<%= link_to 'Back', [@client, :deep_wells] %>
+    <button type="button" class="btn btn-light" >
+        <%= link_to 'Edit', edit_client_deep_well_path([@client, @deep_well]) %> 
+    </button>
+    <button type="button" class="btn btn-light" >
+        <%= link_to 'Back', [@client, :deep_wells] %>
+    </button>
+    <br>
+  </div>
+</div>

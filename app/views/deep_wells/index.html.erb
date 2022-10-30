@@ -1,12 +1,15 @@
 <div class="container">
   <h1>Deep Wells</h1>
-    <form class="d-flex" role="search">
+  <!-- Search Form Start -->
+    <form class="d-flex" role="search" style="width: 30%">
     <%= search_form_for @q, url: client_deep_wells_path(params[:client_id]) do |f| %>
       <%= f.search_field :deep_well_name_cont, class:"form-control me-2", placeholder:"Search" %>
       <%= f.submit "Search", class:"btn btn-light text-right float-end" %>
       <%= link_to "Reset", request.path, class:"btn btn-light text-right float-end" %>
     <% end %>
     </form>
+  <!-- Search Form End -->
+
 
     <br>
   
@@ -24,7 +27,7 @@
         <tr>
           <td><%= link_to deep_well.deep_well_name, [@client, deep_well] %></td>
           <td><%= link_to 'Edit', edit_client_deep_well_path(@client, deep_well) %></td>
-          <td><%= link_to 'Destroy', [@client, deep_well], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Delete', [@client, deep_well], method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
       <% end %>
     </tbody>
@@ -33,13 +36,13 @@
   <br>
 
   <div style="float:right">
-    <button type="button" class="btn btn-light" >
-      <%= link_to 'Back', islands_path %>
-    </button>
 
     <button type="button" class="btn btn-light" >
       <%= link_to 'New Deep Well', new_client_deep_well_path %>
     </button>
-    
+    <button type="button" class="btn btn-light" >
+      <%= link_to 'Back', island_clients_path(@client) %>
+    </button>
+    <br>
   </div>
 </div>

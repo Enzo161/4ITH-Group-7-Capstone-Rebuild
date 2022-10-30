@@ -16,20 +16,24 @@
   <tbody>
     <% @activities.each do |a| %>
       <tr>
-        <td><%= a.created_at %></td>
-        <td><%= a.key %></td>
-        <td><%= a.owner&.email %></td>
-        <td>
-          <% if a.trackable&.id == nil %>
-            <%= "This object has been deleted" %>
-          <% else %>
-            <% if a.trackable_type == 'User' %>
-              <%= link_to a.trackable&.email, users_path %>
-            <% else %>
-              <%= a.trackable&.name %>
-            <% end %>
-          <% end %>
-        </td>
+      <td><%= a.created_at %></td>
+      <td><%= a.key %></td>
+      <td><%= a.owner&.email %></td>
+      <td>
+        <% if a.trackable&.id == nil %>
+          <%= "This object has been deleted" %>
+        <% elsif a.trackable_type == 'User' %>
+          <%= link_to a.trackable&.email, users_path %>
+        <% elsif a.trackable_type == 'Island' %>
+          <%= a.trackable&.island_name %>
+        <% elsif a.trackable_type == 'Client' %>
+          <%= a.trackable&.client_name %>
+        <% elsif a.trackable_type == 'DeepWell' %>
+          <%= a.trackable&.deep_well_name %>
+        <% else %>
+          <p> No object found </p>
+        <% end %>
+      </td>
         <!-- <td><%#= a.key != "island.destroy" %></td>
         <td><%#= link_to 'Show', activity %></td>
         <td><%#= link_to 'Edit', edit_activity_path(activity) %></td>
