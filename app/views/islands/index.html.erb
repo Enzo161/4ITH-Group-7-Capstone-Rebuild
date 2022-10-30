@@ -10,7 +10,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @islands.each do |island| %>
+    <% @islands.each do |island| %> 
       <tr>
         <td><%= link_to island.island_name, island_clients_path(island)%></td>
         <td><%= Client.where(:island_id => island).count %></td>

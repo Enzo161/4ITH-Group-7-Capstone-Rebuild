@@ -1,3 +1,5 @@
+
+
 <div class="container">
 
   <h2> <%= @deep_well.deep_well_name %> Information </h2>
@@ -9,13 +11,13 @@
         <tr>
           <td>
             <p>
-              <strong>Name:</strong>
+              <strong>NAME:</strong>
               <%= @deep_well.deep_well_name %>
             </p>
           </td>
           <td>
             <p>
-              <strong>Date Granted:</strong>
+              <strong>DATE GRANTED:</strong>
               <%= @deep_well.dateGranted %>
             </p>
           </td>
@@ -23,13 +25,13 @@
         <tr>
           <td>
             <p>
-              <strong>Client Name:</strong>
+              <strong>CLIENT NAME:</strong>
               <%= @deep_well.clientName %>
             </p>
           </td>
           <td>
             <p>
-              <strong>Well Location:</strong>
+              <strong>WELL LOCATION:</strong>
               <%= @deep_well.wellLocation %>
             </p>
           </td>
@@ -37,13 +39,13 @@
         <tr>
           <td>
             <p>
-              <strong>Well Coordinates:</strong>
+              <strong>WELL COORDINATES:</strong>
               <%= @deep_well.wellCoodinates %>
             </p>
           </td>
           <td>
             <p>
-              <strong>Water Permit Number:</strong>
+              <strong>WATER PERMIT NUMBER:</strong>
               <%= @deep_well.waterPermitNo %>
             </p>
           </td>         
@@ -51,13 +53,13 @@
         <tr>
           <td>
             <p>
-              <strong>Name of Contractor:</strong>
+              <strong>NAME OF CONTRACTOR:</strong>
               <%= @deep_well.contractor %>
             </p>
           </td>
           <td>
             <p>
-              <strong>Total Depth:</strong>
+              <strong>TOTAL DEPTH:</strong>
               <%= @deep_well.depthTotal %>
             </p>
           </td>
@@ -65,13 +67,13 @@
         <tr>
           <td>
             <p>
-              <strong>Date of UTVI:</strong>
+              <strong>DATE OF UTVI:</strong>
               <%= @deep_well.dateofUTVI %>
             </p>
           </td>
           <td>
             <p>
-              <strong>Reason:</strong>
+              <strong>REASON:</strong>
               <%= @deep_well.reason %>
             </p>
           </td>
@@ -89,8 +91,11 @@
       <td>
         <% if @deep_well.log.attached? %>
           <p>
-            <strong>Lithologic Log:</strong>
-            <%= link_to 'Download', @deep_well.log, html_options = { target: "_blank"} if @deep_well.log.attached? %>
+            <%= link_to 'Lithologic Log', @deep_well.log, html_options = { target: "_blank"} if @deep_well.log.attached? %>
+          </p>
+        <% else %>
+          <p>
+            <i><strong>Lithologic Log</strong> (UNAVAILABLE)</i>
           </p>
         <% end %>
       </td>
@@ -99,8 +104,11 @@
       <td>
         <% if @deep_well.asbuilt.attached? %>
           <p>
-            <strong>As-Built Design:</strong>
-            <%= link_to 'Download', @deep_well.asbuilt, html_options = { target: "_blank"} if @deep_well.asbuilt.attached? %>
+            <%= link_to 'As-Built Design', @deep_well.asbuilt, html_options = { target: "_blank"} if @deep_well.asbuilt.attached? %>
+          </p>
+        <% else %>
+          <p>
+            <i><strong>As-Built Design</strong> (UNAVAILABLE)</i>
           </p>
         <% end %>
       </td>
@@ -109,8 +117,11 @@
       <td>
         <% if @deep_well.design.attached? %>
           <p>
-            <strong>Deepwell Design:</strong>
-            <%= link_to 'Download', @deep_well.design, html_options = { target: "_blank"} %>
+            <%= link_to 'Deep Well Design', @deep_well.design, html_options = { target: "_blank"} %>
+          </p>
+        <% else %>
+          <p>
+            <i><strong>Deep Well Design</strong> (UNAVAILABLE)</i>
           </p>
         <% end %>
       </td>

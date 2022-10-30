@@ -12,27 +12,27 @@
 
 <!--Form Start-->
 
-  <div class="row">
+  <div class="row" style="  text-transform: uppercase;">
     <!--Column 1-->
     <div class="col">
-      <div class="field">
-        <%= form.label "Deep Well Name:" %>
+      <div class="field" style="">
+        <strong><%= form.label "Deep Well Name:" %></strong>
         <%= form.text_field :deep_well_name, class:"form-control",autofocus:true %>
       </div>
       <div class="field">
-        <%= form.label "Client Name:" %>
+        <strong><%= form.label "Client Name:" %> </strong>
         <%= form.text_field :clientName, class:"form-control" %>
       </div>
       <div class="field">
-        <%= form.label "Well Coordinates:" %>
+        <strong><%= form.label "Well Coordinates:" %></strong>
         <%= form.text_field :wellCoodinates, class:"form-control" %>
       </div>
       <div class="field">
-        <%= form.label "Name of Contractor:" %>
+        <strong><%= form.label "Name of Contractor:" %></strong>
         <%= form.text_field :contractor, class:"form-control" %>
       </div>
       <div class="field">
-        <%= form.label "Date of UTVI:" %>
+        <strong><%= form.label "Date of UTVI:" %></strong>
         <%= form.date_field :dateofUTVI , class:"form-control"%>
       </div>
     </div>
@@ -40,23 +40,23 @@
     <!--Column 2-->
     <div class="col">
       <div class="field">
-        <%= form.label "Date Granted:" %>
+        <strong><%= form.label "Date Granted:" %></strong>
         <%= form.date_field :dateGranted, class:"form-control" %>
       </div>
       <div class="field">
-        <%= form.label "Well Location:" %>
+        <strong><%= form.label "Well Location:" %></strong>
         <%= form.text_field :wellLocation, class:"form-control" %>
       </div>
       <div class="field">
-        <%= form.label "Water Permit Number:" %>
+        <strong><%= form.label "Water Permit Number:" %></strong>
         <%= form.text_field :waterPermitNo, class:"form-control" %>
       </div>
       <div class="field">
-        <%= form.label "Total Depth:" %>
+        <strong><%= form.label "Total Depth:" %></strong>
         <%= form.text_field :depthTotal, class:"form-control" %>
       </div>    
       <div class="field">
-        <%= form.label "Reason:" %>
+        <strong><%= form.label "Reason:" %></strong>
         <%= form.text_field :reason , class:"form-control"%>
       </div>
     </div>
@@ -65,18 +65,25 @@
 <br>
 
   <div class="mb-3">
-    <%= form.label "Lithologic Log:" %>
+    <strong><%= form.label "Lithologic Log:" %></strong>
     <% if @deep_well.log.attached? %>
-      <%= link_to 'current file', @deep_well.log, html_options = { target: "_blank"} %>
+      <%= link_to 'Current File', @deep_well.log, html_options = { target: "_blank"} %>
+      <%= link_to 'Delete File', purge_file_client_deep_well_path(@deep_well), method: :delete, data: { confirm: 'Are you sure?' } %>
     <% end %>
     <%= form.file_field :log, class:"form-control" %>
   </div>
-    <div class="mb-3">
-    <%= form.label "As-Built Design:" %>
+  <div class="mb-3">
+    <strong><%= form.label "As-Built Design:" %></strong>
+    <% if @deep_well.asbuilt.attached? %>
+      <%= link_to 'Current File', @deep_well.asbuilt, html_options = { target: "_blank"} %>
+    <% end %>
     <%= form.file_field :asbuilt, class:"form-control" %>
   </div>
     <div class="mb-3">
-    <%= form.label "Deepwell Design:"%>
+    <strong><%= form.label "Deepwell Design:"%></strong>
+    <% if @deep_well.design.attached? %>
+      <%= link_to 'Current File', @deep_well.design, html_options = { target: "_blank"} %>
+    <% end %>
     <%= form.file_field :design, class:"form-control" %>
   </div>
 
