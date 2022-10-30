@@ -4,20 +4,15 @@
     <form class="d-flex" role="search" style="width: auto">
       <%= search_form_for @q, url: island_clients_path(params[:island_id]) do |f| %>
       <%= f.search_field :client_name_cont, class:"form-control me-2", placeholder:"Search"%>
-      <%= f.submit "Search", class:"btn btn-light" %>&nbsp;
-      <%= link_to "Reset", request.path, class:"btn btn-light" %>
-      <% end %>
+      <%= f.submit "Search", class:"btn btn-light text-right float-end" %>&nbsp;
+      <%= link_to "Reset", request.path, class:"btn btn-light text-right float-end" %>
+      <% end %> 
+        <br>
+      <%= link_to 'Back', islands_path, class:"btn btn-light", style:"float: right" %>
+      <%= link_to 'New Client', new_island_client_path, class:"btn btn-primary", style:"float: left"%> 
+        <br>
     </form>
 
-    <br>
-    <div>
-      <button type="button" class="btn btn-light" >
-      <%= link_to 'New Client', new_island_client_path %> 
-      </button>
-      <button type="button" class="btn btn-light" >
-      <%= link_to 'Back', islands_path %>
-      </button>
-    </div>
     <br>
 
 

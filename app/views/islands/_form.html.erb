@@ -9,17 +9,15 @@
       </ul>
     </div>
   <% end %>
-
+  Enter Island Here:
   <div class="field">
     <%= form.text_field :island_name, class:"form-control", autofocus:true %>
   </div>
 
   <br>
   <div class="actions" style="float:right">
-    <%= form.submit :Submit, class: 'btn btn-light'%>
-        <button type="button" class="btn btn-light" >
-          <%= link_to 'Back', islands_path %>
-        </button>
+    <%= form.submit :Submit, class: 'btn btn-primary'%>
+    <%= link_to 'Back', islands_path, class:"btn btn-light" %>
   </div>
 
 <% end %>

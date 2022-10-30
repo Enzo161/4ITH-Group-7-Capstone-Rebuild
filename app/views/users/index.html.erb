@@ -3,6 +3,9 @@
 
   <!-- Partial for Search Form-->
   <%= render 'users/search_form.html.erb'%>
+  <br>
+  <%= link_to "User Invite", new_user_invitation_path, class:" btn btn-primary" %>
+<br>
 <br>
 <table class="table table-hover table-bordered ">
   <thead>
@@ -40,6 +43,3 @@
     <% end %>
   </tbody>
 </table>
-<button type="button" class="btn btn-light text-right float-end" >
-  <%= link_to "User Invite", new_user_invitation_path, class:"nav-link" %>
-</button>

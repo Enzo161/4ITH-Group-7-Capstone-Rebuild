@@ -67,32 +67,29 @@
   <div class="mb-3">
     <strong><%= form.label "Lithologic Log:" %></strong>
     <% if @deep_well.log.attached? %>
-      <%= link_to 'Current File', @deep_well.log, html_options = { target: "_blank"} %>
-      <%= link_to 'Delete File', purge_file_client_deep_well_path(@deep_well), method: :delete, data: { confirm: 'Are you sure?' } %>
+      <%= link_to 'View Current File', @deep_well.log, html_options = { target: "_blank"} %>
     <% end %>
     <%= form.file_field :log, class:"form-control" %>
   </div>
   <div class="mb-3">
     <strong><%= form.label "As-Built Design:" %></strong>
     <% if @deep_well.asbuilt.attached? %>
-      <%= link_to 'Current File', @deep_well.asbuilt, html_options = { target: "_blank"} %>
+      <%= link_to 'View Current File', @deep_well.asbuilt, html_options = { target: "_blank"} %>
     <% end %>
     <%= form.file_field :asbuilt, class:"form-control" %>
   </div>
     <div class="mb-3">
     <strong><%= form.label "Deepwell Design:"%></strong>
     <% if @deep_well.design.attached? %>
-      <%= link_to 'Current File', @deep_well.design, html_options = { target: "_blank"} %>
+      <%= link_to 'View Current File', @deep_well.design, html_options = { target: "_blank"} %>
     <% end %>
     <%= form.file_field :design, class:"form-control" %>
   </div>
 
-    <div class="actions" style="float:right">
-    <%= form.submit :Submit, class: 'btn btn-light'%>
-        <button type="button" class="btn btn-light" >
-          <%= link_to "Back", :back %>
-        </button>
+  <div class="actions" style="float:right">
+    <%= form.submit :Submit, class: 'btn btn-primary'%>
+    <%= link_to "Back", :back, class: 'btn btn-light' %>
   </div>
-<% end %>
+  <% end %>
 
 <!--Form End-->
