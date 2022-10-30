@@ -6,7 +6,7 @@ class CreateActivities < ActiveRecord::Migration[5.0]
     create_table :activities do |t|
       t.belongs_to :trackable, polymorphic: true
       t.belongs_to :owner, polymorphic: true
-      t.string :key
+      t.text :key
       t.text :parameters
       t.belongs_to :recipient, polymorphic: true
 

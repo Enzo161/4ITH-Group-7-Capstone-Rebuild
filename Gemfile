@@ -6,7 +6,6 @@ ruby '2.6.10'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.0.5', '>= 6.0.5.1'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3', '~> 1.4'
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
 # Use SCSS for stylesheets
@@ -38,6 +37,11 @@ group :development do
   gem 'web-console', '>= 3.3.0'
 end
 
+group :production do
+  gem 'pg', '~> 1.4', '>= 1.4.4'
+  #gem 'rails_12factor', '~> 0.0.3'
+end
+
 group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
@@ -57,3 +61,4 @@ gem 'pry'
 gem 'public_activity'
 gem 'ransack'
 gem 'simple_form'
+gem 'pg', '~> 1.4', '>= 1.4.4'
