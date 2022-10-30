@@ -10,9 +10,9 @@ class UserOtpMailer < ApplicationMailer
     @greeting = "Hi"
 
     mail(
-      from: "enzo@gmail.com",
+      from: "lorenzo.plantilla.cics@ust.edu.ph",
       to: @user.email, 
-      subject: "Bahaytubig.com otp login request"
+      subject: "bahaytubig.herokuapp.com OTP LOGIN REQUEST"
       ) 
   end
 end
