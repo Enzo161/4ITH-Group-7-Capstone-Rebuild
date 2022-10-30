@@ -68,7 +68,6 @@
     <strong><%= form.label "Lithologic Log:" %></strong>
     <% if @deep_well.log.attached? %>
       <%= link_to 'Current File', @deep_well.log, html_options = { target: "_blank"} %>
-      <%= link_to 'Delete File', purge_file_client_deep_well_path(@deep_well), method: :delete, data: { confirm: 'Are you sure?' } %>
     <% end %>
     <%= form.file_field :log, class:"form-control" %>
   </div>
