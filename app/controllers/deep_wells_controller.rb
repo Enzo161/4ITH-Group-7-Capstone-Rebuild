@@ -63,9 +63,9 @@ class DeepWellsController < ApplicationController
 
   # PATCH/PUT /deep_wells/1 or /deep_wells/1.json
   def update
-    respond_to do |format|
+    respond_to do |format| 
       if @deep_well.update(deep_well_params)
-        format.html { redirect_to [@client, :deep_wells], notice: "Deep well was successfully updated." }
+        format.html { redirect_to client_deep_well_path([@client, @deep_well]), notice: "Deep well was successfully updated." }
         format.json { render :show, status: :ok, location: @deep_well }
       else
         format.html { render :edit, status: :unprocessable_entity }
