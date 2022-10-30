@@ -68,6 +68,6 @@ class IslandsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def island_params
-      params.require(:island).permit(:name)
+      params.require(:island).permit(:island_name)
     end
 end
