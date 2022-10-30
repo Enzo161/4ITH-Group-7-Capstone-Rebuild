@@ -1,7 +1,7 @@
 <div class="container">
   <h1>Clients</h1>
 
-    <form class="d-flex" role="search" style="width: 30%">
+    <form class="d-flex" role="search" style="width: auto">
       <%= search_form_for @q, url: island_clients_path(params[:island_id]) do |f| %>
       <%= f.search_field :client_name_cont, class:"form-control me-2", placeholder:"Search"%>
       <%= f.submit "Search", class:"btn btn-light" %>&nbsp;

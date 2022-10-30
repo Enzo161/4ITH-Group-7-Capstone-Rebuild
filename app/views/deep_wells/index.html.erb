@@ -1,7 +1,7 @@
 <div class="container">
   <h1>Deep Wells</h1>
   <!-- Search Form Start -->
-    <form class="d-flex" role="search" style="width: 30%">
+    <form class="d-flex" role="search" style="width: auto">
     <%= search_form_for @q, url: client_deep_wells_path(params[:client_id]) do |f| %>
       <%= f.search_field :deep_well_name_cont, class:"form-control me-2", placeholder:"Search" %>
       <%= f.submit "Search", class:"btn btn-light text-right float-end" %>
