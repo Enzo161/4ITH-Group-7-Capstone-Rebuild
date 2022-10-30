@@ -10,6 +10,27 @@ class DeepWellsController < ApplicationController
     # @deep_wells = DeepWell.all
   end
 
+  # To delete log attachment
+  def purge_log_attachment
+    @log = ActiveStorage::Attachment.find(params[:id])
+    @log.purge 
+    redirect_back fallback_location: @root_path, notice: "Successfully deleted Lithologic Log."
+  end
+
+  # To delete asbuilt attachment
+  def purge_asbuilt_attachment
+    @asbuilt = ActiveStorage::Attachment.find(params[:id])
+    @asbuilt.purge 
+    redirect_back fallback_location: @root_path, notice: "Successfully deleted As Built Design."
+  end
+
+  # To delete design attachment
+  def purge_design_attachment
+    @design = ActiveStorage::Attachment.find(params[:id])
+    @design.purge 
+    redirect_back fallback_location: @root_path, notice: "Successfully deleted Proposed Deep Well Design."
+  end
+
   # GET /deep_wells/1 or /deep_wells/1.json
   def show
   end

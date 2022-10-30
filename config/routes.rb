@@ -12,7 +12,12 @@ Rails.application.routes.draw do
   end
   
   resources :clients do
-    resources :deep_wells
+    resources :deep_wells do 
+      member do
+        delete :purge_log_attachment
+        delete :purge_asbuilt_attachment
+        delete :purge_design_attachment
+      end
   end
-
+end
 end

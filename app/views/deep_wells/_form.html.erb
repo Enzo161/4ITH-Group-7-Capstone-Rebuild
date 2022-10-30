@@ -8,11 +8,11 @@
         <% end %>
       </ul>
     </div>
-  <% end %> 
+  <% end %>  
 
 <!--Form Start-->
 
-  <div class="row" style="  text-transform: uppercase;">
+  <div class="row" style="text-transform: uppercase;">
     <!--Column 1-->
     <div class="col">
       <div class="field" style="">
@@ -64,24 +64,27 @@
 
 <br>
 
-  <div class="mb-3">
+  <div class="mb-3" style="text-transform: uppercase;">
     <strong><%= form.label "Lithologic Log:" %></strong>
     <% if @deep_well.log.attached? %>
       <%= link_to 'View Current File', @deep_well.log, html_options = { target: "_blank"} %>
+      <%= link_to "Remove Attachment", purge_log_attachment_client_deep_well_path(@deep_well, deep_well.log.id), method: :delete, data: { confirm: 'Are you sure?' } %>
     <% end %>
     <%= form.file_field :log, class:"form-control" %>
   </div>
-  <div class="mb-3">
+  <div class="mb-3" style="text-transform: uppercase;">
     <strong><%= form.label "As-Built Design:" %></strong>
     <% if @deep_well.asbuilt.attached? %>
       <%= link_to 'View Current File', @deep_well.asbuilt, html_options = { target: "_blank"} %>
+      <%= link_to "Remove Attachment", purge_asbuilt_attachment_client_deep_well_path(@deep_well, deep_well.asbuilt.id), method: :delete, data: { confirm: 'Are you sure?' } %>
     <% end %>
     <%= form.file_field :asbuilt, class:"form-control" %>
   </div>
-    <div class="mb-3">
-    <strong><%= form.label "Deepwell Design:"%></strong>
+    <div class="mb-3" style="text-transform: uppercase;">
+    <strong><%= form.label "Proposed Deep Well Design:"%></strong>
     <% if @deep_well.design.attached? %>
       <%= link_to 'View Current File', @deep_well.design, html_options = { target: "_blank"} %>
+      <%= link_to "Remove Attachment", purge_design_attachment_client_deep_well_path(@deep_well, deep_well.design.id), method: :delete, data: { confirm: 'Are you sure?' } %>
     <% end %>
     <%= form.file_field :design, class:"form-control" %>
   </div>
