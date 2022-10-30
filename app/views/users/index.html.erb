@@ -18,7 +18,13 @@
   <tbody>
     <% @users.each do |user| %>
       <tr>
-        <td><%= user.first_name %> <%= user.last_name %></td>
+        <td>
+          <% if user.first_name == nil || user.last_name == nil %>
+            <p> Not set by user <p>
+          <% else %>
+            <p><%= user.first_name %> <%= user.last_name %></p>
+          <% end %>
+        </td>
         <td><%= user.email %></td>
         <td>
           <% if user.admin? %>
