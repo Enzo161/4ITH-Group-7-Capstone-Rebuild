@@ -17,7 +17,7 @@ class TwoFactorSettingsController < ApplicationController
       flash[:notice] = 'Successfully enabled two factor authentication.'
       redirect_to edit_user_registration_path
     else
-      flash.now[:alert] = 'Incorrect password'
+      flash.now[:alert] = 'Incorrect password.'
       return render :new
     end
 
