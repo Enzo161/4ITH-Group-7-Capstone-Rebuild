@@ -4,7 +4,7 @@ class DeepWellsController < ApplicationController
   before_action :set_deep_well, only: %i[ show edit update destroy ]
 
   # GET /deep_wells or /deep_wells.json
-  def index
+  def index 
     @q = @client.deep_wells.ransack(params[:q])
     @deep_wells = @q.result.includes(:client)
     # @deep_wells = DeepWell.all
@@ -96,6 +96,6 @@ class DeepWellsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def deep_well_params
-      params.require(:deep_well).permit(:log, :asbuilt, :design, :deep_well_name, :client_id, :dateGranted, :clientName, :wellLocation, :wellCoodinates, :waterPermitNo, :contractor, :depthTotal, :dateofUTVI, :reason)
+      params.require(:deep_well).permit(:log, :deep_well_name, :client_id, :dateGranted, :clientName, :wellLocation, :wellCoodinates, :waterPermitNo, :contractor, :depthTotal, :dateofUTVI, :reason, asbuilt: [], design: [])
     end
 end

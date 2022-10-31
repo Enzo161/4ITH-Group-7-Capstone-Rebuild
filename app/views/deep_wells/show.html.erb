@@ -101,12 +101,17 @@
     <tr>
       <td>
         <% if @deep_well.asbuilt.attached? %>
+          <%@deep_well.asbuilt.each do |asbuilt|%>
           <p>
-            <%= link_to 'As-Built Design', @deep_well.asbuilt, html_options = { target: "_blank"} if @deep_well.asbuilt.attached? %>
+
+            <%= link_to(asbuilt.filename, rails_blob_path(asbuilt),  target: '_blank') %>
+
+            <!--'As-Built Designs', @deep_well.asbuilt, html_options = { target: "_blank"} if @deep_well.asbuilt.attached? %>-->
           </p>
+          <% end %>
         <% else %>
           <p>
-            <i><strong>As-Built Design</strong> (UNAVAILABLE)</i>
+            <i><strong>As-Built Designs</strong> (UNAVAILABLE)</i>
           </p>
         <% end %>
       </td>
@@ -114,12 +119,15 @@
     <tr>
       <td>
         <% if @deep_well.design.attached? %>
+          <%@deep_well.design.each do |design|%>
           <p>
-            <%= link_to 'Deep Well Design', @deep_well.design, html_options = { target: "_blank"} %>
+            <%= link_to(design.filename, rails_blob_path(design),  target: '_blank') %>
+            <!-- link_to 'Deep Well Designs', @deep_well.design, html_options = { target: "_blank"} %> -->
           </p>
+          <% end %>
         <% else %>
           <p>
-            <i><strong> Proposed Deep Well Design</strong> (UNAVAILABLE)</i>
+            <i><strong> Proposed Deep Well Designs</strong> (UNAVAILABLE)</i>
           </p>
         <% end %>
       </td>
