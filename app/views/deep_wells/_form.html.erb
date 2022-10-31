@@ -8,10 +8,9 @@
         <% end %>
       </ul>
     </div>
-  <% end %>   
+  <% end %>  
 
 <!--Form Start-->
-
   <div class="row" style="text-transform: uppercase;">
     <!--Column 1-->
     <div class="col">
@@ -65,7 +64,6 @@
 <br>
 
 
-
 <!-- Lithologic File Start-->
 <% if @deep_well.log.attached? %>
   <table class="table table-hover table-bordered ">
@@ -114,7 +112,7 @@
     </tbody>
   </table>
 <% else %>
-  <strong><%= form.label "Lithologic Log:" %></strong>
+  <strong><%= form.label "Upload Lithologic Log:" %></strong>
   <%= form.file_field :log, class:"form-control" %> 
 <% end %> 
   <!-- Lithologic File End-->
@@ -122,7 +120,7 @@
 <br>
 
   <!-- Asbuilt Files Start-->
-  <% if @deep_well.asbuilt.attached? %>
+
   <table class="table table-hover table-bordered ">
     <thead>
         <tr>
@@ -141,21 +139,22 @@
         <% else %>
         <%@deep_well.asbuilt.each do |asbuilt|%>
           <tr>
-            <td><%= link_to(asbuilt.filename, rails_blob_path(asbuilt),  target: '_blank') %></td>
+            <td> <%= link_to(asbuilt.filename, rails_blob_path(asbuilt),  target: '_blank') %></td>
             <td> <%= asbuilt.created_at %></td>
-            <td> Remove Attachment </td>
+            <td> Remove Attachment
+              <!--link_to 'Remove Attachment', purge_asbuilt_attachment_path(@deep_well, deep_well.asbuilt.id), method: :delete, data: { confirm: 'Are you sure?' } --> </td>
           </tr>
         <% end %>
         <% end %>
       </tbody>
   </table>
-  <%else%>
-      <strong>As-Built Designs: </strong>
-      <%= form.file_field :asbuilt, class:"form-control", multiple: true %>
-  <% end %>
+  <%= form.file_field :asbuilt, class:"form-control", multiple: true %>
+
   <!-- Asbuilt Files End--> <br>
 
+
   <!-- Deepwell Design Proposal Start-->
+
   <table class="table table-hover table-bordered ">
     <thead>
         <tr>
@@ -176,12 +175,12 @@
           <tr>
             <td> <%= link_to(design.filename, rails_blob_path(design),  target: '_blank') %></td>
             <td> <%= design.created_at %> </td>
-            <td> Remove Attachment </td>
-          </tr>
+            <td> Remove Attachment </tr>
         <% end %>
         <% end %>
       </tbody>
   </table>
+      <%= form.file_field :design, class:"form-control", multiple: true %>
   <!-- Deepwell Design Proposal End-->
 
 
