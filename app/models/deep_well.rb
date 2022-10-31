@@ -2,8 +2,9 @@ class DeepWell < ApplicationRecord
   belongs_to :client
   
   has_one_attached :log
-  has_many_attached :asbuilt
+  has_many_attached :asbuilt 
   has_many_attached :design
+
 
   include PublicActivity::Model
   tracked owner: Proc.new{ |controller, model| controller.current_user }

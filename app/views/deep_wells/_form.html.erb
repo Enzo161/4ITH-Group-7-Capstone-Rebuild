@@ -80,8 +80,10 @@
   <div class="mb-3" style="text-transform: uppercase;">
     <strong><%= form.label "As-Built Designs:" %></strong>
     <% if @deep_well.asbuilt.attached? %>
-      <%= link_to 'View Current File', @deep_well.asbuilt, html_options = { target: "_blank"} %>&nbsp; | &nbsp;
-      <%= link_to "Remove Attachment", purge_asbuilt_attachment_client_deep_well_path(@deep_well, deep_well.asbuilt.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+      <%@deep_well.asbuilt.each do |asbuilt|%>
+        <%= link_to(asbuilt.filename, rails_blob_path(asbuilt),  target: '_blank') %>&nbsp; | &nbsp;
+        <!-- link_to "Remove Attachment", purge_asbuilt_attachment_client_deep_well_path(@deep_well, deep_well.asbuilt.id), method: :delete, data: { confirm: 'Are you sure?' } -->
+      <% end %>
     <%else%>
       <%= form.file_field :asbuilt, class:"form-control", multiple: true %>
     <% end %>
@@ -91,8 +93,10 @@
     <div class="mb-3" style="text-transform: uppercase;">
     <strong><%= form.label "Proposed Deep Well Designs:"%></strong>
     <% if @deep_well.design.attached? %>
-      <%= link_to 'View Current File', @deep_well.design, html_options = { target: "_blank"} %> &nbsp; | &nbsp;
-      <%= link_to "Remove Attachment", purge_design_attachment_client_deep_well_path(@deep_well, deep_well.design.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+      <%@deep_well.design.each do |design|%>
+        <%= link_to(design.filename, rails_blob_path(design),  target: '_blank') %> &nbsp; | &nbsp;
+        <!-- link_to "Remove Attachment", purge_design_attachment_client_deep_well_path(@deep_well, deep_well.design.id), method: :delete, data: { confirm: 'Are you sure?' } -->
+        <% end %>
       <%else%>
     <%= form.file_field :design, class:"form-control", multiple: true %>
     <% end %>
