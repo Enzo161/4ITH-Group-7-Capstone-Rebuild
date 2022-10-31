@@ -82,60 +82,111 @@
   <br>
     <h2> File Attachments </h2>
 
-  <!-- File Attachments Start-->
-<table class="table table-hover table-bordered" style="">
-  <tbody>
-    <tr>
-      <td>
-        <% if @deep_well.log.attached? %>
-          <p>
-            <%= link_to 'Lithologic Log', @deep_well.log, html_options = { target: "_blank"} if @deep_well.log.attached? %>
-          </p>
-        <% else %>
-          <p>
-            <i><strong>Lithologic Log</strong> (UNAVAILABLE)</i>
-          </p>
-        <% end %>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <% if @deep_well.asbuilt.attached? %>
-          <%@deep_well.asbuilt.each do |asbuilt|%>
-          <p>
 
-            <%= link_to(asbuilt.filename, rails_blob_path(asbuilt),  target: '_blank') %>
-
-            <!--'As-Built Designs', @deep_well.asbuilt, html_options = { target: "_blank"} if @deep_well.asbuilt.attached? %>-->
-          </p>
+  <!-- Lithologic File Start-->
+  <table class="table table-hover table-bordered ">
+    <tbody>
+        <tr>
+          <td> <strong> Lithologic File </strong></td>
+          <td> <strong> Date Uploaded </strong></td>
+          <td> <strong> Delete File </strong> </td>
+        </tr>
+      <tr>
+        <td>
+          <% if @deep_well.log.attached? %>
+            <p>
+              <%= link_to @deep_well.log.filename, @deep_well.log, html_options = { target: "_blank"} if @deep_well.log.attached? %>
+            </p>
+          <% else %>
+            <p>
+              <i> File unavailable </i>
+            </p>
           <% end %>
-        <% else %>
-          <p>
-            <i><strong>As-Built Designs</strong> (UNAVAILABLE)</i>
-          </p>
-        <% end %>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <% if @deep_well.design.attached? %>
-          <%@deep_well.design.each do |design|%>
-          <p>
-            <%= link_to(design.filename, rails_blob_path(design),  target: '_blank') %>
-            <!-- link_to 'Deep Well Designs', @deep_well.design, html_options = { target: "_blank"} %> -->
-          </p>
+        </td>
+        <td>
+          <% if @deep_well.log.attached? %>
+            <p>
+              Date Uploaded
+            </p>
+          <% else %>
+            <p>
+              -
+            </p>
           <% end %>
-        <% else %>
-          <p>
-            <i><strong> Proposed Deep Well Designs</strong> (UNAVAILABLE)</i>
-          </p>
-        <% end %>
-      </td>
-    </tr>
-  </tbody>
-</table>
+        </td>
+        <td>
+          <% if @deep_well.log.attached? %>
+            <p>
+              Delete
+            </p>
+          <% else %>
+            <p>
+              -
+            </p>
+          <% end %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <!-- Lithologic File Start-->
 
-  <!-- File Attachments End-->
+  <!-- Asbuilt Files Start-->
+  <table class="table table-hover table-bordered ">
+    <thead>
+        <tr>
+          <th>  As-Built Design Files</th>
+          <th>  Date Uploaded </th>
+          <th>  Delete File </th>
+        </tr>
+    </thead>
+    <tbody>
+        <% if !@deep_well.asbuilt.attached? %>
+          <tr>
+            <td> <i> File unavailable </i></td>
+            <td> - </td>
+            <td> -  </td>
+          </tr>
+        <% else %>
+        <%@deep_well.asbuilt.each do |asbuilt|%>
+          <tr>
+            <td><%= link_to(asbuilt.filename, rails_blob_path(asbuilt),  target: '_blank') %></td>
+            <td> Date Uploaded </td>
+            <td> Delete File </td>
+          </tr>
+        <% end %>
+        <% end %>
+      </tbody>
+  </table>
+  <!-- Asbuilt Files End-->
+
+  <!-- Deepwell Design Proposal Start-->
+  <table class="table table-hover table-bordered ">
+    <thead>
+        <tr>
+          <th>  Deepwell Design Proposal Files</th>
+          <th>  Date Uploaded </th>
+          <th>  Delete File </th>
+        </tr>
+    </thead>
+    <tbody>
+        <% if !@deep_well.design.attached? %>
+          <tr>
+            <td> <i> File unavailable </i> </td>
+            <td> - </td>
+            <td> -  </td>
+          </tr>
+        <% else %>
+        <%@deep_well.design.each do |design|%>
+          <tr>
+            <td><%= link_to(design.filename, rails_blob_path(design),  target: '_blank') %></td>
+            <td> Date Uploaded </td>
+            <td> Delete File </td>
+          </tr>
+        <% end %>
+        <% end %>
+      </tbody>
+  </table>
+  <!-- Deepwell Design Proposal End-->
 
 
   <div style="float:right">
