@@ -18,7 +18,13 @@
       <tr>
       <td><%= a.created_at %></td>
       <td><%= a.key %></td>
-      <td><%= a.owner&.email %></td>
+      <td>
+        <% if a.owner.nil? %>
+          <p>No user responsible. Action was done through console.<p>
+        <% else %>
+          <p><%= a.owner&.email %></p>
+        <% end %> 
+      </td>
       <td>
         <% if a.trackable&.id == nil %>
           <%= "This object has been deleted" %>
