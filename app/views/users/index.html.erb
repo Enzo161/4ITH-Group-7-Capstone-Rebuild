@@ -28,7 +28,9 @@
             <p><%= user.first_name %> <%= user.last_name %></p>
           <% end %>
         </td>
-        <td><%= user.email %></td>
+        <td>
+            <p><%= user.email %></p>
+        </td>
         <td>
           <% if user.admin? %>
           Admin

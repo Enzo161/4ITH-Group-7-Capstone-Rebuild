@@ -47,8 +47,8 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  database: bahaytubig
+  database: test_bahaytubig
   pool: 5
-  username: postgres
+  username: test_postgres
   password: Kahitano16
   timeout: 5000
