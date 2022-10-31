@@ -1,4 +1,5 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'bahaytubig@email.com'
+  #to be changed after being given the official company email
+  default from: 'lorenzo.plantilla.cics@ust.edu.ph'
   layout 'mailer'
 end
