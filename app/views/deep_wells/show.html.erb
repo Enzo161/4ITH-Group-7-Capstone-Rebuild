@@ -106,7 +106,7 @@
         <td>
           <% if @deep_well.log.attached? %>
             <p>
-              Date Uploaded
+              <%= @deep_well.log.created_at %>
             </p>
           <% else %>
             <p>
@@ -117,7 +117,7 @@
         <td>
           <% if @deep_well.log.attached? %>
             <p>
-              Delete
+              -
             </p>
           <% else %>
             <p>
@@ -128,7 +128,7 @@
       </tr>
     </tbody>
   </table>
-  <!-- Lithologic File Start-->
+  <!-- Lithologic File End-->
 
   <!-- Asbuilt Files Start-->
   <table class="table table-hover table-bordered ">
