@@ -17,10 +17,10 @@ class DeepWellsController < ApplicationController
     redirect_back fallback_location: @root_path, notice: "Successfully deleted Lithologic Log."
   end
 
-  # To delete asbuilt attachment
+  # To delete asbuilt attachments
   def purge_asbuilt_attachment
     @asbuilt = ActiveStorage::Attachment.find(params[:id])
-    @asbuilt.purge 
+    @asbuilt.purge
     redirect_back fallback_location: @root_path, notice: "Successfully deleted As Built Design."
   end
 
@@ -96,6 +96,7 @@ class DeepWellsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def deep_well_params
-      params.require(:deep_well).permit(:log, :deep_well_name, :client_id, :dateGranted, :clientName, :wellLocation, :wellCoodinates, :waterPermitNo, :contractor, :depthTotal, :dateofUTVI, :reason, asbuilt: [], design: [])
+      params.require(:deep_well).permit(:log, :deep_well_name, :client_id, :dateGranted, :clientName, :wellLocation, :wellCoodinates, 
+        :waterPermitNo, :contractor, :depthTotal, :dateofUTVI, :reason, asbuilt: [], design: [])
     end
 end

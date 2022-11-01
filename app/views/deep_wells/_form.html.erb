@@ -23,40 +23,53 @@
         <%= form.text_field :clientName, class:"form-control" %>
       </div>
       <div class="field">
+        <strong><%= form.label "Well Location:" %></strong>
+        <%= form.text_field :wellLocation, class:"form-control" %>
+      </div>
+      <div class="field">
+        <strong><%= form.label "Name of Driller:" %></strong>
+        <%= form.text_field :driller_name, class:"form-control" %>
+      </div>
+      <div class="field">
+        <strong><%= form.label "Date Constructed:" %></strong>
+        <%= form.text_field :dateConstructed, class:"form-control" %>
+      </div>
+      <div class="field">
+        <strong><%= form.label "Total Depth:" %></strong>
+        <%= form.text_field :depthTotal, class:"form-control" %>
+      </div>  
+      <div class="field">
+        <strong><%= form.label "UTVI HISTORY:" %></strong>
+        <!-- form.text_field :depthTotal, class:"form-control" -->
+      </div>  
+      <div class="field">
         <strong><%= form.label "Well Coordinates:" %></strong>
         <%= form.text_field :wellCoodinates, class:"form-control" %>
       </div>
-      <div class="field">
-        <strong><%= form.label "Name of Contractor:" %></strong>
-        <%= form.text_field :contractor, class:"form-control" %>
-      </div>
+
       <div class="field">
         <strong><%= form.label "Date of UTVI:" %></strong>
-        <%= form.date_field :dateofUTVI , class:"form-control"%>
+        <!--form.date_field  , class:"form-control"-->
       </div>
     </div>
 
     <!--Column 2-->
     <div class="col">
       <div class="field">
+        <strong><%= form.label "Water Permit Number:" %></strong>
+        <%= form.date_field :waterPermitNo, class:"form-control" %>
+      </div>
+      <div class="field">
         <strong><%= form.label "Date Granted:" %></strong>
         <%= form.date_field :dateGranted, class:"form-control" %>
       </div>
-      <div class="field">
-        <strong><%= form.label "Well Location:" %></strong>
-        <%= form.text_field :wellLocation, class:"form-control" %>
+       <div class="field">
+        <strong><%= form.label "Limit:" %></strong>
+        <%= form.text_field :limit , class:"form-control"%>
       </div>
       <div class="field">
-        <strong><%= form.label "Water Permit Number:" %></strong>
-        <%= form.text_field :waterPermitNo, class:"form-control" %>
-      </div>
-      <div class="field">
-        <strong><%= form.label "Total Depth:" %></strong>
-        <%= form.text_field :depthTotal, class:"form-control" %>
-      </div>    
-      <div class="field">
-        <strong><%= form.label "Reason:" %></strong>
-        <%= form.text_field :reason , class:"form-control"%>
+        <strong><%= form.label "Remarks:" %></strong>
+        <%= form.text_field :remarks , class:"form-control input-large" %>
       </div>
     </div>
   </div>
@@ -137,14 +150,13 @@
             <td> - </td>
           </tr>
         <% else %>
-        <%@deep_well.asbuilt.each do |asbuilt|%>
-          <tr>
-            <td> <%= link_to(asbuilt.filename, rails_blob_path(asbuilt),  target: '_blank') %></td>
-            <td> <%= asbuilt.created_at %></td>
-            <td> Remove Attachment
-              <!--link_to 'Remove Attachment', purge_asbuilt_attachment_path(@deep_well, deep_well.asbuilt.id), method: :delete, data: { confirm: 'Are you sure?' } --> </td>
-          </tr>
-        <% end %>
+          <%@deep_well.asbuilt.each do |asbuilt|%>
+                <td> <%= link_to(asbuilt.filename, rails_blob_path(asbuilt),  target: '_blank') %></td>
+                <!--< link_to @deep_well.asbuilt, @deep_well.asbuilt, html_options = { target: "_blank"} if @deep_well.asbuilt.attached? %></td>-->
+                <td> <%= asbuilt.created_at %></td>
+                <td> Remove Attachment <!-- link_to 'Remove Attachment', purge_asbuilt_attachment_client_deep_well_path(@deep_well.asbuilt), method: :delete, data: { confirm: 'Are you sure?' } --> </td> 
+              </tr>
+          <% end %>
         <% end %>
       </tbody>
   </table>
@@ -183,6 +195,7 @@
       <%= form.file_field :design, class:"form-control", multiple: true %>
   <!-- Deepwell Design Proposal End-->
 
+<br>
 
   <div class="actions" style="float:right">
     <%= form.submit :Submit, class: 'btn btn-primary'%>
