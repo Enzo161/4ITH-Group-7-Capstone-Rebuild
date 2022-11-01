@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :islands do
     resources :clients
   end
-  
+
   resources :clients do
     resources :deep_wells do 
       member do

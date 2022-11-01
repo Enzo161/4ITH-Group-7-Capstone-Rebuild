@@ -4,7 +4,11 @@ class IslandsController < ApplicationController
 
   # GET /islands or /islands.json
   def index
-    @islands = Island.all
+    @q = Island.ransack(params[:q])
+    @islands = @q.result(distinct: true).includes(:clients)
+
+
+    #@islands = Island.all
   end
 
   # GET /islands/1 or /islands/1.json
