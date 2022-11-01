@@ -15,8 +15,8 @@
           </td>
           <td>
             <p>
-              <strong>DATE GRANTED:</strong>
-              <%= @deep_well.dateGranted %>
+              <strong>WATER PERMIT NUMBER:</strong>
+              <%= @deep_well.waterPermitNo %>
             </p>
           </td>
         </tr>
@@ -29,52 +29,69 @@
           </td>
           <td>
             <p>
-              <strong>WELL LOCATION:</strong>
-              <%= @deep_well.wellLocation %>
+              <strong>DATE GRANTED:</strong>
+              <%= @deep_well.dateGranted %>
             </p>
           </td>
         </tr>
         <tr>
           <td>
             <p>
-              <strong>WELL COORDINATES:</strong>
-              <%= @deep_well.wellCoodinates %>
+              <strong>DEEPWELL LOCATION:</strong>
+              <%= @deep_well.wellLocation %>
             </p>
           </td>
           <td>
             <p>
-              <strong>WATER PERMIT NUMBER:</strong>
-              <%= @deep_well.waterPermitNo %>
+              <strong>LIMIT:</strong>
+              <%= @deep_well.limit %>
             </p>
           </td>         
         </tr>
         <tr>
           <td>
             <p>
-              <strong>NAME OF CONTRACTOR:</strong>
-              <%= @deep_well.contractor %>
+              <strong>NAME OF DRILLER:</strong>
+              <%= @deep_well.driller_name %>
             </p>
           </td>
           <td>
             <p>
-              <strong>TOTAL DEPTH:</strong>
-              <%= @deep_well.depthTotal %>
+              <strong>REMARKS:</strong>
+              <%= @deep_well.remarks %>
             </p>
           </td>
         </tr>
         <tr>
           <td>
             <p>
-              <strong>DATE OF UTVI:</strong>
-              <%= @deep_well.dateofUTVI %>
+              <strong>DATE CONSTRUCTED:</strong>
+              <%= @deep_well.dateConstructed %>
             </p>
           </td>
           <td>
             <p>
-              <strong>REASON:</strong>
-              <%= @deep_well.reason %>
+              <strong></strong>
+              
             </p>
           </td>
+        </tr>
+        <tr>
+          <td>
+            <strong>TOTAL DEPTH:</strong>
+            <%= @deep_well.depthTotal%>
+          </td>
+          <td>
+            <strong></strong>
+            
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <strong>UTVI HISTORY:</strong>
+            
+          </td>
+        </tr>
     </tbody>
   </table>
   <!-- Info. Table End-->
