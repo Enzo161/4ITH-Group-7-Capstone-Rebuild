@@ -1,19 +1,32 @@
 <div class="container">
   <h1>Deep Wells</h1>
   <!-- Search Form Start -->
-    <form class="d-flex" role="search" style="width: auto">
+  <div>
     <%= search_form_for @q, url: client_deep_wells_path(params[:client_id]) do |f| %>
-      <%= f.search_field :deep_well_name_cont, class:"form-control me-2", placeholder:"Search" %>
-      <%= f.submit "Search", class:"btn btn-light text-right float-end" %>&nbsp;
-      <%= link_to "Reset", request.path, class:"btn btn-light text-right float-end" %>
-    <% end %>
+    <div class="row">
+      <div class="col">
+        <%= f.label "Deepwell name contains:"%>
+        <%= f.search_field :deep_well_name_cont, class:"form-control me-2", placeholder:"Search Deepwell" %>
+      </div>
+      <div class="col">
         <br>
-
-      <%= link_to 'New Deep Well', new_client_deep_well_path, class:"btn btn-primary", style:"float: left" %>
-      <%= link_to 'Back', island_clients_path(@client), class:"btn btn-light", style:"float: right" %>
-      <br>
-    </form>
+        <%= f.submit "Search", class:"btn btn-outline-primary text-center" %>
+        <%= link_to "Reset Search", request.path, class:"btn btn-light text-center float-left" %>
+      </div>
+      <div class="col">
+        
+      </div>
+      
+    </div>
+    <% end %>
+  </div>
   <!-- Search Form End -->
+
+  <div style="float:left; padding-bottom: 10px; margin-top: 15px;">
+    <%= link_to 'New Deep Well', new_client_deep_well_path, class:"btn btn-primary", style:"float: left" %>
+    &nbsp;<%= link_to 'Back', island_clients_path(@client), class:"btn btn-light"%>&nbsp;
+  </div>
+
 
     <br>
   

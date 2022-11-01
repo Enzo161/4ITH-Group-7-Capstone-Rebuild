@@ -1,24 +1,31 @@
 <div class="container">
   <h1>Clients</h1>
-
-    <form class="d-flex" role="search" style="width: auto">
-      <%= search_form_for @q, url: island_clients_path(params[:island_id]) do |f| %>
-        <%= f.label :client_name_cont%>
-        <%= f.search_field :client_name_cont, class:"form-control me-2", placeholder:"Search Client"%>
-        <%= f.label :deep_wells_deep_well_name_cont%>
-      <%= f.text_field :deep_wells_deep_well_name_cont, :class => "form-control", placeholder:"Search Deepwell" %>
-        <!--< f.select :deep_wells_id_eq, options_from_collection_for_select(DeepWell.all.order(:deep_well_name), :id, :deep_well_name, @q.deep_wells_id_eq), { }, {class: ''} %>-->
-
-
-
-        <%= f.submit "Search", class:"btn btn-light text-right float-end" %>&nbsp;
-        <%= link_to "Reset", request.path, class:"btn btn-light text-right float-end" %>
-        <% end %> 
+  <!-- Search Forms Start -->
+  <div>
+    <%= search_form_for @q, url: island_clients_path(params[:island_id]) do |f| %>
+      <div class="row">
+        <div class="col">
+          <%= f.label "Client Name Contains:"%>
+          <%= f.search_field :client_name_cont, class:"form-control me-2", placeholder:"Search Client"%>
+        </div>
+        <div class="col">
+          <%= f.label "DeepWell Name Contains:"%>
+          <%= f.text_field :deep_wells_deep_well_name_cont, :class => "form-control", placeholder:"Search Deepwell" %>
+        </div>
+        <div class="col">
           <br>
-        <%= link_to 'Back', islands_path, class:"btn btn-light", style:"float: right" %>
-        <%= link_to 'New Client', new_island_client_path, class:"btn btn-primary", style:"float: left"%> 
-          <br>
-    </form>
+          <%= f.submit "Search", class:"btn btn-outline-primary text-center" %>
+          <%= link_to "Reset Search", request.path, class:"btn btn-light text-center" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <!-- Search Forms End -->
+
+  <div style="float:left; padding-bottom: 10px; margin-top: 15px;">
+    <%= link_to 'New Client', new_island_client_path, class:"btn btn-primary", style:"float: left"%> 
+    &nbsp;<%= link_to 'Back', islands_path, class:"btn btn-light" %> &nbsp;
+  </div>
     <br>
 
     <table class="table table-hover table-bordered ">
