@@ -1,5 +1,5 @@
 <div class="container">
-  <h1>Clients</h1>
+  <h1><%= @island.island_name%> Clients</h1>
   <!-- Search Forms Start -->
   <div>
     <%= search_form_for @q, url: island_clients_path(params[:island_id]) do |f| %>
