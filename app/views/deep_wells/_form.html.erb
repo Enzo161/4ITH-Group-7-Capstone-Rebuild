@@ -20,7 +20,7 @@
       </div>
       <div class="field">
         <strong><%= form.label "Client Name:" %> </strong>
-        
+        <%= form.text_field :client_name, placeholder: @client.client_name, class:"form-control", :readonly=> true %>
       </div>
       <div class="field">
         <strong><%= form.label "Well Location:" %></strong>
