@@ -187,7 +187,7 @@
           <tr>
             <td> <%= link_to(design.filename, rails_blob_path(design),  target: '_blank') %></td>
             <td> <%= design.created_at %> </td>
-            <td> Remove Attachment </tr>
+            <td> <%= link_to 'Remove Attachment', purge_design_attachment_client_deep_well_path(@client, design), method: :delete, data: { confirm: 'Are you sure?' } %> </tr>
         <% end %>
         <% end %>
       </tbody>
