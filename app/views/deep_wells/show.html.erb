@@ -4,10 +4,10 @@
   <p id="notice"><%= notice %></p>
    
   <!--Info. Table Start-->
-  <table class="table table-hover table-bordered" style="">
+  <table class="table table-bordered" style="">
     <tbody>
         <tr>
-          <td>
+          <td style="width: 50%">
             <p>
               <strong>NAME:</strong>
               <%= @deep_well.deep_well_name %>
@@ -55,7 +55,7 @@
               <%= @deep_well.driller_name %>
             </p>
           </td>
-          <td>
+          <td rowspan="4">
             <p>
               <strong>REMARKS:</strong>
               <%= @deep_well.remarks %>
@@ -69,21 +69,11 @@
               <%= @deep_well.dateConstructed %>
             </p>
           </td>
-          <td>
-            <p>
-              <strong></strong>
-              
-            </p>
-          </td>
         </tr>
         <tr>
           <td>
             <strong>TOTAL DEPTH:</strong>
             <%= @deep_well.depthTotal%>
-          </td>
-          <td>
-            <strong></strong>
-            
           </td>
         </tr>
         <tr>
@@ -102,19 +92,15 @@
   <table class="table table-hover table-bordered ">
     <tbody>
       <tr>
-        <td> <strong> Lithologic File </strong></td>
-        <td> <strong> Date Uploaded </strong></td>
+        <th style="width: 50%"> <strong> Lithologic File </strong></td>
+        <th style="width: 50%"> <strong> Date Uploaded </strong></td>
       </tr>
       <tr>
         <td>
           <% if @deep_well.log.attached? %>
-            <p>
-              <%= link_to @deep_well.log.filename, @deep_well.log, html_options = { target: "_blank"} if @deep_well.log.attached? %>
-            </p>
+            <%= link_to @deep_well.log.filename, @deep_well.log, html_options = { target: "_blank"} if @deep_well.log.attached? %>
           <% else %>
-            <p>
-              <i> File unavailable </i>
-            </p>
+            <i> File unavailable </i>
           <% end %>
         </td>
         <td>
@@ -135,11 +121,11 @@
   <!-- Lithologic File End-->
 
   <!-- Asbuilt Files Start-->
-  <table class="table table-hover table-bordered ">
+  <table class="table table-hover table-bordered">
     <thead>
         <tr>
-          <th>  As-Built Design Files</th>
-          <th>  Date Uploaded </th>
+          <th style="width: 50%">  As-Built Design Files</th>
+          <th style="width: 50%">  Date Uploaded </th>
         </tr>
     </thead>
     <tbody>
@@ -161,11 +147,11 @@
   <!-- Asbuilt Files End-->
 
   <!-- Deepwell Design Proposal Start-->
-  <table class="table table-hover table-bordered ">
+  <table class="table table-hover table-bordered">
     <thead>
         <tr>
-          <th>  Deepwell Design Proposal Files</th>
-          <th>  Date Uploaded </th>
+          <th style="width: 50%">  Deepwell Design Proposal Files</th>
+          <th style="width: 50%">  Date Uploaded </th>
         </tr>
     </thead>
     <tbody>

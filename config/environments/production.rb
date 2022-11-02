@@ -10,6 +10,9 @@ Rails.application.configure do
   # Rake tasks automatically ignore this option for performance.
   config.eager_load = true
 
+  # To avoidActive storage has_many_attached purging previous uploads
+  config.active_storage.replace_on_assign_to_many = false
+
   # Full error reports are disabled and caching is turned on.
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true

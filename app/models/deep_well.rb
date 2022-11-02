@@ -6,6 +6,7 @@ class DeepWell < ApplicationRecord
   has_many_attached :design
 
 
+
   include PublicActivity::Model
   tracked owner: Proc.new{ |controller, model| controller.current_user }
 

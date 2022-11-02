@@ -1,8 +1,31 @@
 <div class="container">
   <h1>User Management</h1>
 
-  <!-- Partial for Search Form-->
-  <%= render 'users/search_form.html.erb'%>
+  <!-- Search Start -->
+  <div>
+    <%= search_form_for @q do |f|%>
+      <div class="row">
+        <div class="col">
+          <%= f.label :first_name_cont %>:
+          <%= f.search_field :first_name_cont , placeholder: "Search First Name", class:'form-control' %>
+          <%= f.label :email_cont %>:
+          <%= f.search_field :email_cont , placeholder: "Search Email", class:'form-control' %>
+        </div>
+        <div class="col">
+          <%= f.label :last_name_cont %>:
+          <%= f.search_field :last_name_cont , placeholder: "Search Last Name", class:'form-control' %>
+          <br>
+          <%= link_to "Reset Search", request.path, class:"btn btn-light float-end" %>&nbsp;
+          &nbsp;<%= f.submit "Search", class: 'btn btn-outline-primary float-end' %>&nbsp;
+        </div>
+      </div>
+      <div>
+        
+      </div>
+    <% end %>
+  </div>   
+  <!-- Search End -->
+
   <br>
   <%= link_to "User Invite", new_user_invitation_path, class:" btn btn-primary" %>
 <br>

@@ -7,6 +7,9 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   config.cache_classes = true
+  
+  # To avoidActive storage has_many_attached purging previous uploads
+  config.active_storage.replace_on_assign_to_many = false
 
   # Do not eager load code on boot. This avoids loading your whole application
   # just for the purpose of running a single test. If you are using a tool that

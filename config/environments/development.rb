@@ -9,6 +9,9 @@ Rails.application.configure do
   # Do not eager load code on boot.
   config.eager_load = false
 
+  # To avoidActive storage has_many_attached purging previous uploads
+  config.active_storage.replace_on_assign_to_many = false
+
   # Show full error reports.
   config.consider_all_requests_local = true
 

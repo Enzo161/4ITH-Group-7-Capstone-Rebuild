@@ -79,15 +79,15 @@
 
 <!-- Lithologic File Start-->
 <% if @deep_well.log.attached? %>
-  <table class="table table-hover table-bordered ">
+  <table class="table table-bordered ">
     <tbody>
       <tr>
-        <td> <strong> Lithologic File </strong></td>
-        <td> <strong> Date Uploaded </strong></td>
-        <td> <strong> Delete </strong></td>
+        <td style="width: 30%">  Lithologic File </td>
+        <td style="width: 30%"> Date Uploaded </td>
+        <td style="width: 30%">  Delete </td>
       </tr>
       <tr>
-        <td>
+        <td style="width: 30%">
           <% if @deep_well.log.attached? %>
             <p>
               <%= link_to @deep_well.log.filename, @deep_well.log, html_options = { target: "_blank"} if @deep_well.log.attached? %>
@@ -98,7 +98,7 @@
             </p>
           <% end %>
         </td>
-        <td>
+        <td style="width: 30%">
           <% if @deep_well.log.attached? %>
             <p>
               <%= @deep_well.log.created_at %>
@@ -109,7 +109,7 @@
             </p>
           <% end %>
         </td>
-        <td>
+        <td style="width: 30%">
           <% if @deep_well.log.attached? %>
             <p>
               <%= link_to "Remove Attachment", purge_log_attachment_client_deep_well_path(@deep_well, deep_well.log.id), method: :delete, data: { confirm: 'Are you sure?' } %>
@@ -120,12 +120,11 @@
             </p>
           <% end %>
         </td>
-
       </tr>
     </tbody>
   </table>
 <% else %>
-  <strong><%= form.label "Upload Lithologic Log:" %></strong>
+  <%= form.label "Lithologic Log:" %>
   <%= form.file_field :log, class:"form-control" %> 
 <% end %> 
   <!-- Lithologic File End-->
@@ -137,9 +136,9 @@
   <table class="table table-hover table-bordered ">
     <thead>
         <tr>
-          <th>  As-Built Design Files </th>
-          <th>  Date Uploaded </th>
-          <th>  Delete </th>
+          <td style="width: 30%">  <strong>As-Built Design Files</strong> </th>
+          <td style="width: 30%">  <strong>Date Uploaded </strong></th>
+          <td style="width: 30%">  <strong>Delete </strong></th>
         </tr>
     </thead>
     <tbody>
@@ -151,7 +150,7 @@
           </tr>
         <% else %>
           <%@deep_well.asbuilt.each do |asbuilt|%>
-                <td> <%= link_to(asbuilt.filename, rails_blob_path(asbuilt),  target: '_blank') %></td>
+                <td> <%= link_to(asbuilt.filename, rails_blob_path(asbuilt),  target: '_blank', multiple: true) %></td>
                 <!--< link_to @deep_well.asbuilt, @deep_well.asbuilt, html_options = { target: "_blank"} if @deep_well.asbuilt.attached? %></td>-->
                 <td> <%= asbuilt.created_at %></td>
                 <td> <%= link_to 'Remove Attachment', purge_asbuilt_attachment_client_deep_well_path(@client, asbuilt), method: :delete, data: { confirm: 'Are you sure?' } %> </td> 
@@ -162,7 +161,7 @@
   </table>
   <%= form.file_field :asbuilt, class:"form-control", multiple: true %>
 
-  <!-- Asbuilt Files End--> <br>
+  <!-- Asbuilt Files End--> <br><br>
 
 
   <!-- Deepwell Design Proposal Start-->
@@ -170,9 +169,9 @@
   <table class="table table-hover table-bordered ">
     <thead>
         <tr>
-          <th>  Deepwell Design Proposal Files</th>
-          <th>  Date Uploaded </th>
-          <th>  Delete </th>
+          <td style="width: 30%">  <strong>Deepwell Design Proposal Files </strong></th>
+          <td style="width: 30%">  <strong>Date Uploaded </strong></th>
+          <td style="width: 30%">  <strong>Delete </strong></th>
         </tr>
     </thead>
     <tbody>
