@@ -77,6 +77,8 @@ class DeepWellsController < ApplicationController
 
   # DELETE /deep_wells/1 or /deep_wells/1.json
   def destroy
+  AuditLog.new(event: "delete", modifier: current_user.email, table_name: "Deep Well", object_name: @deep_well.deep_well_name).save
+
     @deep_well.destroy
     respond_to do |format|
       format.html { redirect_to [@client, :deep_wells], notice: "Deep well was successfully destroyed." }

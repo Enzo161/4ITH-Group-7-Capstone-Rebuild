@@ -1,16 +1,56 @@
 <div class="container">
 <p id="notice"><%= notice %></p>
 
-<h1>Audit Log</h1>
+<h1>System Audit Logs</h1>
+
+<!-- Search Form Start -->
+<div>
+  <%= search_form_for @q do |f| %>
+    <div class="row">
+      <div class="col" style="width:50%">
+        <%= f.label "Event contains:"%>
+        <%= f.search_field :event_cont, class:"form-control me-2", placeholder:"Search Event" %>
+        
+        <%= f.label "Page contains:"%>
+        <%= f.search_field :table_name_cont, class:"form-control me-2", placeholder:"Search Page" %>
+      </div>
+      <div class="col">
+        <%= f.label "User Email contains:"%>
+        <%= f.search_field :modifier_cont, class:"form-control me-2", placeholder:"Search User Email" %>
+        
+        <%= f.label "Record name contains:"%>
+        <%= f.search_field :object_name_cont, class:"form-control me-2", placeholder:"Search Record Name" %>
+      </div>   
+      <div class="row">
+        <div class="col" style="width:50%">
+
+        </div>
+        <div class="col">
+
+        </div>
+      </div>
+      <div class="row">
+      <div class="col">        
+        <br>
+        <%= f.submit "Search", class:"btn btn-outline-primary text-center" %>
+        <%= link_to "Reset Search", request.path, class:"btn btn-light text-center float-left" %>
+      </div> 
+      </div>
+  </div>
+
+    <% end %>
+</div>
+  <!-- Search Form End -->
+
 <br>
 <table class="table table-hover table-bordered ">
   <thead>
     <tr>
-      <th>Event</th>
-      <th>User</th>
-      <th>Page</th>
-      <th>Record Name</th>
-      <th>Date</th>
+      <th><%= sort_link(@q, :event, "Event", default_order: :asc)%></th>
+      <th><%= sort_link(@q, :modifier , "User", default_order: :asc)%></th>
+      <th><%= sort_link(@q, :table_name , "Page", default_order: :asc)%></th>
+      <th><%= sort_link(@q, :object_name , "Record Name", default_order: :asc)%> </th>
+      <th><%= sort_link(@q, :created_at , "Date", default_order: :asc)%></th> 
     </tr>
   </thead>
 
