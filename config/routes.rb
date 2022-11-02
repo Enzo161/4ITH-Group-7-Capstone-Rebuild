@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :activities
+  resources :audit_logs
   devise_for :users, controllers: {
       sessions: 'sessions'
   }

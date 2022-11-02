@@ -1,15 +1,16 @@
 <div class="container">
 <p id="notice"><%= notice %></p>
 
-<h1>Activities</h1>
+<h1>Audit Log</h1>
 <br>
 <table class="table table-hover table-bordered ">
   <thead>
     <tr>
       <th>Event</th>
-      <th>Modifier</th>
-      <th>Table</th>
-      <th>Object Name</th>
+      <th>User</th>
+      <th>Page</th>
+      <th>Record Name</th>
+      <th>Date</th>
     </tr>
   </thead>
 
@@ -20,6 +21,7 @@
         <td><%= a.modifier %></td>
         <td><%= a.table_name %></td>
         <td><%= a.object_name %></td>
+        <td><%= a.created_at.strftime("%F %T") %></td>
       </tr>
     <% end %>
   </tbody>

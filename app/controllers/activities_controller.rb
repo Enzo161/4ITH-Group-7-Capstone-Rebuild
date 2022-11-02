@@ -4,6 +4,7 @@ class ActivitiesController < ApplicationController
   # GET /activities or /activities.json
   def index
     @activities = PublicActivity::Activity.order(created_at: :desc)
+    @audit_logs = AuditLogs.all
   end
 
   # GET /activities/1 or /activities/1.json
@@ -59,16 +60,7 @@ class ActivitiesController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_activity
-      @activity = Activity.find(params[:id])
-    end
-
-    # Only allow a list of trusted parameters through.
-    def activity_params
-      params.fetch(:activity, {})
-    end
-
-    def set_island
-      @island = Island.find(params[:island_id])
+    def set_audit_log
+      @island = Island.find(params[:id])
     end
 end
