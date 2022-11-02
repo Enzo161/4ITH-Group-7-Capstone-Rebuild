@@ -23,10 +23,12 @@
       </div>   
       <div class="row">
         <div class="col" style="width:50%">
-
+         <%= f.label :created_at_gteq%>
+          <%= f.search_field :created_at_gteq, class:"form-control me-2", placeholder:"Search Date" %>
         </div>
         <div class="col">
-
+          <%= f.label :created_at_gteq%>
+          <%= f.search_field :created_at_lteq, class:"form-control me-2", placeholder:"Search  Date" %>
         </div>
       </div>
       <div class="row">
@@ -34,36 +36,68 @@
         <br>
         <%= f.submit "Search", class:"btn btn-outline-primary text-center" %>
         <%= link_to "Reset Search", request.path, class:"btn btn-light text-center float-left" %>
+        <%= link_to "Export to PDF", audit_logs_path(@audit_logs, format: :pdf),class:"btn btn-primary text-center float-end"%>
       </div> 
       </div>
   </div>
 
     <% end %>
 </div>
+
+
   <!-- Search Form End -->
 
 <br>
-<table class="table table-hover table-bordered ">
-  <thead>
-    <tr>
-      <th><%= sort_link(@q, :event, "Event", default_order: :asc)%></th>
-      <th><%= sort_link(@q, :modifier , "User", default_order: :asc)%></th>
-      <th><%= sort_link(@q, :table_name , "Page", default_order: :asc)%></th>
-      <th><%= sort_link(@q, :object_name , "Record Name", default_order: :asc)%> </th>
-      <th><%= sort_link(@q, :created_at , "Date", default_order: :asc)%></th> 
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @audit_logs.each do |a| %>
+  <table class="table table-hover table-bordered ">
+    <thead>
       <tr>
-        <td><%= a.event %></td>
-        <td><%= a.modifier %></td>
-        <td><%= a.table_name %></td>
-        <td><%= a.object_name %></td>
-        <td><%= a.created_at.strftime("%F %T") %></td>
+        <th><%= sort_link(@q, :event, "Event", default_order: :asc)%></th>
+        <th><%= sort_link(@q, :modifier , "User", default_order: :asc)%></th>
+        <th><%= sort_link(@q, :table_name , "Page", default_order: :asc)%></th>
+        <th><%= sort_link(@q, :object_name , "Record Name", default_order: :asc)%> </th>
+        <th><%= sort_link(@q, :created_at , "Date", default_order: :asc)%></th> 
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+      <% @audit_logs.each do |a| %>
+        <tr>
+          <td><%= a.event %></td>
+          <td><%= a.modifier %></td>
+          <td><%= a.table_name %></td>
+          <td><%= a.object_name %></td>
+          <td><%= a.created_at.strftime("%F %T") %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <!-- Content for PDF Export Start -->
+  <% content_for :pdf do %>
+    <table class="table table-hover table-bordered ">
+      <thead>
+        <tr>
+          <th><%= sort_link(@q, :event, "Event", default_order: :asc)%></th>
+          <th><%= sort_link(@q, :modifier , "User", default_order: :asc)%></th>
+          <th><%= sort_link(@q, :table_name , "Page", default_order: :asc)%></th>
+          <th><%= sort_link(@q, :object_name , "Record Name", default_order: :asc)%> </th>
+          <th><%= sort_link(@q, :created_at , "Date", default_order: :asc)%></th> 
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @audit_logs.each do |a| %>
+          <tr>
+            <td><%= a.event %></td>
+            <td><%= a.modifier %></td>
+            <td><%= a.table_name %></td>
+            <td><%= a.object_name %></td>
+            <td><%= a.created_at.strftime("%F %T") %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+  <!-- Content for PDF Export End -->
 </div>
