@@ -19,7 +19,7 @@
         </li>
         <% if current_user && current_user.admin %>
           <li class="nav-item">
-            <%= link_to "System Audit Logs", activities_path, class:"nav-link" %>
+            <%= link_to "System Audit Logs", audit_logs_path, class:"nav-link" %>
           </li>
           <li class="nav-item">
             <%= link_to "Manage Users", users_path, class:"nav-link" %>

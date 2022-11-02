@@ -30,6 +30,7 @@ class IslandsController < ApplicationController
 
     respond_to do |format|
       if @island.save
+        AuditLog.new(event: "create", modifier: current_user.email, table_name: "Island", object_name: @island.island_name).save
         format.html { redirect_to islands_url, notice: "Island was successfully created." }
         format.json { render :show, status: :created, location: @island }
       else
@@ -44,6 +45,7 @@ class IslandsController < ApplicationController
     respond_to do |format|
       #Island.public_activity_off
       if @island.update(island_params)
+        AuditLog.new(event: "update", modifier: current_user.email, table_name: "Island", object_name: @island.island_name).save
         Island.public_activity_on
         format.html { redirect_to islands_url, notice: "Island was successfully updated." }
         format.json { render :show, status: :ok, location: @island }
@@ -56,7 +58,9 @@ class IslandsController < ApplicationController
 
   # DELETE /islands/1 or /islands/1.json
   def destroy
+    AuditLog.new(event: "delete", modifier: current_user.email, table_name: "Island", object_name: @island.island_name).save
     @island.destroy
+
 
     respond_to do |format|
       format.html { redirect_to islands_url, notice: "Island was successfully destroyed." }
