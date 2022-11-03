@@ -6,17 +6,19 @@
     <%= search_form_for @q do |f|%>
       <div class="row">
         <div class="col">
-          <%= f.label :first_name_cont %>:
-          <%= f.search_field :first_name_cont , placeholder: "Search First Name", class:'form-control' %>
+          <%= f.label :first_name_or_last_name_cont %>:
+          <%= f.search_field :first_name_or_last_name_cont , placeholder: "Search First Name", class:'form-control' %>
+        </div>
+        <div class="col" >
           <%= f.label :email_cont %>:
           <%= f.search_field :email_cont , placeholder: "Search Email", class:'form-control' %>
-        </div>
-        <div class="col">
-          <%= f.label :last_name_cont %>:
-          <%= f.search_field :last_name_cont , placeholder: "Search Last Name", class:'form-control' %>
-          <br>
-          <%= link_to "Reset Search", request.path, class:"btn btn-light float-end" %>&nbsp;
-          &nbsp;<%= f.submit "Search", class: 'btn btn-outline-primary float-end' %>&nbsp;
+
+          <div style="float: right; margin-top: 10px; margin-bottom: 20px ;">
+
+            <%= f.submit "Search", class: 'btn btn-outline-primary ' %>  
+            <%= link_to "Reset Search", request.path, class:"btn btn-light " %>
+          </div>
+
         </div>
       </div>
       <div>
@@ -26,10 +28,7 @@
   </div>   
   <!-- Search End -->
 
-  <br>
-  <%= link_to "User Invite", new_user_invitation_path, class:" btn btn-primary" %>
-<br>
-<br>
+
 <table class="table table-hover table-bordered ">
   <thead>
     <tr>
@@ -74,3 +73,4 @@
     <% end %>
   </tbody>
 </table>
+  <%= link_to "User Invite", new_user_invitation_path, class:" btn btn-outline-primary float-end" %>

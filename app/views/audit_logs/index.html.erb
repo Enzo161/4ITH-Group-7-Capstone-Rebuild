@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" style=" margin-bottom: 50px;">
 <!-- <p id="notice"><%= notice %></p> -->
 
 <h1>System Audit Logs</h1>
@@ -29,7 +29,7 @@
       </div>
     </div>
     <!-- Buttons -->
-    <div style="float: right; margin: 10px 10px 10px 10px;">
+    <div style="float: right; margin-top: 10px; margin-bottom: 20px ;">
       <%= f.submit "Search", class:"btn btn-outline-primary text-center"%> 
       <%= link_to "Reset Search", request.path, class:"btn btn-light text-center " %>   
     </div>
@@ -93,8 +93,8 @@
   <% end %>
   <!-- Content for PDF Export End -->
 
-        <!-- Button -->
-  <div style="margin: 10px 10px 10px 10px; float: right;">
+  <!-- Button -->
+  <div style="margin-top: 10px; margin-bottom:50px  ; float: right;">
     <%= link_to "Export to PDF", audit_logs_path(@audit_logs, format: :pdf),class:"btn btn-outline-primary text-center"%>
   </div>
 
