@@ -1,12 +1,13 @@
 <div class="container">
-  <h1><%= @client.client_name%> Deep Wells</h1> 
+  <h1><%= @client.client_name%> Deep Wells</h1>
+
   <!-- Search Form Start -->
   <div>
     <%= search_form_for @q, url: client_deep_wells_path(params[:client_id]) do |f| %>
     <div class="row">
       <div class="col">
-        <%= f.label "Deepwell name contains:"%>
-        <%= f.search_field :deep_well_name_cont, class:"form-control me-2", placeholder:"Search Deepwell" %>
+        <%= f.label "Deepwell contains:"%>
+        <%= f.search_field :deep_well_name_or_wellLocation_or_driller_name_or_wellCoodinates_or_waterPermitNo_or_depthTotal_or_limit_or_remarks_cont, class:"form-control me-2", placeholder:"Search Deepwell" %>
       </div>
       <div class="col">
         <br>
