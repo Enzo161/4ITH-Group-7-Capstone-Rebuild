@@ -34,6 +34,9 @@ class ClientsController < ApplicationController
     respond_to do |format|
       if @client.save
         AuditLog.new(event: "create", modifier: current_user.email, table_name: "Client", object_name: @client.client_name, date_created: Date.today).save
+        if AuditLog.count > 10
+          AuditLog.first.delete
+        end
         format.html { redirect_to [@island, :clients], notice: "Client was successfully created." }
         format.json { render :show, status: :created, location: @client }
       else
@@ -48,6 +51,9 @@ class ClientsController < ApplicationController
     respond_to do |format|
       if @client.update(client_params)
         AuditLog.new(event: "update", modifier: current_user.email, table_name: "Client", object_name: @client.client_name, date_created: Date.today).save
+        if AuditLog.count > 10
+          AuditLog.first.delete
+        end
         format.html { redirect_to [@island, :clients], notice: "Client was successfully updated." }
         format.json { render :show, status: :ok, location: @client }
       else
@@ -60,6 +66,9 @@ class ClientsController < ApplicationController
   # DELETE /clients/1 or /clients/1.json
   def destroy
     AuditLog.new(event: "delete", modifier: current_user.email, table_name: "Client", object_name: @client.client_name, date_created: Date.today).save
+    if AuditLog.count > 10
+      AuditLog.first.delete
+    end
     @client.destroy
     respond_to do |format|
       format.html { redirect_to [@island, :clients], notice: "Client was successfully destroyed." }
