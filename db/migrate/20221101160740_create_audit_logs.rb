@@ -6,6 +6,7 @@ class CreateAuditLogs < ActiveRecord::Migration[6.0]
       t.text :table_name, null: false
       t.text :object_name, null: false
       t.datetime :created_at, null: false
+      t.date :date_created, null: false
     end
   end
 end

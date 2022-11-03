@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 2022_11_01_160740) do
     t.text "table_name", null: false
     t.text "object_name", null: false
     t.datetime "created_at", null: false
+    t.date "date_created", null: false
   end
 
   create_table "clients", force: :cascade do |t|
