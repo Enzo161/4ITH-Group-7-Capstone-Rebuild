@@ -7,11 +7,6 @@ class User < ApplicationRecord
   devise :invitable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  include PublicActivity::Model
-  tracked only: [:create, :destroy], owner: Proc.new{ |controller, model| controller.current_user }
-
-  has_many :activities, as: :trackable, class_name: 'PublicActivity::Activity'
-
   # Generate an OTP secret it it does not already exist
   def generate_two_factor_secret_if_missing!
     return unless otp_secret.nil?
