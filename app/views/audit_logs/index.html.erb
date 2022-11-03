@@ -5,14 +5,24 @@
 
 <!-- Search Form Start -->
 <div>
-  <%= search_form_for @q do |f| %>
+   <%= search_form_for @q do |f| %>
     <div class="row">
-      <div class="col" style="width:50%">
+      <div class="col">
         <%= f.label "Event contains:"%>
         <%= f.search_field :event_cont, class:"form-control me-2", placeholder:"Search Event" %>
         
         <%= f.label "Page contains:"%>
         <%= f.search_field :table_name_cont, class:"form-control me-2", placeholder:"Search Page" %>
+        
+        <%= f.label "Start Date:"%>
+        <%= f.date_field :date_created_gteq, class:"form-control me-2", placeholder:"Search Date" %>
+
+        <!-- Button -->
+        <div style="padding-top: 10px;">
+          <%= link_to "Export to PDF", audit_logs_path(@audit_logs, format: :pdf),class:"btn btn-primary text-center float-left"%>
+        </div>
+
+
       </div>
       <div class="col">
         <%= f.label "User Email contains:"%>
@@ -20,30 +30,21 @@
         
         <%= f.label "Record name contains:"%>
         <%= f.search_field :object_name_cont, class:"form-control me-2", placeholder:"Search Record Name" %>
-      </div>   
-      <div class="row">
-        <div class="col" style="width:50%">
-         <%= f.label :created_at_gteq%>
-          <%= f.search_field :created_at_gteq, class:"form-control me-2", placeholder:"Search Date" %>
-        </div>
-        <div class="col">
-          <%= f.label :created_at_gteq%>
-          <%= f.search_field :created_at_lteq, class:"form-control me-2", placeholder:"Search  Date" %>
-        </div>
-      </div>
-      <div class="row">
-      <div class="col">        
-        <br>
-        <%= f.submit "Search", class:"btn btn-outline-primary text-center" %>
-        <%= link_to "Reset Search", request.path, class:"btn btn-light text-center float-left" %>
-        <%= link_to "Export to PDF", audit_logs_path(@audit_logs, format: :pdf),class:"btn btn-primary text-center float-end"%>
-      </div> 
-      </div>
-  </div>
 
-    <% end %>
+        <%= f.label "Date End:"%>
+        <%= f.date_field :date_created_lteq, class:"form-control me-2 ", placeholder:"Search  Date" %>
+
+        <!-- Buttons -->
+        <div style="padding-top: 10px;">
+          <%= link_to "Reset Search", request.path, class:"btn btn-light text-center float-end" %> 
+          <div style="padding-right: 10px;">
+            <%= f.submit "Search", class:"btn btn-outline-primary text-center float-end" %> 
+          </div>
+        </div>
+      </div>
+    </div>
+   <% end %>
 </div>
-
 
   <!-- Search Form End -->
 
