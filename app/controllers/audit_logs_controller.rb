@@ -4,7 +4,7 @@ class AuditLogsController < ApplicationController
 		
 		@q = AuditLog.ransack(params[:q])
 		@f = @q.result(distinct: true)
-		@pagy, @audit_logs = pagy(@q.result(distinct: true), items: 40)
+		@pagy, @audit_logs = pagy(@q.result(distinct: true).order( 'id DESC' ), items: 40)
 
 		 respond_to do |format|
 	      format.html

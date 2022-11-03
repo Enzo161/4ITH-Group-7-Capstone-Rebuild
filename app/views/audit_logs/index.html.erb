@@ -84,7 +84,8 @@
       </thead>
 
       <tbody>
-        <% @audit_logs[0..3].each do |a| %>
+        <% @audit_logs.each do |a| %>
+        <%# @audit_logs[0..49].each do |a| %>
           <tr>
             <td><%= a.event %></td>
             <td><%= a.modifier %></td>
@@ -100,7 +101,7 @@
 
   <!-- Button -->
   <div style="margin-top: 10px; margin-bottom:50px  ; float: right;">
-    <%= link_to "Export to PDF", audit_logs_path(@audit_logs, format: :pdf),class:"btn btn-outline-primary text-center"%>
+    <%= link_to "Export to PDF", audit_logs_path(@audit_logs, format: :pdf), target: '_blank', class:"btn btn-outline-primary text-center"%>
   </div>
 
 </div>
