@@ -12,4 +12,5 @@ class ApplicationController < ActionController::Base
 	end
 
 	include PublicActivity::StoreController
+	include Pagy::Backend
 end

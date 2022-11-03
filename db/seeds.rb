@@ -5,3 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Island.delete_all
+100.times do |create|
+	Island.create!(island_name: Faker::Nation.capital_city)	
+end

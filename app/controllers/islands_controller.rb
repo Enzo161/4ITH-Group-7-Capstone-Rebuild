@@ -5,9 +5,9 @@ class IslandsController < ApplicationController
   # GET /islands or /islands.json
   def index
     @q = Island.ransack(params[:q])
-    @islands = @q.result(distinct: true).includes(:clients)
-
-
+    @f = @q.result(distinct: true).includes(:clients)
+    @pagy, @islands = pagy(@q.result(distinct: true).includes(:clients))
+    #@pagy = pagy(Island.order(created_at: :desc))
     #@islands = Island.all
   end
 

@@ -6,7 +6,8 @@ class ClientsController < ApplicationController
   # GET /clients or /clients.json
   def index
     @q = @island.clients.ransack(params[:q])
-    @clients = @q.result.includes(:island, :deep_wells)
+    @f = @q.result(distinct: true).includes(:island, :deep_wells)
+    @pagy, @clients = pagy(@q.result.includes(:island, :deep_wells))
     # @clients = @island.clients
     # @clients = Client.all
   end

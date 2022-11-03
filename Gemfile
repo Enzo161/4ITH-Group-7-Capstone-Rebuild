@@ -62,6 +62,8 @@ gem 'ransack'
 gem 'simple_form'
 gem 'pg', '~> 1.4', '>= 1.4.4'
 gem 'aws-sdk-s3'
+gem 'pagy', '~> 5.10', '>= 5.10.1'
+gem 'faker'
 
 #to export system audit logs in PDF
 gem 'wicked_pdf', '~> 2.1'
