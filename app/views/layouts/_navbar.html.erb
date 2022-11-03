@@ -1,11 +1,11 @@
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #56C6EA;">
   
   <div class= "container-fluid">
-      <%= link_to image_tag("logo.png", :size => "150x100"), root_path, class:"navbar-brand"%>
+      <%= link_to image_tag("logo.png", :size => "150x100"), root_path, class:"navbar-brand", style:"margin-left: 15px; margin-top: 5px; margin-bottom: 10px;"%>
           <% if current_user.first_name == nil || current_user.last_name == nil %>
           <% elsif current_user.first_name.length == 0 || current_user.last_name.length == 0 %>
           <% else %>
-            <p style="padding-top: 17.5px; padding-right: 510px;">Hello, <strong><%= current_user.first_name %> <%= current_user.last_name %></strong>!
+            <p style="padding-top: 17.5px; padding-right: auto; margin-right: auto;">Hello, <strong><%= current_user.first_name %> <%= current_user.last_name %></strong>!
           <% end %>
         </p>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
