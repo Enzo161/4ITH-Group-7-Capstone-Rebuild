@@ -23,12 +23,6 @@
   </div>
   <!-- Search Form End -->
 
-  <div style="float:left; padding-bottom: 10px; margin-top: 15px;">
-    <%= link_to 'New Deep Well', new_client_deep_well_path, class:"btn btn-primary", style:"float: left" %>
-    &nbsp; <%= link_to 'Back', :back, class:"btn btn-light"%> &nbsp;
-    <!--&nbsp;<% link_to 'Back', island_clients_path(@client), class:"btn btn-light"%>-->&nbsp;
-  </div>
-
 
     <br>
   
@@ -57,6 +51,12 @@
       <% if DeepWell.count > 10 && @f.count > 10 %>   
         <%== pagy_bootstrap_nav(@pagy) %>
       <% end %>
+
+      <div style="float:end; padding-bottom: 10px;">
+        <%= link_to 'New Deep Well', new_client_deep_well_path, class:"btn btn-outline-primary" %>
+         <%= link_to 'Back', :back, class:"btn btn-light"%> 
+        <!--&nbsp;<% link_to 'Back', island_clients_path(@client), class:"btn btn-light"%>-->&nbsp;
+      </div>
     </div>
   </div>
 </div> 

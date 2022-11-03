@@ -23,10 +23,15 @@
               </div>
               <% end %>
             <%= f.input :password, placeholder: "Password" %>
-            <br> 
-            <%= f.submit 'Confirm and Enable Two Factor', class: 'btn btn-primary' %>
+
+              <div style="float:right; margin-top: 10px;">
+                <%= f.submit 'Confirm and Enable Two Factor', class: 'btn btn-outline-primary' %>
+              </div>
             <% end %>
           </div>
+        </div>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end" style="margin-top: 10px;">
+          <%= link_to "Back", :back, class:'btn btn-light .btn-block' %>
         </div>
       </div>
     </div>

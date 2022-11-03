@@ -93,7 +93,6 @@ ActiveRecord::Schema.define(version: 2022_11_01_160740) do
     t.boolean "admin", default: false
     t.text "first_name"
     t.text "last_name"
-    t.text "username"
     t.text "invitation_token"
     t.datetime "invitation_created_at"
     t.datetime "invitation_sent_at"
@@ -112,7 +111,6 @@ ActiveRecord::Schema.define(version: 2022_11_01_160740) do
     t.index ["invited_by_id"], name: "index_users_on_invited_by_id"
     t.index ["invited_by_type", "invited_by_id"], name: "index_users_on_invited_by_type_and_invited_by_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-    t.index ["username"], name: "index_users_on_username", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

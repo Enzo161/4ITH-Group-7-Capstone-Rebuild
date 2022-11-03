@@ -11,12 +11,12 @@
         <div class="col">
           <%= f.label "Client Name Contains:" %>
           <%= f.text_field :clients_client_name_cont, :class => "form-control", placeholder:"Search Client" %>
+          <div style="float: right; margin-top: 10px; margin-bottom: 20px ;">
+            <%= f.submit "Search", class:"btn btn-outline-primary text-center float-left" %>
+            <%= link_to "Reset Search", request.path, class:"btn btn-light text-center" %>
+          </div>
         </div>
-        <div class="col">
-          <br>
-          <%= f.submit "Search", class:"btn btn-outline-primary text-center float-left" %>
-          <%= link_to "Reset Search", request.path, class:"btn btn-light text-center" %>
-        </div>
+
       </div><br>
     <% end %>
   </div>
