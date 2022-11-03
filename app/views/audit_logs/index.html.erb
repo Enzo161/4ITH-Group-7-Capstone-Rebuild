@@ -16,13 +16,6 @@
         
         <%= f.label "Start Date:"%>
         <%= f.date_field :date_created_gteq, class:"form-control me-2", placeholder:"Search Date" %>
-
-        <!-- Button -->
-        <div style="padding-top: 10px;">
-          <%= link_to "Export to PDF", audit_logs_path(@audit_logs, format: :pdf),class:"btn btn-primary text-center float-left"%>
-        </div>
-
-
       </div>
       <div class="col">
         <%= f.label "User Email contains:"%>
@@ -32,19 +25,17 @@
         <%= f.search_field :object_name_cont, class:"form-control me-2", placeholder:"Search Record Name" %>
 
         <%= f.label "Date End:"%>
-        <%= f.date_field :date_created_lteq, class:"form-control me-2 ", placeholder:"Search  Date" %>
-
-        <!-- Buttons -->
-        <div style="padding-top: 10px;">
-          <%= link_to "Reset Search", request.path, class:"btn btn-light text-center float-end" %> 
-          <div style="padding-right: 10px;">
-            <%= f.submit "Search", class:"btn btn-outline-primary text-center float-end" %> 
-          </div>
-        </div>
+        <%= f.date_field :date_created_lteq, class:"form-control me-2 ", placeholder:"Search Date" %>
       </div>
+    </div>
+    <!-- Buttons -->
+    <div style="float: right; margin: 10px 10px 10px 10px;">
+      <%= f.submit "Search", class:"btn btn-outline-primary text-center"%> 
+      <%= link_to "Reset Search", request.path, class:"btn btn-light text-center " %>   
     </div>
    <% end %>
 </div>
+
 
   <!-- Search Form End -->
 
@@ -101,4 +92,10 @@
     </table>
   <% end %>
   <!-- Content for PDF Export End -->
+
+        <!-- Button -->
+  <div style="margin: 10px 10px 10px 10px; float: right;">
+    <%= link_to "Export to PDF", audit_logs_path(@audit_logs, format: :pdf),class:"btn btn-outline-primary text-center"%>
+  </div>
+
 </div>
