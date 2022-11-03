@@ -6,7 +6,8 @@ class DeepWellsController < ApplicationController
   # GET /deep_wells or /deep_wells.json
   def index 
     @q = @client.deep_wells.ransack(params[:q])
-    @deep_wells = @q.result.includes(:client)
+    @f = @q.result(distinct: true).includes(:client)
+    @pagy, @deep_wells = pagy(@q.result(distinct: true).includes(:client))
     # @deep_wells = DeepWell.all
   end
 

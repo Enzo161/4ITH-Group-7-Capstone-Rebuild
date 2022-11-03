@@ -51,4 +51,12 @@
       <% end %>
     </tbody>
   </table>
+
+  <br>
+    <div class="d-flex justify-content-between">
+      <% if Island.count > 10 && @f.count > 10 %>   
+        <%== pagy_bootstrap_nav(@pagy) %>
+      <% end %>
+    </div>
+  </div>
 </div> 
