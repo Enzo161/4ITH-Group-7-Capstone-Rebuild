@@ -43,7 +43,12 @@
         </div>
       </div>
     </div>
-   <% end %>
+  <% end %>
+
+  <br>
+  <% if AuditLog.count > 40 && @f.count > 40 %>   
+    <%== pagy_bootstrap_nav(@pagy) %>
+  <% end %>
 </div>
 
   <!-- Search Form End -->
@@ -88,7 +93,7 @@
       </thead>
 
       <tbody>
-        <% @audit_logs.each do |a| %>
+        <% @audit_logs[0..3].each do |a| %>
           <tr>
             <td><%= a.event %></td>
             <td><%= a.modifier %></td>

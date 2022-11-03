@@ -9,3 +9,7 @@ Island.delete_all
 100.times do |create|
 	Island.create!(island_name: Faker::Nation.capital_city)	
 end
+
+100.times do |create|
+	AuditLog.create!(island_name: Faker::Nation.capital_city)	
+end
