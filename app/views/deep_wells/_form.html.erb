@@ -8,7 +8,7 @@
         <% end %>
       </ul>
     </div> 
-  <% end %>  
+  <% end %>   
 
 <!--Form Start-->
   <div class="row" style="text-transform: uppercase;">
@@ -128,6 +128,64 @@
   <%= form.file_field :log, class:"form-control" %> 
 <% end %> 
   <!-- Lithologic File End-->
+
+  <!--Water Permit File Start-->
+
+  <% if @deep_well.waterPermit.attached? %>
+    <table class="table table-bordered ">
+      <tbody>
+        <tr>
+          <td style="width: 30%">  Water Permit File </td>
+          <td style="width: 30%"> Date Uploaded </td>
+          <td style="width: 30%">  Delete </td>
+        </tr>
+        <tr>
+          <td style="width: 30%">
+            <% if @deep_well.waterPermit.attached? %>
+              <p>
+                <%= link_to @deep_well.waterPermit.filename, @deep_well.waterPermit, html_options = { target: "_blank"} if @deep_well.waterPermit.attached? %>
+              </p>
+            <% else %>
+              <p>
+                <i> File unavailable </i>
+              </p>
+            <% end %>
+          </td>
+          <td style="width: 30%">
+            <% if @deep_well.waterPermit.attached? %>
+              <p>
+                <%= @deep_well.waterPermit.created_at %>
+              </p>
+            <% else %>
+              <p>
+                -
+              </p>
+            <% end %>
+          </td>
+          <td style="width: 30%">
+            <% if @deep_well.waterPermit.attached? %>
+              <p>
+                <%= link_to "Remove Attachment", purge_waterPermit_attachment_client_deep_well_path(@deep_well, deep_well.waterPermit.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+              </p>
+            <% else %>
+              <p>
+                -
+              </p>
+            <% end %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  <% else %>
+    <%= form.label "Water Permit:" %>
+    <%= form.file_field :waterPermit, class:"form-control" %> 
+  <% end %> 
+
+
+
+
+  <!--Water Permit File End-->
+
 
 <br>
 

@@ -9,13 +9,19 @@ class DeepWellsController < ApplicationController
     @f = @q.result(distinct: true).includes(:client)
     @pagy, @deep_wells = pagy(@q.result(distinct: true).includes(:client))
     # @deep_wells = DeepWell.all
-  end
+  end 
 
   # To delete log attachment
   def purge_log_attachment
     @log = ActiveStorage::Attachment.find(params[:id])
     @log.purge 
     redirect_back fallback_location: @root_path, notice: "Successfully deleted Lithologic Log."
+  end
+  # To delete water permit attachment
+  def purge_waterPermit_attachment
+    @waterPermit = ActiveStorage::Attachment.find(params[:id])
+    @waterPermit.purge 
+    redirect_back fallback_location: @root_path, notice: "Successfully deleted Water Permit."
   end
 
   # To delete asbuilt attachments
@@ -109,7 +115,7 @@ class DeepWellsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def deep_well_params
-      params.require(:deep_well).permit(:log, :deep_well_name, :client_id, :dateGranted, :clientName, :wellLocation, :wellCoodinates, 
+      params.require(:deep_well).permit(:log, :waterPermit, :deep_well_name, :client_id, :dateGranted, :clientName, :wellLocation, :wellCoodinates, 
         :waterPermitNo, :contractor, :depthTotal, :dateofUTVI, :reason, asbuilt: [], design: [])
     end
 end

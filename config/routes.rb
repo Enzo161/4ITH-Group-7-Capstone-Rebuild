@@ -17,6 +17,7 @@ Rails.application.routes.draw do
         delete :purge_log_attachment
         delete :purge_asbuilt_attachment
         delete :purge_design_attachment
+        delete :purge_waterPermit_attachment
       end
   end
 end

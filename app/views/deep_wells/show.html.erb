@@ -120,6 +120,39 @@
   </table>
   <!-- Lithologic File End-->
 
+  <!--Water Permit File Start-->
+  <table class="table table-bordered ">
+    <tbody>
+      <tr>
+        <th style="width: 50%"> Water Permit File</td>
+        <th style="width: 50%"> Date Uploaded</td>
+      </tr>
+      <tr>
+        <td>
+          <% if @deep_well.waterPermit.attached? %>
+            <%= link_to @deep_well.waterPermit.filename, @deep_well.waterPermit, html_options = { target: "_blank"} if @deep_well.waterPermit.attached? %>
+          <% else %>
+            <i> File unavailable </i>
+          <% end %>
+        </td>
+        <td>
+          <% if @deep_well.waterPermit.attached? %>
+            <p>
+              <%= @deep_well.waterPermit.created_at %>
+            </p>
+          <% else %>
+            <p>
+              -
+            </p>
+          <% end %>
+        </td>
+
+      </tr>
+    </tbody>
+  </table>
+  <!--Water Permit File End-->
+
+
   <!-- Asbuilt Files Start-->
   <table class="table table-bordered">
     <thead>
@@ -172,12 +205,9 @@
   </table>
   <!-- Deepwell Design Proposal End-->
 
-
   <div style="float:right">
-
         <%= link_to 'Edit', edit_client_deep_well_path([@client, @deep_well]), class: "btn btn-outline-primary" %> 
         <%= link_to 'Back', [@client, :deep_wells], class: "btn btn-light" %>
-
     <br>
   </div>
 </div>
