@@ -43,10 +43,6 @@
         <%= form.text_field :wellCoodinates, class:"form-control" %>
       </div>
 
-      <div class="field">
-        <strong><%= form.label "Date of UTVI:" %></strong>
-        <!--form.date_field  , class:"form-control"-->
-      </div>
     </div>
 
     <!--Column 2-->
@@ -60,7 +56,7 @@
         <%= form.date_field :dateGranted, class:"form-control" %>
       </div>
        <div class="field">
-        <strong><%= form.label "Limit:" %></strong>
+        <strong><%= form.label "Water Limit:" %></strong>
         <%= form.text_field :limit , class:"form-control"%>
       </div>
       <div class="field">
@@ -120,7 +116,7 @@
     </tbody>
   </table>
 <% else %>
-  <%= form.label "Lithologic Log:" %>
+ <strong> <%= form.label "Lithologic Log:" %> </strong> 
   <%= form.file_field :log, class:"form-control" %> 
 <% end %> 
   <!-- Lithologic File End-->
@@ -132,9 +128,9 @@
     <table class="table table-bordered ">
       <tbody>
         <tr>
-          <td style="width: 30%">  Water Permit File </td>
-          <td style="width: 30%"> Date Uploaded </td>
-          <td style="width: 30%">  Delete </td>
+          <td style="width: 30%"> <strong>Water Permit File </strong> </td>
+          <td style="width: 30%"> <strong>Date Uploaded</strong>  </td>
+          <td style="width: 30%"> <strong> Delete</strong>  </td>
         </tr>
         <tr>
           <td style="width: 30%">
@@ -174,7 +170,7 @@
       </tbody>
     </table>
   <% else %>
-    <%= form.label "Water Permit:" %>
+    <strong> <%= form.label "Water Permit:" %> </strong>
     <%= form.file_field :waterPermit, class:"form-control" %> 
   <% end %> 
 
