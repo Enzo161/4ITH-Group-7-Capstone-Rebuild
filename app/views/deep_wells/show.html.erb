@@ -77,10 +77,7 @@
           </td>
         </tr>
         <tr>
-          <td>
-            <strong>UTVI HISTORY:</strong>
-            
-          </td>
+
         </tr>
     </tbody>
   </table>
@@ -152,6 +149,34 @@
   </table>
   <!--Water Permit File End-->
 
+  <!--UTVI File Start-->
+
+  <table class="table table-bordered">
+    <thead>
+        <tr>
+          <th style="width: 50%">  UTVI Files</th>
+          <th style="width: 50%">  Date Uploaded </th>
+        </tr>
+    </thead>
+    <tbody>
+        <% if !@deep_well.utviFile.attached? %>
+          <tr>
+            <td> <i> File unavailable </i></td>
+            <td> - </td>
+          </tr>
+        <% else %>
+        <%@deep_well.utviFile.each do |utviFile|%>
+          <tr>
+            <td > <%= link_to(utviFile.filename, rails_blob_path(utviFile),  target: '_blank') %></td>
+            <td > <%= utviFile.created_at %></td>
+          </tr>
+        <% end %>
+      <% end %>
+      </tbody>
+  </table>
+
+  <!--UTVI File End-->
+
 
   <!-- Asbuilt Files Start-->
   <table class="table table-bordered">
@@ -170,11 +195,11 @@
         <% else %>
         <%@deep_well.asbuilt.each do |asbuilt|%>
           <tr>
-            <td><%= link_to(asbuilt.filename, rails_blob_path(asbuilt),  target: '_blank') %></td>
+            <td ><%= link_to(asbuilt.filename, rails_blob_path(asbuilt),  target: '_blank') %></td>
             <td > <%= asbuilt.created_at %></td>
           </tr>
         <% end %>
-        <% end %>
+      <% end %>
       </tbody>
   </table>
   <!-- Asbuilt Files End-->

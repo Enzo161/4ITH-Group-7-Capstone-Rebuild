@@ -5,5 +5,6 @@ class DeepWell < ApplicationRecord
   has_one_attached :waterPermit
   has_many_attached :asbuilt 
   has_many_attached :design
+  has_many_attached :utviFile
   
 end

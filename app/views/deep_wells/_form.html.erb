@@ -37,11 +37,7 @@
       <div class="field">
         <strong><%= form.label "Total Depth:" %></strong>
         <%= form.text_field :depthTotal, class:"form-control" %>
-      </div>  
-      <div class="field">
-        <strong><%= form.label "UTVI HISTORY:" %></strong>
-        <!-- form.text_field :depthTotal, class:"form-control" -->
-      </div>  
+      </div>   
       <div class="field">
         <strong><%= form.label "Well Coordinates:" %></strong>
         <%= form.text_field :wellCoodinates, class:"form-control" %>
@@ -128,6 +124,7 @@
   <%= form.file_field :log, class:"form-control" %> 
 <% end %> 
   <!-- Lithologic File End-->
+  <br>
 
   <!--Water Permit File Start-->
 
@@ -181,11 +178,42 @@
     <%= form.file_field :waterPermit, class:"form-control" %> 
   <% end %> 
 
-
-
-
   <!--Water Permit File End-->
 
+
+<br>
+
+  <!--UTVI File Start-->
+
+<table class="table table-hover table-bordered ">
+    <thead>
+        <tr>
+          <td style="width: 30%">  <strong>UTVI Files</strong> </th>
+          <td style="width: 30%">  <strong>Date Uploaded </strong></th>
+          <td style="width: 30%">  <strong>Delete </strong></th>
+        </tr>
+    </thead>
+    <tbody>
+        <% if !@deep_well.utviFile.attached?%>    
+          <tr>
+            <td> <i> File unavailable </i></td>
+            <td> - </td>
+            <td> - </td>
+          </tr>
+        <% else %>
+          <%@deep_well.utviFile.each do |utviFile|%>
+                <td> <%= link_to(utviFile.filename, rails_blob_path(utviFile),  target: '_blank', multiple: true) %></td>
+                <!--< link_to @deep_well.asbuilt, @deep_well.asbuilt, html_options = { target: "_blank"} if @deep_well.asbuilt.attached? %></td>-->
+                <td> <%= utviFile.created_at %></td>
+                <td> <%= link_to 'Remove Attachment', purge_utviFile_attachment_client_deep_well_path(@client, utviFile), method: :delete, data: { confirm: 'Are you sure?' } %> </td> 
+              </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+  </table>
+  <%= form.file_field :utviFile, class:"form-control", multiple: true %>
+
+  <!--UTVI File End-->
 
 <br>
 

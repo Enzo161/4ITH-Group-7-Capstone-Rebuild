@@ -31,6 +31,13 @@ class DeepWellsController < ApplicationController
     redirect_back fallback_location: @root_path, notice: "Successfully deleted As Built Design."
   end
 
+  # To delete UTVI attachments
+  def purge_utviFile_attachment
+    @utviFile = ActiveStorage::Attachment.find(params[:id])
+    @utviFile.purge
+    redirect_back fallback_location: @root_path, notice: "Successfully deleted UTVI File."
+  end
+
   # To delete design attachment
   def purge_design_attachment
     @design = ActiveStorage::Attachment.find(params[:id])
@@ -116,6 +123,6 @@ class DeepWellsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def deep_well_params
       params.require(:deep_well).permit(:log, :waterPermit, :deep_well_name, :client_id, :dateGranted, :clientName, :wellLocation, :wellCoodinates, 
-        :waterPermitNo, :contractor, :depthTotal, :dateofUTVI, :reason, asbuilt: [], design: [])
+        :waterPermitNo, :contractor, :depthTotal, :dateofUTVI, :reason, asbuilt: [], design: [], utviFile: [])
     end
 end
