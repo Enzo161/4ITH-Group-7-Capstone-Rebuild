@@ -10,13 +10,13 @@
 
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div class="field form-group" style="margin:auto; width: 90%">
-          <%= f.text_field :email, class:"form-control", placeholder:"Email", autofocus: true, autocomplete: "email" %>
+          <%= f.text_field :email, class:"form-control", placeholder:"Email", autofocus: true, autocomplete: "email", required: true%>
         </div>
 
         <br/>
         
         <div class="field form-group " style="margin:auto; width: 90%">
-          <%= f.password_field :password, class:"form-control", placeholder:"Password", autocomplete: "current-password" %>
+          <%= f.password_field :password, class:"form-control", placeholder:"Password", autocomplete: "current-password", required: true %>
         </div>
 
         <br>
@@ -25,6 +25,7 @@
 
         <% if alert %>
           <div class="alert alert-danger alert-dismissible fade show container" role="alert" style="width: auto; height: auto; line-height:30px; margin-bottom: 1px; padding: 0px 15px;">
+              <%= render "devise/shared/error_messages", resource: resource %>
               <i><%= alert %></i>
               <button type="button" class="btn btn-close" data-bs-dismiss="alert" aria-label="Close" style="height: 10px; line-height:10px; margin-top: 10px; padding: 0px 15px;" ></button>
           </div>
