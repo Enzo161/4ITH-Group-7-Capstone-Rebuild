@@ -5,7 +5,7 @@
    
   <!--Info. Table Start-->
   <table class="table table-bordered" style="">
-    <tbody>
+    <tbody> 
         <tr>
           <td style="width: 50%">
             <p>
@@ -30,7 +30,7 @@
           <td>
             <p>
               <strong>DATE GRANTED:</strong>
-              <%= @deep_well.dateGranted %>
+              <%= @deep_well.dateGranted.to_date.strftime("%B %d, %Y") %>
             </p>
           </td>
         </tr>
@@ -66,7 +66,7 @@
           <td>
             <p>
               <strong>DATE CONSTRUCTED:</strong>
-              <%= @deep_well.dateConstructed %>
+              <%= @deep_well.dateConstructed.to_date.strftime("%B %d, %Y") %>
             </p>
           </td>
         </tr>
@@ -103,7 +103,7 @@
         <td>
           <% if @deep_well.log.attached? %>
             <p>
-              <%= @deep_well.log.created_at %>
+              <%= @deep_well.log.created_at.to_datetime.strftime("%B %d, %Y at %H:%M:%S") %>
             </p>
           <% else %>
             <p>
@@ -135,7 +135,7 @@
         <td>
           <% if @deep_well.waterPermit.attached? %>
             <p>
-              <%= @deep_well.waterPermit.created_at %>
+              <%= @deep_well.waterPermit.created_at.to_datetime.strftime("%B %d, %Y at %H:%M:%S") %>
             </p>
           <% else %>
             <p>
@@ -168,7 +168,7 @@
         <%@deep_well.utviFile.each do |utviFile|%>
           <tr>
             <td > <%= link_to(utviFile.filename, rails_blob_path(utviFile),  target: '_blank') %></td>
-            <td > <%= utviFile.created_at %></td>
+            <td > <%= utviFile.created_at.to_datetime.strftime("%B %d, %Y at %H:%M:%S") %></td>
           </tr>
         <% end %>
       <% end %>
@@ -196,7 +196,7 @@
         <%@deep_well.asbuilt.each do |asbuilt|%>
           <tr>
             <td ><%= link_to(asbuilt.filename, rails_blob_path(asbuilt),  target: '_blank') %></td>
-            <td > <%= asbuilt.created_at %></td>
+            <td > <%= asbuilt.created_at.to_datetime.strftime("%B %d, %Y at %H:%M:%S") %></td>
           </tr>
         <% end %>
       <% end %>
@@ -222,7 +222,7 @@
         <%@deep_well.design.each do |design|%>
           <tr>
             <td><%= link_to(design.filename, rails_blob_path(design),  target: '_blank') %></td>
-            <td> <%= design.created_at %> </td>
+            <td> <%= design.created_at.to_datetime.strftime("%B %d, %Y at %H:%M:%S") %> </td>
           </tr>
         <% end %>
         <% end %>

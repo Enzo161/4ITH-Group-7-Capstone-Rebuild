@@ -64,7 +64,7 @@
           <td><%= a.modifier %></td>
           <td><%= a.table_name %></td>
           <td><%= a.object_name %></td>
-          <td><%= a.created_at.strftime("%F %T") %></td>
+          <td><%= a.created_at.to_datetime.strftime("%B %d, %Y at %H:%M:%S") %></td>
         </tr>
       <% end %>
     </tbody>

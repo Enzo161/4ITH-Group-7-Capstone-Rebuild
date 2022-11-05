@@ -74,9 +74,9 @@
   <table class="table table-bordered ">
     <tbody>
       <tr>
-        <td style="width: 30%">  Lithologic File </td>
-        <td style="width: 30%"> Date Uploaded </td>
-        <td style="width: 30%">  Delete </td>
+        <td style="width: 30%">  <strong> Lithologic File </strong> </td>
+        <td style="width: 30%"> <strong> Date Uploaded </strong></td>
+        <td style="width: 30%">  <strong>Delete </strong></td>
       </tr>
       <tr>
         <td style="width: 30%">
@@ -93,7 +93,7 @@
         <td style="width: 30%">
           <% if @deep_well.log.attached? %>
             <p>
-              <%= @deep_well.log.created_at %>
+              <%= @deep_well.log.created_at.to_datetime.strftime("%B %d, %Y at %H:%M:%S") %>
             </p>
           <% else %>
             <p>
@@ -147,7 +147,7 @@
           <td style="width: 30%">
             <% if @deep_well.waterPermit.attached? %>
               <p>
-                <%= @deep_well.waterPermit.created_at %>
+                <%= @deep_well.waterPermit.created_at.to_datetime.strftime("%B %d, %Y at %H:%M:%S") %>
               </p>
             <% else %>
               <p>
@@ -200,7 +200,7 @@
           <%@deep_well.utviFile.each do |utviFile|%>
                 <td> <%= link_to(utviFile.filename, rails_blob_path(utviFile),  target: '_blank', multiple: true) %></td>
                 <!--< link_to @deep_well.asbuilt, @deep_well.asbuilt, html_options = { target: "_blank"} if @deep_well.asbuilt.attached? %></td>-->
-                <td> <%= utviFile.created_at %></td>
+                <td> <%= utviFile.created_at.to_datetime.strftime("%B %d, %Y at %H:%M:%S") %></td>
                 <td> <%= link_to 'Remove Attachment', purge_utviFile_attachment_client_deep_well_path(@client, utviFile), method: :delete, data: { confirm: 'Are you sure?' } %> </td> 
               </tr>
           <% end %>
@@ -234,7 +234,7 @@
           <%@deep_well.asbuilt.each do |asbuilt|%>
                 <td> <%= link_to(asbuilt.filename, rails_blob_path(asbuilt),  target: '_blank', multiple: true) %></td>
                 <!--< link_to @deep_well.asbuilt, @deep_well.asbuilt, html_options = { target: "_blank"} if @deep_well.asbuilt.attached? %></td>-->
-                <td> <%= asbuilt.created_at %></td>
+                <td> <%= asbuilt.created_at.to_datetime.strftime("%B %d, %Y at %H:%M:%S") %></td>
                 <td> <%= link_to 'Remove Attachment', purge_asbuilt_attachment_client_deep_well_path(@client, asbuilt), method: :delete, data: { confirm: 'Are you sure?' } %> </td> 
               </tr>
           <% end %>
@@ -267,7 +267,7 @@
         <%@deep_well.design.each do |design|%>
           <tr>
             <td> <%= link_to(design.filename, rails_blob_path(design),  target: '_blank') %></td>
-            <td> <%= design.created_at %> </td>
+            <td> <%= design.created_at.to_datetime.strftime("%B %d, %Y at %H:%M:%S") %> </td>
             <td> <%= link_to 'Remove Attachment', purge_design_attachment_client_deep_well_path(@client, design), method: :delete, data: { confirm: 'Are you sure?' } %> </tr>
         <% end %>
         <% end %>
