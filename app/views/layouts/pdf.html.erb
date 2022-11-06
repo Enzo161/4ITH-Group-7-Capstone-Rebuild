@@ -9,14 +9,16 @@
     <div class="container">
       <div id="header" style="">
         <div>
-          <%= wicked_pdf_image_tag 'logo.png', width: '200'%>
-          <div style="float: right; padding-top: 45px;">
+          <!-- < wicked_pdf_image_tag 'logo.png', width: '200'%>-->
+
+          <!--< wicked_pdf_image_tag asset_url('/images/logo.png') %>-->
+          <div style="float: center; padding-top: 45px;">
             <h1>System Audit Logs</h1>
           </div>
         </div>
 
       </div>
-      <br><br>
+      <br>
       <div id="content" style="font-family: Arial, Helvetica, sans-serif;">
           <%= content_for?(:pdf) ? yield(:pdf) : yield %>
       </div>
