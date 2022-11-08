@@ -1,61 +1,73 @@
-<div class="container"> 
-  <h1><%= @island.island_name%> Clients</h1>
-
-  <!-- Search Forms Start -->
-  <div>
-    <%= search_form_for @q, url: island_clients_path(params[:island_id]) do |f| %>
-      <div class="row">
-        <div class="col">
-          <%= f.label :client_name_cont%>:
-          <%= f.search_field :client_name_cont, class:"form-control me-2", placeholder:"Search Client"%>
+<div class="container">
+    <h1>
+        <%= @island.island_name%> Clients</h1>
+    <!-- Search Forms Start -->
+    <p>
+        <button class="btn btn-outline-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            Search and Filter
+        </button>
+    </p>
+    <div class="collapse" id="collapseExample">
+        <div class="card card-body" style="margin-bottom: 20px;">
+            <%= search_form_for @q, url: island_clients_path(params[:island_id]) do |f| %>
+            <div class="row">
+                <div class="col">
+                    <%= f.label :client_name_cont%>:
+                    <%= f.search_field :client_name_cont, class:"form-control me-2", placeholder:"Search Client"%>
+                </div>
+                <div class="col">
+                    <%= f.label "DeepWell Name Contains:"%>
+                    <%= f.text_field :deep_wells_deep_well_name_cont, :class => "form-control", placeholder:"Search Deepwell" %>
+                    <div style="float: right; margin-top: 10px; margin-bottom: 20px ;">
+                        <%= f.submit "Search", class:"btn btn-outline-primary text-center" %>
+                        <%= link_to "Reset Search", request.path, class:"btn btn-light text-center" %>
+                    </div>
+                </div>
+            </div>
+            <% end %>
         </div>
-        <div class="col">
-          <%= f.label "DeepWell Name Contains:"%>
-          <%= f.text_field :deep_wells_deep_well_name_cont, :class => "form-control", placeholder:"Search Deepwell" %>
-          <div style="float: right; margin-top: 10px; margin-bottom: 20px ;">
-            <%= f.submit "Search", class:"btn btn-outline-primary text-center" %>
-            <%= link_to "Reset Search", request.path, class:"btn btn-light text-center" %>
-          </div>
-
-        </div>
-
-        </div>
-    <% end %>
-  </div>
-  <!-- Search Forms End -->
-<br>
+    </div>
+    <!-- Search Forms End -->
 
     <table class="table table-hover table-bordered ">
-    <thead>
-      <tr>
-        <th><%= sort_link(@q, :client_name, "Client Name", default_order: :asc)%></th>
-        <th>Number of Deep Wells</th>
-        <th style="width: auto;">Edit</th>
-        <th style="width: auto;">Delete</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @clients.each do |client| %>
-        <tr>
-          <td><%= link_to client.client_name, client_deep_wells_path(client) %></td>
-          <td><%= DeepWell.where(:client_id => client).count %></td>
-          <td><%= link_to 'Edit', edit_island_client_path(@island, client) %></td>
-          <td><%= link_to 'Delete', [@island, client], method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-
-  <br>
-  <div class="d-flex justify-content-between">
-    <% if Client.count > 10 && @f.count > 10 %>   
-      <%== pagy_bootstrap_nav(@pagy) %>
-    <% end %>
-    <div style="float:end; padding-bottom: 10px;">
-      <%= link_to 'New Client', new_island_client_path, class:"btn btn-outline-primary"%> 
-      &nbsp;<%= link_to 'Back', islands_path, class:"btn btn-light" %> &nbsp;
+        <thead>
+            <tr>
+                <th>
+                    <%= sort_link(@q, :client_name, "Client Name", default_order: :asc)%>
+                </th>
+                <th>Number of Deep Wells</th>
+                <th style="width: auto;">Edit</th>
+                <th style="width: auto;">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @clients.each do |client| %>
+            <tr>
+                <td>
+                    <%= link_to client.client_name, client_deep_wells_path(client) %>
+                </td>
+                <td>
+                    <%= DeepWell.where(:client_id => client).count %>
+                </td>
+                <td>
+                    <%= link_to 'Edit', edit_island_client_path(@island, client) %>
+                </td>
+                <td>
+                    <%= link_to 'Delete', [@island, client], method: :delete, data: { confirm: 'Are you sure?' } %>
+                </td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+    <br>
+    <div class="d-flex justify-content-between">
+        <% if Client.count > 10 && @f.count > 10 %>
+        <%== pagy_bootstrap_nav(@pagy) %>
+        <% end %>
+        <div style="float:end; padding-bottom: 10px;">
+            <%= link_to 'New Client', new_island_client_path, class:"btn btn-outline-primary"%>
+            &nbsp;
+            <%= link_to 'Back', islands_path, class:"btn btn-light" %> &nbsp;
+        </div>
     </div>
-  </div>
-
 </div>

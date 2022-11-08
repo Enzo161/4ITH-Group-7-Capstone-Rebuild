@@ -1,59 +1,67 @@
-<div class="container"> 
-  <h1>Islands</h1> 
-  <!-- Search Forms Start -->
-  <div>
-    <%= search_form_for @q do |f| %>
-      <div class="row">
-        <div class="col">
-          <%= f.label "Island Name Contains:" %>
-          <%= f.text_field :island_name_cont, :class => "form-control" , placeholder:"Search Island" %>
+<div class="container">
+    <h1>Islands</h1>
+    <!-- Search Forms Start -->
+    <p>
+        <button class="btn btn-outline-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            Search and Filter
+        </button>
+    </p>
+    <div class="collapse" id="collapseExample">
+        <div class="card card-body" style="margin-bottom: 20px;">
+            <%= search_form_for @q do |f| %>
+            <div class="row">
+                <div class="col">
+                    <%= f.label "Island Name Contains:" %>
+                    <%= f.text_field :island_name_cont, :class => "form-control" , placeholder:"Search Island" %>
+                </div>
+                <div class="col">
+                    <%= f.label "Client Name Contains:" %>
+                    <%= f.text_field :clients_client_name_cont, :class => "form-control", placeholder:"Search Client" %>
+                    <div style="float: right; margin-top: 10px; margin-bottom: 20px ;">
+                        <%= f.submit "Search", class:"btn btn-outline-primary text-center float-left" %>
+                        <%= link_to "Reset Search", request.path, class:"btn btn-light text-center" %>
+                    </div>
+                </div>
+            </div>
+            <% end %>
         </div>
-        <div class="col">
-          <%= f.label "Client Name Contains:" %>
-          <%= f.text_field :clients_client_name_cont, :class => "form-control", placeholder:"Search Client" %>
-          <div style="float: right; margin-top: 10px; margin-bottom: 20px ;">
-            <%= f.submit "Search", class:"btn btn-outline-primary text-center float-left" %>
-            <%= link_to "Reset Search", request.path, class:"btn btn-light text-center" %>
-          </div>
-        </div>
-
-      </div><br>
-    <% end %>
-  </div>
-  <!-- Search Forms End -->
-
-  <!-- Island Table Start -->
-  <table class="table table-hover table-bordered ">
-    <thead>
-      <tr>
-        <th style="width: 70%"><%= sort_link(@q, :island_name, "Island", default_order: :asc)%></th>
-        <th style="width: auto;">Number of Clients</th>
-        <!-- <th style="width: auto;">Edit</th>
+    </div>
+    <!-- Search Forms End -->
+    <!-- Island Table Start -->
+    <table class="table table-hover table-bordered ">
+        <thead>
+            <tr>
+                <th style="width: 70%">
+                    <%= sort_link(@q, :island_name, "Island", default_order: :asc)%>
+                </th>
+                <th style="width: auto;">Number of Clients</th>
+                <!-- <th style="width: auto;">Edit</th>
         <th style="width: auto;">Delete</th> -->
-      </tr>
-    </thead>
-    <tbody>
-      <% @islands.each do |island| %> 
-        <tr>
-          <td><%= link_to island.island_name, island_clients_path(island)%></td>
-          <td><%= Client.where(:island_id => island).count %></td>
-          <!-- <td><%#= link_to 'Edit', edit_island_path(island) %></td>
+            </tr>
+        </thead>
+        <tbody>
+            <% @islands.each do |island| %>
+            <tr>
+                <td>
+                    <%= link_to island.island_name, island_clients_path(island)%>
+                </td>
+                <td>
+                    <%= Client.where(:island_id => island).count %>
+                </td>
+                <!-- <td><%#= link_to 'Edit', edit_island_path(island) %></td>
           <td><%#= link_to 'Delete', island, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr> -->
-      <% end %>
-    </tbody>
-  </table>
-
-  <br>
-  <div class="d-flex justify-content-between">
-    <% if Island.count > 10 && @f.count > 10 %>   
-      <%== pagy_bootstrap_nav(@pagy) %>
-    <% end %>
-    <!-- Island Table End -->
-<!--     <button type="button" class="btn text-right float-end" >
+                <% end %>
+        </tbody>
+    </table>
+    <br>
+    <div class="d-flex justify-content-between">
+        <% if Island.count > 10 && @f.count > 10 %>
+        <%== pagy_bootstrap_nav(@pagy) %>
+        <% end %>
+        <!-- Island Table End -->
+        <!--     <button type="button" class="btn text-right float-end" >
       <%#= link_to 'New Island', new_island_path %>
     </button> -->
-  </div>
-
-
+    </div>
 </div>
