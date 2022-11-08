@@ -26,10 +26,10 @@
   <table class="table table-hover table-bordered ">
     <thead>
       <tr>
-        <th style="width: auto"><%= sort_link(@q, :island_name, "Island", default_order: :asc)%></th>
+        <th style="width: 70%"><%= sort_link(@q, :island_name, "Island", default_order: :asc)%></th>
         <th style="width: auto;">Number of Clients</th>
-        <th style="width: auto;">Edit</th>
-        <th style="width: auto;">Delete</th>
+        <!-- <th style="width: auto;">Edit</th>
+        <th style="width: auto;">Delete</th> -->
       </tr>
     </thead>
     <tbody>
@@ -37,9 +37,9 @@
         <tr>
           <td><%= link_to island.island_name, island_clients_path(island)%></td>
           <td><%= Client.where(:island_id => island).count %></td>
-          <td><%= link_to 'Edit', edit_island_path(island) %></td>
-          <td><%= link_to 'Delete', island, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
+          <!-- <td><%#= link_to 'Edit', edit_island_path(island) %></td>
+          <td><%#= link_to 'Delete', island, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr> -->
       <% end %>
     </tbody>
   </table>
