@@ -1,39 +1,41 @@
 <div class="container">
+
   <div class="row">
     <div class="col-md-12">
       <h2>Two Factor Authentication</h2>
-      
-    
-      <br>
     </div>
   </div>
-  <div class="row">
-    <div class="col-md-12">
-        <div class="card">
-          <div class="card-header">
-            Confirmation of Two-Factor Authorization through Email
-          </div>
-          <div class="card-body">
-            <p>Please confirm by entering your current password.</p>
-            <%= simple_form_for(:two_fa, url: two_factor_settings_path, method: :post) do |f| %>
-              <% if alert%>
-                <div class="alert alert-danger alert-dismissible fade show container" role="alert" style="width: auto; height: auto;">
-                    <%= alert %>
-                  <button type="button" class="btn btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-              </div>
-              <% end %>
+
+
+  <div class="card" style="width: auto;">
+    <div class="card-body">
+      <h5 class="card-title">Confirmation</h5>
+      <h6 class="card-subtitle mb-2 text-muted">Please confirm by entering your current password.</h6>
+        <%= simple_form_for(:two_fa, url: two_factor_settings_path, method: :post) do |f| %>
+          <% if alert%>
+            <div class="alert alert-danger alert-dismissible fade show container" role="alert" style="width: auto; height: auto;">
+                <%= alert %>
+              <button type="button" class="btn btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          <% end %>
             <%= f.input :password, placeholder: "Password" %>
 
-              <div style="float:right; margin-top: 10px;">
-                <%= f.submit 'Confirm and Enable Two Factor', class: 'btn btn-outline-primary' %>
+            <div style="float:left; margin-top: 10px;">
+              <%= f.submit 'Enable Two Factor Authentication', class: 'btn btn-outline-success' %>
+            </div>
+          <% end %>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end" style="margin-top: 10px;">
+                  <%= link_to "Cancel", :back, class:'btn btn-outline-danger' %>
+                </div>
+                </div>
               </div>
-            <% end %>
-          </div>
-        </div>
-        <div class="d-grid gap-2 d-md-flex justify-content-md-end" style="margin-top: 10px;">
-          <%= link_to "Back", :back, class:'btn btn-light .btn-block' %>
-        </div>
-      </div>
     </div>
+  </div>
+
+
+
+
   </div>
 </div>
