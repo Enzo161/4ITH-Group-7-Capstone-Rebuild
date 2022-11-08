@@ -1,39 +1,37 @@
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #56C6EA;">
-  
-  <div class= "container-fluid">
-      <%= link_to image_tag("logo.png", :size => "150x100"), root_path, class:"navbar-brand", style:"margin-left: 15px; margin-top: 5px; margin-bottom: 10px;"%>
-          <% if current_user.first_name == nil || current_user.last_name == nil %>
-          <% elsif current_user.first_name.length == 0 || current_user.last_name.length == 0 %>
-          <% else %>
-            <p style="padding-top: 17.5px; padding-right: auto; margin-right: auto;">Hello, <strong><%= current_user.first_name %> <%= current_user.last_name %></strong>!
-          <% end %>
+    <div class="container-fluid">
+        <%= link_to image_tag("logo.png", :size => "150x100"), root_path, class:"navbar-brand", style:"margin-left: 15px; margin-top: 5px; margin-bottom: 10px;"%>
+        <% if current_user.first_name == nil || current_user.last_name == nil %>
+        <% elsif current_user.first_name.length == 0 || current_user.last_name.length == 0 %>
+        <% else %>
+        <p style="padding-top: 17.5px; padding-right: auto; margin-right: auto;">Hello, <strong>
+                <%= current_user.first_name %>
+                <%= current_user.last_name %></strong>!
+            <% end %>
         </p>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    
-    <div class="collapse navbar-collapse " id="navbarNavDropdown">
-      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <%= link_to "Home", root_path, class:"nav-link" %>
-        </li>
-        <% if current_user && current_user.admin %>
-          <li class="nav-item">
-            <%= link_to "System Audit Logs", audit_logs_path, class:"nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Manage Users", users_path, class:"nav-link" %>
-          </li>
-        <% end %>
-        <li class="nav-item">
-          <%= link_to "Settings", edit_user_registration_path, class:"nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to 'Log Out', destroy_user_session_path, class:"nav-link", method: :delete %>
-        </li>
-
-        
-      </ul>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse " id="navbarNavDropdown">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <%= link_to "Home", root_path, class:"nav-link" %>
+                </li>
+                <% if current_user && current_user.admin %>
+                <li class="nav-item">
+                    <%= link_to "System Audit Logs", audit_logs_path, class:"nav-link" %>
+                </li>
+                <li class="nav-item">
+                    <%= link_to "Manage Users", users_path, class:"nav-link" %>
+                </li>
+                <% end %>
+                <li class="nav-item">
+                    <%= link_to "Settings", edit_user_registration_path, class:"nav-link" %>
+                </li>
+                <li class="nav-item">
+                    <%= link_to 'Log Out', destroy_user_session_path, class:"nav-link", method: :delete %>
+                </li>
+            </ul>
+        </div>
     </div>
-  </div>
 </nav>

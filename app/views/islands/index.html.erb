@@ -2,9 +2,9 @@
     <h1>Islands</h1>
     <!-- Search Forms Start -->
     <p>
-        <button class="btn btn-outline-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+        <a class="btn btn-outline-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
             Search and Filter
-        </button>
+        </a>
     </p>
     <div class="collapse" id="collapseExample">
         <div class="card card-body" style="margin-bottom: 20px;">
@@ -18,14 +18,18 @@
                     <%= f.label "Client Name Contains:" %>
                     <%= f.text_field :clients_client_name_cont, :class => "form-control", placeholder:"Search Client" %>
                     <div style="float: right; margin-top: 10px; margin-bottom: 20px ;">
-                        <%= f.submit "Search", class:"btn btn-outline-primary text-center float-left" %>
-                        <%= link_to "Reset Search", request.path, class:"btn btn-light text-center" %>
+                        <%= f.submit "Search", class:"btn 
+                        btn-outline-primary text-center float-left" %>
                     </div>
                 </div>
             </div>
             <% end %>
         </div>
     </div>
+    <% if Island.count > @islands.count %>
+    <%= link_to "Reset Search", request.path, class:"btn btn-outline-secondary" %>
+    <br><br>
+    <% end %>
     <!-- Search Forms End -->
     <!-- Island Table Start -->
     <table class="table table-hover table-bordered ">

@@ -1,27 +1,28 @@
 <!doctype html>
 <html>
-  <head>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <meta charset='utf-8' />
     <%= wicked_pdf_stylesheet_link_tag "pdf" %>
-  </head>
-  <body onload='number_pages'>
+</head>
+
+<body onload='number_pages'>
     <div class="container">
-      <div id="header" style="">
-        <div>
-          <!-- < wicked_pdf_image_tag 'logo.png', width: '200'%>-->
-
-          <!--< wicked_pdf_image_tag asset_url('/images/logo.png') %>-->
-          <div style="float: center; padding-top: 45px;">
-            <h1>System Audit Logs</h1>
-          </div>
+        <div id="header" style="">
+            <div>
+                <!-- < wicked_pdf_image_tag 'logo.png', width: '200'%>-->
+                <!--< wicked_pdf_image_tag asset_url('/images/logo.png') %>-->
+                <div style="float: center; padding-top: 45px;">
+                    <h1>System Audit Logs</h1>
+                </div>
+            </div>
         </div>
-
-      </div>
-      <br>
-      <div id="content" style="font-family: Arial, Helvetica, sans-serif;">
-          <%= content_for?(:pdf) ? yield(:pdf) : yield %>
-      </div>
+        <br>
+        <div id="content" style="font-family: Arial, Helvetica, sans-serif;">
+            <%= content_for?(:pdf) ? yield(:pdf) : yield %>
+        </div>
     </div>
-  </body>
+</body>
+
 </html>

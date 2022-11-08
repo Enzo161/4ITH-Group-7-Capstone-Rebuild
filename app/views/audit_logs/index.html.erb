@@ -3,9 +3,9 @@
     <h1>System Audit Logs</h1>
     <!-- Search Form Start -->
     <p>
-        <button class="btn btn-outline-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+        <a class="btn btn-outline-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
             Search and Filter
-        </button>
+        </a>
     </p>
     <div class="collapse" id="collapseExample">
         <div class="card card-body" style="margin-bottom: 20px;">
@@ -36,11 +36,15 @@
             <% end %>
         </div>
     </div>
+    <% if AuditLog.count > @audit_logs.count %>
+    <%= link_to "Reset Search", request.path, class:"btn btn-outline-secondary" %>
+    <br><br>
+    <% end %>
     <!-- Search Form End -->
     <% if AuditLog.count > 40 && @f.count > 40 %>
     <%== pagy_bootstrap_nav(@pagy) %>
-    <% end %>
     <br>
+    <% end %>
     <table class="table table-hover table-bordered ">
         <thead>
             <tr>
