@@ -1,58 +1,62 @@
-<body style="background-color:#2FB6E1;">
-  <div class="container-fluid">
-    <div class="position-absolute top-50 start-50 translate-middle card" style=" width: 55%; height: auto;  background: #56C6EA; margin: 0 auto;">
-    <div class="card-body">
-      <div style="margin-top: 30px;">
-        <img class=" rounded mx-auto d-block" src="<%= asset_path( 'logo.png' ) %>" alt="Card image cap" width="auto" height="100px" margin-top="20px">
-      </div>
-      <br/>
-      <br/>
+<style>
+    #gradient {
+    background-image: 
+      linear-gradient(to right, rgba(79,172,254,0.5), rgba(0,242,254,0.5)),
+      url(/assets/bg.png);
+  }
+</style>
+<div id="gradient">
 
-      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <div class="field form-group" style="margin:auto; width: 90%">
-          <%= f.text_field :email, class:"form-control", placeholder:"Email", autofocus: true, autocomplete: "email", required: true%>
+    <body style="background-image: 
+      linear-gradient(to right, rgba(79,172,254,0.85), rgba(0,242,254,0.85)),
+      url(/assets/bg.png);">
+        <div class="container-fluid">
+            <div class="position-absolute top-50 start-50 translate-middle card" style=" width: 55%; height: auto;  background: #56C6EA; margin: 0 auto;">
+                <div class="card-body">
+                    <div style="margin-top: 30px;">
+                        <img class=" rounded mx-auto d-block" src="<%= asset_path( 'logo.png' ) %>" alt="Card image cap" width="auto" height="100px" margin-top="20px">
+                    </div>
+                    <br />
+                    <br />
+                    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                    <div class="field form-group" style="margin:auto; width: 90%">
+                        <%= f.text_field :email, class:"form-control", placeholder:"Email", autofocus: true, autocomplete: "email", required: true%>
+                    </div>
+                    <br />
+                    <div class="field form-group " style="margin:auto; width: 90%">
+                        <%= f.password_field :password, class:"form-control", placeholder:"Password", autocomplete: "current-password", required: true %>
+                    </div>
+                    <br>
+                    <div class="container" style="text-align: center ; width: 93%;">
+                        <% if alert %>
+                        <div class="alert alert-danger alert-dismissible fade show container" role="alert" style="width: auto; height: auto; line-height:30px; margin-bottom: 1px; padding: 0px 15px;">
+                            <%= render "devise/shared/error_messages", resource: resource %>
+                            <i>
+                                <%= alert %></i>
+                            <button type="button" class="btn btn-close" data-bs-dismiss="alert" aria-label="Close" style="height: 10px; line-height:10px; margin-top: 10px; padding: 0px 15px;"></button>
+                        </div>
+                        <% end %>
+                        <br>
+                        <% if devise_mapping.rememberable? %>
+                        <div class="row">
+                            <div class="col">
+                                <%= f.check_box :remember_me %>
+                                <%= f.label :remember_me %>
+                            </div>
+                            <div class="col">
+                                <%= render "devise/shared/links" %>
+                            </div>
+                        </div>
+                        <% end %>
+                    </div>
+                    <br />
+                    <div class="actions text-center" style="width: auto; height: auto; margin-bottom: 30px">
+                        <%= f.submit "Login", class:'btn btn-light .btn-block', style: "width: 200px" %>
+                    </div>
+                    <% end %>
+                    <br />
+                </div>
+            </div>
         </div>
-
-        <br/>
-        
-        <div class="field form-group " style="margin:auto; width: 90%">
-          <%= f.password_field :password, class:"form-control", placeholder:"Password", autocomplete: "current-password", required: true %>
-        </div>
-
-        <br>
-
-        <div class="container" style="text-align: center ; width: 93%;">
-
-        <% if alert %>
-          <div class="alert alert-danger alert-dismissible fade show container" role="alert" style="width: auto; height: auto; line-height:30px; margin-bottom: 1px; padding: 0px 15px;">
-              <%= render "devise/shared/error_messages", resource: resource %>
-              <i><%= alert %></i>
-              <button type="button" class="btn btn-close" data-bs-dismiss="alert" aria-label="Close" style="height: 10px; line-height:10px; margin-top: 10px; padding: 0px 15px;" ></button>
-          </div>
-        <% end %>
-        <br>
-          <% if devise_mapping.rememberable? %>
-          <div class="row">
-              <div class="col">
-                <%= f.check_box :remember_me %>
-                <%= f.label :remember_me %> 
-              </div>
-              <div class="col">
-              <%= render "devise/shared/links" %>
-              </div>
-          </div>
-          <% end %>
-        </div>
-
-        <br/>
-
-        <div class="actions text-center" style="width: auto; height: auto; margin-bottom: 30px">
-          <%= f.submit "Login", class:'btn btn-light .btn-block', style: "width: 200px" %>
-        </div>
-      <% end %>
-      <br/>
-    </div>
-  </div>
-  </div>
-  
-</body>
+    </body>
+</div>
