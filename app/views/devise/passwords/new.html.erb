@@ -1,34 +1,30 @@
-
-<body style="background-color:#2FB6E1;">
-  <div class="container-fluid card container" style=" width: 50%; height: 60%;  background: #56C6EA; margin-top: 100px; margin-bottom:100px">
-    <div class="card-body">
-      <img class=" rounded mx-auto d-block" src="<%= asset_path( 'logo.png' ) %>" alt="Card image cap" width="auto" height="100px">
-        <br><br>
-          <div class="container ">
-            <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-            
-            <div class="alert alert-dismissible fade show container" role="alert" style="width: auto; height: auto; line-height:30px; margin-bottom: 1px; padding: 0px 15px;">
-                <%= render "devise/shared/error_messages", resource: resource %>
-                <i><%=alert%></i>
-                <!-- <button type="button" class="btn btn-close" data-bs-dismiss="alert" aria-label="Close" style="margin-right: 10px;" ></button>-->
+<body style="background-image: 
+      linear-gradient(to right, rgba(79,172,254,0.85), rgba(0,242,254,0.85)),
+      url(/assets/bg.png);">
+    <div class="container-fluid card container" style=" width: 50%; height: 60%;  background: #56C6EA; margin-top: 100px; margin-bottom:100px">
+        <div class="card-body">
+            <img class=" rounded mx-auto d-block" src="<%= asset_path( 'logo.png' ) %>" alt="Card image cap" width="auto" height="100px">
+            <br><br>
+            <div class="container ">
+                <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+                <div class="alert alert-dismissible fade show container" role="alert" style="width: auto; height: auto; line-height:30px; margin-bottom: 1px; padding: 0px 15px;">
+                    <%= render "devise/shared/error_messages", resource: resource %>
+                    <i>
+                        <%=alert%></i>
+                    <!-- <button type="button" class="btn btn-close" data-bs-dismiss="alert" aria-label="Close" style="margin-right: 10px;" ></button>-->
+                </div>
+                <strong> <p class="text-center">Forgot your password?</p> </strong>
+                <div class="field form-group text-center" style="margin:auto; width: 80%; ">
+                    <%= f.email_field :email, class:"form-control", placeholder:"Email", autofocus: true, autocomplete: "email" %>
+                    <div class="actions " style="margin-bottom: 10px;">
+                        <div class="d-flex justify-content-between" style="margin-top:  15px;">
+                            <%= f.submit "Send Reset Password Instructions", class:'btn btn-light .btn-block' %>
+                            <%= link_to 'Back to Login', user_session_path, class: 'btn btn-light' %>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-
-            <p class="text-center">Forgot your password?</p>
-            <div class="field form-group text-center" style="margin:auto; width: 80%; ">
-              
-              <%= f.email_field :email, class:"form-control", placeholder:"Email", autofocus: true, autocomplete: "email" %>
-
-            </div>
-
-            <div class="actions text-center" style="width: auto; height: auto; margin-bottom: 30px;">
-              <br>
-              <%= f.submit "Send Reset Password Instructions", class:'btn btn-light .btn-block', style:'width:58%;' %>
-              <%= link_to 'Back to Login', user_session_path, class: 'btn btn-light' %>
-            </div>
+            <% end %>
         </div>
-      <% end %> 
-
     </div>
-  </div>
 </body>
