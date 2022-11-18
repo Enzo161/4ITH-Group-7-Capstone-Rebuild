@@ -14,15 +14,11 @@
               <button type="button" class="btn btn-close" data-bs-dismiss="alert" aria-label="Close" style="height: 10px; line-height:10px; margin-top: 10px; padding: 0px 15px;" ></button>
             </div>
           <% end %>
-          <p style="margin-bottom: 10px;"><strong> Please Enter Your OTP: </strong></p>
           <%= f.input :otp_attempt, label: false, class:"form-control", placeholder:"OTP", autofocus: true %>
         </div>
-
         <div class="actions text-center" style="width: auto; height: auto; margin-top:  10px;margin-bottom: 30px">
           <%= f.submit "Login", class:'btn btn-light .btn-block', style: 'width: 200px'%>
-        </div>
-          
-
+        </div>        
       <% end %>
     </div>
   </div>

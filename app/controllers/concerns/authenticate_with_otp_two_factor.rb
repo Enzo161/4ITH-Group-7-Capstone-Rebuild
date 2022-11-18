@@ -13,7 +13,7 @@ module AuthenticateWithOtpTwoFactor
     end
   end
 
-  #, otp: current_user.current_otp
+  # otp: current_user.current_otp
 
   private
 

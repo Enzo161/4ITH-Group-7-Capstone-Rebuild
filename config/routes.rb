@@ -3,7 +3,11 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
       sessions: 'sessions'
   }
-  resources :users
+  resources :users do
+    member do
+      patch :resend_invitation
+    end
+  end
   resource :two_factor_settings, except: [:index, :show]
   root to: 'islands#index'
 
@@ -20,6 +24,7 @@ Rails.application.routes.draw do
         delete :purge_waterPermit_attachment
         delete :purge_utviFile_attachment
       end
+    end
   end
-end
+  
 end
