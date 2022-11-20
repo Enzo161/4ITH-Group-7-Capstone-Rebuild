@@ -47,7 +47,7 @@ class DeepWellsController < ApplicationController
 
   # GET /deep_wells/1 or /deep_wells/1.json
   def show
-    AuditLog.new(event: "view", modifier: current_user.email, table_name: "Client", object_name: @deep_well.deep_well_name, date_created: Date.today).save
+    AuditLog.new(event: "view", modifier: current_user.email, table_name: "Deep Well", object_name: @deep_well.deep_well_name, date_created: Date.today).save
   end
 
   # GET /deep_wells/new
