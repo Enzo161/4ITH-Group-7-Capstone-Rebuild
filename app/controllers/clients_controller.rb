@@ -34,7 +34,7 @@ class ClientsController < ApplicationController
     respond_to do |format|
       if @client.save
         AuditLog.new(event: "create", modifier: current_user.email, table_name: "Client", object_name: @client.client_name, date_created: Date.today).save
-        if AuditLog.count > 10
+        if AuditLog.count > 10000
           AuditLog.first.delete
         end
         format.html { redirect_to [@island, :clients], notice: "Client was successfully created." }
@@ -51,7 +51,7 @@ class ClientsController < ApplicationController
     respond_to do |format|
       if @client.update(client_params)
         AuditLog.new(event: "update", modifier: current_user.email, table_name: "Client", object_name: @client.client_name, date_created: Date.today).save
-        if AuditLog.count > 10
+        if AuditLog.count > 10000
           AuditLog.first.delete
         end
         format.html { redirect_to [@island, :clients], notice: "Client was successfully updated." }
@@ -66,7 +66,7 @@ class ClientsController < ApplicationController
   # DELETE /clients/1 or /clients/1.json
   def destroy
     AuditLog.new(event: "delete", modifier: current_user.email, table_name: "Client", object_name: @client.client_name, date_created: Date.today).save
-    if AuditLog.count > 10
+    if AuditLog.count > 10000
       AuditLog.first.delete
     end
     @client.destroy

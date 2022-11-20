@@ -67,7 +67,7 @@ class DeepWellsController < ApplicationController
     respond_to do |format|
       if @deep_well.save
         AuditLog.new(event: "create", modifier: current_user.email, table_name: "Deep Well", object_name: @client.client_name, date_created: Date.today).save
-        if AuditLog.count > 10
+        if AuditLog.count > 10000
           AuditLog.first.delete
         end
         format.html { redirect_to [@client, :deep_wells], notice: "Deep well was successfully created." }
@@ -84,7 +84,7 @@ class DeepWellsController < ApplicationController
     respond_to do |format| 
       if @deep_well.update(deep_well_params)
         AuditLog.new(event: "update", modifier: current_user.email, table_name: "Deep Well", object_name: @client.client_name, date_created: Date.today).save
-        if AuditLog.count > 10
+        if AuditLog.count > 10000
           AuditLog.first.delete
         end
         format.html { redirect_to client_deep_well_path([@client, @deep_well]), notice: "Deep well was successfully updated." }
@@ -99,7 +99,7 @@ class DeepWellsController < ApplicationController
   # DELETE /deep_wells/1 or /deep_wells/1.json
   def destroy
   AuditLog.new(event: "delete", modifier: current_user.email, table_name: "Deep Well", object_name: @client.client_name, date_created: Date.today).save
-  if AuditLog.count > 10
+  if AuditLog.count > 10000
     AuditLog.first.delete
   end
     @deep_well.destroy
