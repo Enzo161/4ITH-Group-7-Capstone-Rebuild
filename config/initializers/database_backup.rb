@@ -1,6 +1,5 @@
 # require 'postgresql_backup'
 
-  #   can also be defined, but they have default values and can also
 # PostgresqlBackup.configure do |config|
 #   # This gem works with two possible repositories:
 #   #
@@ -23,8 +22,8 @@
 
 #   # Get your access key and secret key from AWS console:
 #   # IAM -> Users -> Security Credentials tab -> access keys
-#   config.aws_access_key_id = 'AKIASZ335KLODBCWM7FR'
-#   config.aws_secret_access_key = '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'
+#   config.aws_access_key_id = AWS_ACCESS_KEY_ID
+#   config.aws_secret_access_key = AWS_SECRET_ACCESS_KEY
 
 #   # The name of the bucket where the backup files will be stored
 #   # (and from where they will be retrieved). The default value
