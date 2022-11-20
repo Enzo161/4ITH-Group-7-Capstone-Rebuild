@@ -30,7 +30,9 @@
           <td>
             <p>
               <strong>DATE GRANTED:</strong>
-              <%= @deep_well.dateGranted.to_date.strftime("%B %d, %Y") %>
+              <% if @deep_well.dateGranted != nil %>
+                <%= @deep_well.dateGranted.to_date.strftime("%B %d, %Y") %>
+              <% end %>
             </p>
           </td>
         </tr>
@@ -66,7 +68,9 @@
           <td>
             <p>
               <strong>DATE CONSTRUCTED:</strong>
+              <% if @deep_well.dateConstructed != nil %>
               <%= @deep_well.dateConstructed.to_date.strftime("%B %d, %Y") %>
+              <% end %>
             </p>
           </td>
         </tr>
@@ -97,7 +101,7 @@
           <% if @deep_well.log.attached? %>
             <%= link_to @deep_well.log.filename, @deep_well.log, html_options = { target: "_blank"} if @deep_well.log.attached? %>
           <% else %>
-            <i> File unavailable </i>
+            <i> No file available </i>
           <% end %>
         </td>
         <td>
@@ -129,7 +133,7 @@
           <% if @deep_well.waterPermit.attached? %>
             <%= link_to @deep_well.waterPermit.filename, @deep_well.waterPermit, html_options = { target: "_blank"} if @deep_well.waterPermit.attached? %>
           <% else %>
-            <i> File unavailable </i>
+            <i> No file available </i>
           <% end %>
         </td>
         <td>
@@ -161,7 +165,7 @@
     <tbody>
         <% if !@deep_well.utviFile.attached? %>
           <tr>
-            <td> <i> File unavailable </i></td>
+            <td> <i> No file available </i></td>
             <td> - </td>
           </tr>
         <% else %>
@@ -189,7 +193,7 @@
     <tbody>
         <% if !@deep_well.asbuilt.attached? %>
           <tr>
-            <td> <i> File unavailable </i></td>
+            <td> <i> No file available </i></td>
             <td> - </td>
           </tr>
         <% else %>
@@ -215,7 +219,7 @@
     <tbody>
         <% if !@deep_well.design.attached? %>
           <tr>
-            <td> <i> File unavailable </i> </td>
+            <td> <i> No file available </i> </td>
             <td> - </td>
           </tr>
         <% else %>
