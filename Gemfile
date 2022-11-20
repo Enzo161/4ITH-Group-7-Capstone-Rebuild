@@ -64,7 +64,7 @@ gem 'pg', '~> 1.4', '>= 1.4.4'
 gem 'aws-sdk-s3'
 gem 'pagy', '~> 5.10', '>= 5.10.1'
 gem 'faker'
-gem 'postgresql-backup', '0.0.6'
+# gem 'postgresql-backup', '0.0.6'
 
 #to export system audit logs in PDF
 gem 'wicked_pdf', '~> 2.1'
