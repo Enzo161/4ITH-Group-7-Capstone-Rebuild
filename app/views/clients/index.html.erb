@@ -12,11 +12,11 @@
             <%= search_form_for @q, url: island_clients_path(params[:island_id]) do |f| %>
             <div class="row">
                 <div class="col">
-                    <%= f.label :client_name_cont%>:
+                    <%= f.label "Client Name"%>
                     <%= f.search_field :client_name_cont, class:"form-control me-2", placeholder:"Search Client"%>
                 </div>
                 <div class="col">
-                    <%= f.label "DeepWell Name Contains:"%>
+                    <%= f.label "Deep Well Name"%>
                     <%= f.text_field :deep_wells_deep_well_name_cont, :class => "form-control", placeholder:"Search Deepwell" %>
                     <div style="float: right; margin-top: 10px; margin-bottom: 20px ;">
                         <%= f.submit "Search", class:"btn btn-outline-primary text-center" %>
