@@ -16,13 +16,13 @@
                     <div style="margin-top: 30px;">
                         <img class=" rounded mx-auto d-block" src="<%= asset_path( 'logo.png' ) %>" alt="Card image cap" width="auto" height="100px" margin-top="20px">
                     </div>
-                    <br />
-                    <br />
+                    <br>
+                    <br>
                     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
                     <div class="field form-group" style="margin:auto; width: 90%">
                         <%= f.text_field :email, class:"form-control", placeholder:"Email", autofocus: true, autocomplete: "email", required: true%>
                     </div>
-                    <br />
+                    <br>
                     <div class="field form-group " style="margin:auto; width: 90%">
                         <%= f.password_field :password, class:"form-control", placeholder:"Password", autocomplete: "current-password", required: true %>
                     </div>
