@@ -52,7 +52,7 @@
     </table>
     <br>
     <div class="d-flex justify-content-between">
-        <% if DeepWell.count > 10 && @f.count > 10 %>
+        <% if @current_client_deep_wells.count > 10 && @f.count > 10 %>
         <%== pagy_bootstrap_nav(@pagy) %>
         <% end %>
         <div style="float:end; padding-bottom: 10px;">
