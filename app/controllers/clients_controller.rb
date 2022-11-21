@@ -8,7 +8,7 @@ class ClientsController < ApplicationController
     @q = @island.clients.ransack(params[:q])
     @f = @q.result(distinct: true).includes(:island, :deep_wells)
     @pagy, @clients = pagy(@q.result.includes(:island, :deep_wells))
-    # @clients = @island.clients
+    @current_island_clients = @island.clients
     # @clients = Client.all
   end
 

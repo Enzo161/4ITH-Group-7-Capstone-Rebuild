@@ -8,6 +8,7 @@ class DeepWellsController < ApplicationController
     @q = @client.deep_wells.ransack(params[:q])
     @f = @q.result(distinct: true).includes(:client)
     @pagy, @deep_wells = pagy(@q.result(distinct: true).includes(:client))
+    @current_client_deep_wells = @client.deep_wells
     # @deep_wells = DeepWell.all
   end 
 

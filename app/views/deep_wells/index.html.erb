@@ -1,62 +1,65 @@
 <div class="container">
-  <h1><%= @client.client_name%> Deep Wells</h1>
-
-  <!-- Search Form Start -->
-  <div>
-    <%= search_form_for @q, url: client_deep_wells_path(params[:client_id]) do |f| %>
-    <div class="row">
-      <div class="col">
-        <%= f.label "Deepwell name"%>
-        <%= f.search_field :deep_well_name_cont, class:"form-control me-2", placeholder:"Search Deepwell" %>
-      </div>
-      <div class="col">
-        <br>
-        <%= f.submit "Search", class:"btn btn-outline-primary text-center" %>
-        <%= link_to "Reset Search", request.path, class:"btn btn-light text-center float-left" %>
-      </div>
-      <div class="col">
-        
-      </div>
-      
+    <h1>
+        <%= @client.client_name%> Deep Wells</h1>
+    <!-- Search Form Start -->
+    <div>
+        <%= search_form_for @q, url: client_deep_wells_path(params[:client_id]) do |f| %>
+        <div class="row">
+            <div class="col">
+                <%= f.label "Deepwell name"%>
+                <%= f.search_field :deep_well_name_cont, class:"form-control me-2", placeholder:"Search Deepwell" %>
+            </div>
+            <div class="col">
+                <br>
+                <%= f.submit "Search", class:"btn btn-outline-primary text-center" %>
+                <% if @current_client_deep_wells.count > @deep_wells.count %>
+                <%= link_to "Reset Search", request.path, class:"btn btn-outline-secondary" %>
+                <br><br>
+                <% end %>
+            </div>
+            <div class="col">
+            </div>
+        </div>
+        <% end %>
     </div>
-    <% end %>
-  </div>
-  <!-- Search Form End -->
-
-
+    <!-- Search Form End -->
     <br>
-  
     <table class="table table-hover table-bordered ">
-    <thead>
-      <tr>
-        <th style="width: 60%"><%= sort_link(@q, :deep_well_name, "Deep Well Name", default_order: :asc)%></th>
-        <th style="width: auto;">Edit</th>
-        <th style="width: auto;">Delete</th>
-
-      </tr>
-    </thead>
-    <tbody>
-      <% @deep_wells.each do |deep_well| %>
-        <tr>
-          <td><%= link_to deep_well.deep_well_name, [@client, deep_well] %></td>
-          <td><%= link_to 'Edit', edit_client_deep_well_path(@client, deep_well) %></td>
-          <td><%= link_to 'Delete', [@client, deep_well], method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-
-  <br>
+        <thead>
+            <tr>
+                <th style="width: 60%">
+                    <%= sort_link(@q, :deep_well_name, "Deep Well Name", default_order: :asc)%>
+                </th>
+                <th style="width: auto;">Edit</th>
+                <th style="width: auto;">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @deep_wells.each do |deep_well| %>
+            <tr>
+                <td>
+                    <%= link_to deep_well.deep_well_name, [@client, deep_well] %>
+                </td>
+                <td>
+                    <%= link_to 'Edit', edit_client_deep_well_path(@client, deep_well) %>
+                </td>
+                <td>
+                    <%= link_to 'Delete', [@client, deep_well], method: :delete, data: { confirm: 'Are you sure?' } %>
+                </td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+    <br>
     <div class="d-flex justify-content-between">
-      <% if DeepWell.count > 10 && @f.count > 10 %>   
+        <% if DeepWell.count > 10 && @f.count > 10 %>
         <%== pagy_bootstrap_nav(@pagy) %>
-      <% end %>
-
-      <div style="float:end; padding-bottom: 10px;">
-        <%= link_to 'New Deep Well', new_client_deep_well_path, class:"btn btn-outline-primary" %>
-         <%= link_to 'Back', :back, class:"btn btn-light"%> 
-        <!--&nbsp;<% link_to 'Back', island_clients_path(@client), class:"btn btn-light"%>-->&nbsp;
-      </div>
+        <% end %>
+        <div style="float:end; padding-bottom: 10px;">
+            <%= link_to 'New Deep Well', new_client_deep_well_path, class:"btn btn-outline-primary" %>
+            <%= link_to 'Back', :back, class:"btn btn-light"%>
+            <!--&nbsp;<% link_to 'Back', island_clients_path(@client), class:"btn btn-light"%>-->&nbsp;
+        </div>
     </div>
-  </div>
-</div> 
+</div>
+</div>
