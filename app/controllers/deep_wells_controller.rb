@@ -10,6 +10,8 @@ class DeepWellsController < ApplicationController
     @pagy, @deep_wells = pagy(@q.result(distinct: true).includes(:client))
     @current_client_deep_wells = @client.deep_wells
     # @deep_wells = DeepWell.all
+    @islandd = Island.find_by(id: @client.island_id)
+    byebug
   end 
 
   # To delete log attachment
@@ -114,8 +116,6 @@ class DeepWellsController < ApplicationController
   private
     def set_client
       @client = Client.find(params[:client_id])
-      byebug
-      @islandd = Island.find_by(id: @client.island_id)
     end
       
 
