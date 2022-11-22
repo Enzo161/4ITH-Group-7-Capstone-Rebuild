@@ -1,6 +1,6 @@
 class DeepWellsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_client, only: %i[ index show edit update ]
+  before_action :set_client, only: %i[ index show edit update new create ]
   before_action :set_deep_well, only: %i[ show edit update destroy ]
 
   # GET /deep_wells or /deep_wells.json
