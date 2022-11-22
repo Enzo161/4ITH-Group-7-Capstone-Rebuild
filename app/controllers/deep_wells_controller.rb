@@ -114,7 +114,10 @@ class DeepWellsController < ApplicationController
   private
     def set_client
       @client = Client.find(params[:client_id])
+      byebug
+      @islandd = Island.find_by(id: @client.island_id)
     end
+      
 
     # Use callbacks to share common setup or constraints between actions.
     def set_deep_well
@@ -124,7 +127,6 @@ class DeepWellsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def deep_well_params
-      params.require(:deep_well).permit(:log, :waterPermit, :deep_well_name, :client_id, :dateGranted, :clientName, :wellLocation, :wellCoodinates, 
-        :waterPermitNo, :contractor, :depthTotal, :dateofUTVI, :reason, :remarks, :limit, :driller_name, :dateConstructed, asbuilt: [], design: [], utviFile: [])
+      params.require(:deep_well).permit(:log, :waterPermit, :deep_well_name, :client_id, :dateGranted, :clientName, :wellLocation, :wellCoodinates, :waterPermitNo, :contractor, :depthTotal, :dateofUTVI, :reason, :remarks, :limit, :driller_name, :dateConstructed, asbuilt: [], design: [], utviFile: [])
     end
 end
