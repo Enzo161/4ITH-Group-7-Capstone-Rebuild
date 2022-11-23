@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: %i[ show edit update destroy ]
   before_action :authenticate_user!
   before_action do
-    redirect_to root_path unless current_user && current_user.admin
+    redirect_to root_path unless current_user && current_user.role == "admin" || current_user.role == "super admin"
   end
 
   def resend_invitation
@@ -18,9 +18,25 @@ class UsersController < ApplicationController
   # GET /users or /users.json
   def index
     #search
-    @q = User.ransack(params[:q])
-    @users = @q.result(distinct: true)
-    #@users = User.all //original
+    if current_user.role == "super admin"
+      @q = User.ransack(params[:q])
+      @users = @q.result(distinct: true)
+    elsif current_user.role == "admin"
+      @q = User.where.not(role: "super admin").ransack(params[:q]) #&& User.where(role: "admin").ransack(params[:q])
+      @users = @q.result(distinct: true)
+    end
+  end
+
+  def promote
+    @user = User.find(params[:id])
+    @user.update(role: "admin")
+    redirect_to users_path
+  end
+
+  def demote
+    @user = User.find_by(:id=>params[:id])
+    @user.update(role: "user")
+    redirect_to users_path
   end
 
   def destroy
