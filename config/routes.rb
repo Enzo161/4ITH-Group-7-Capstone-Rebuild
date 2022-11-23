@@ -6,8 +6,8 @@ Rails.application.routes.draw do
   resources :users do
     member do
       patch :resend_invitation
-      patch :promote
-      patch :demote
+      post :promote
+      post :demote
     end
   end
   resource :two_factor_settings, except: [:index, :show]

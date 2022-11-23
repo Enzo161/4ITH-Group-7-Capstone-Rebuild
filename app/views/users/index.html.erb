@@ -104,9 +104,9 @@
                 <% if current_user.role == "super admin" %>
                 <td>
                     <% if user.role == "user" %>
-                    <%= button_to "Promote to admin", promote_user_path(user), class:"btn btn-outline-primary", style:"width: 100%", method: :patch %>
+                    <%= button_to "Promote to admin", promote_user_path(user), class:"btn btn-outline-primary", style:"width: 100%", method: :post %>
                     <% elsif user.role == "admin" %>
-                    <%= button_to "Demote to user", demote_user_path(user), class:"btn btn-outline-secondary", style:"width: 100%", method: :patch %>
+                    <%= button_to "Demote to user", demote_user_path(user), class:"btn btn-outline-secondary", style:"width: 100%", method: :post %>
                     <% elsif current_user.email == user.email %>
                     <div class="text-center">
                         <p style="color:green">Current Account</p>
