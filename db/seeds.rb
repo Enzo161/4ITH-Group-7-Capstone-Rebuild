@@ -7,26 +7,24 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-DeepWell.delete_all
-Client.delete_all
-Island.delete_all
-AuditLog.delete_all
-Island.create!(island_name: "Luzon")
-Island.create!(island_name: "Visayas")
-Island.create!(island_name: "Mindanao")
-
-
-# # User.create!(first_name: "Lorenzo", last_name: "Plantilla", email: "lorenzoplantilla@gmail.com", password: "Kahitano16!", role: "super admin")
-# # User.create!(first_name: "Sophia Nicole", last_name: "Plantilla", email: "sophianicoleloste@gmail.com", password: "Kahitano16!", role: "admin")
-# # User.create!(first_name: "Test", last_name: "Account 1", email: "1testaccount@gmail.com", password: "Kahitano16!", role: "user")
-# # User.create!(first_name: "Test", last_name: "Account 2", email: "2testaccount@gmail.com", password: "Kahitano16!", role: "user")
-# # User.create!(first_name: "Test", last_name: "Account 3", email: "3testaccount@gmail.com", password: "Kahitano16!", role: "user")
-# # User.create!(first_name: "Test", last_name: "Account 4", email: "4testaccount@gmail.com", password: "Kahitano16!", role: "user")
-# # User.create!(first_name: "Test", last_name: "Account 5", email: "5testaccount@gmail.com", password: "Kahitano16!", role: "user")
-# # User.create!(first_name: "Test", last_name: "Account 6", email: "6testaccount@gmail.com", password: "Kahitano16!", role: "user")
-# # User.create!(first_name: "Test", last_name: "Account 7", email: "7testaccount@gmail.com", password: "Kahitano16!", role: "user")
-# # User.create!(first_name: "Test", last_name: "Account 8", email: "8testaccount@gmail.com", password: "Kahitano16!", role: "user")
-# # User.create!(first_name: "Test", last_name: "Account 9", email: "9testaccount@gmail.com", password: "Kahitano16!", role: "user")
+# DeepWell.delete_all
+# Client.delete_all
+# Island.delete_all
+# AuditLog.delete_all
+# Island.create!(island_name: "Luzon")
+# Island.create!(island_name: "Visayas")
+# Island.create!(island_name: "Mindanao")
+# User.create!(first_name: "Lorenzo", last_name: "Plantilla", email: "lorenzoplantilla@gmail.com", password: "Kahitano16!", role: "super admin")
+# User.create!(first_name: "Sophia Nicole", last_name: "Plantilla", email: "sophianicoleloste@gmail.com", password: "Kahitano16!", role: "admin")
+# User.create!(first_name: "Test", last_name: "Account 1", email: "1testaccount@gmail.com", password: "Kahitano16!", role: "user")
+# User.create!(first_name: "Test", last_name: "Account 2", email: "2testaccount@gmail.com", password: "Kahitano16!", role: "user")
+# User.create!(first_name: "Test", last_name: "Account 3", email: "3testaccount@gmail.com", password: "Kahitano16!", role: "user")
+# User.create!(first_name: "Test", last_name: "Account 4", email: "4testaccount@gmail.com", password: "Kahitano16!", role: "user")
+# User.create!(first_name: "Test", last_name: "Account 5", email: "5testaccount@gmail.com", password: "Kahitano16!", role: "user")
+# User.create!(first_name: "Test", last_name: "Account 6", email: "6testaccount@gmail.com", password: "Kahitano16!", role: "user")
+# User.create!(first_name: "Test", last_name: "Account 7", email: "7testaccount@gmail.com", password: "Kahitano16!", role: "user")
+# User.create!(first_name: "Test", last_name: "Account 8", email: "8testaccount@gmail.com", password: "Kahitano16!", role: "user")
+# User.create!(first_name: "Test", last_name: "Account 9", email: "9testaccount@gmail.com", password: "Kahitano16!", role: "user")
 # User.create!(first_name: "Test", last_name: "Account 10", email: "10testaccount@gmail.com", password: "KdP36O0Tc@XK", role: "admin")
 # User.create!(first_name: "Test", last_name: "Account 11", email: "11testaccount@gmail.com", password: "nGxa09tO3#6m", role: "admin")
 # User.create!(first_name: "Test", last_name: "Account 12", email: "12testaccount@gmail.com", password: "105A4hkR*gse", role: "admin")
@@ -46,3 +44,6 @@ Island.create!(island_name: "Mindanao")
 # User.create!(first_name: "Test", last_name: "Account 26", email: "26testaccount@gmail.com", password: "98$Gx1ryYEf&", role: "super admin")
 # User.create!(first_name: "Test", last_name: "Account 27", email: "27testaccount@gmail.com", password: "mV3u6aJ@889T", role: "super admin")
 # User.create!(first_name: "Test", last_name: "Account 28", email: "28testaccount@gmail.com", password: "V4o4W2^34m5^", role: "super admin")
+User.create!(first_name: "Panel", last_name: "One", email: "panel_one@gmail.com", password: "Password123!", role: "admin")
+User.create!(first_name: "Panel", last_name: "Two", email: "panel_two@gmail.com", password: "Password123!", role: "admin")
+User.create!(first_name: "Panel", last_name: "Three", email: "panel_three@gmail.com", password: "Password123!", role: "admin")
