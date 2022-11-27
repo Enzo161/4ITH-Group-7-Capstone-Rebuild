@@ -68,7 +68,7 @@ class DeepWellsController < ApplicationController
 
     respond_to do |format|
       if @deep_well.save
-        AuditLog.new(event: "create", modifier: current_user.email, table_name: "Deep Well", object_name: @client.client_name, date_created: Date.today).save
+        AuditLog.new(event: "create", modifier: current_user.email, table_name: "Deep Well", object_name: @deep_well.deep_well_name, date_created: Date.today).save
         if AuditLog.count > 10000
           AuditLog.first.delete
         end
@@ -85,7 +85,7 @@ class DeepWellsController < ApplicationController
   def update
     respond_to do |format| 
       if @deep_well.update(deep_well_params)
-        AuditLog.new(event: "update", modifier: current_user.email, table_name: "Deep Well", object_name: @client.client_name, date_created: Date.today).save
+        AuditLog.new(event: "update", modifier: current_user.email, table_name: "Deep Well", object_name: @deep_well.deep_well_name, date_created: Date.today).save
         if AuditLog.count > 10000
           AuditLog.first.delete
         end
@@ -100,7 +100,7 @@ class DeepWellsController < ApplicationController
 
   # DELETE /deep_wells/1 or /deep_wells/1.json
   def destroy
-  AuditLog.new(event: "delete", modifier: current_user.email, table_name: "Deep Well", object_name: @client.client_name, date_created: Date.today).save
+  AuditLog.new(event: "delete", modifier: current_user.email, table_name: "Deep Well", object_name: @deep_well.deep_well_name, date_created: Date.today).save
   if AuditLog.count > 10000
     AuditLog.first.delete
   end
