@@ -2,7 +2,7 @@
     <h1>Islands</h1>
     <!-- Search Forms Start -->
     <p>
-        <a class="btn btn-outline-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+        <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
             Search and Filter
         </a>
     </p>
@@ -11,15 +11,16 @@
             <%= search_form_for @q do |f| %>
             <div class="row">
                 <div class="col">
-                    <%= f.label "Island Name" %>
+                    <b>
+                        <%= f.label "Island Name:" %></b>
                     <%= f.text_field :island_name_cont, :class => "form-control" , placeholder:"Search Island" %>
                 </div>
                 <div class="col">
-                    <%= f.label "Client Name" %>
+                    <b>
+                        <%= f.label "Client Name:" %></b>
                     <%= f.text_field :clients_client_name_cont, :class => "form-control", placeholder:"Search Client" %>
-                    <div style="float: right; margin-top: 10px; margin-bottom: 20px ;">
-                        <%= f.submit "Search", class:"btn 
-                        btn-outline-primary text-center float-left" %>
+                    <div style=" float: right; margin-top: 10px; margin-bottom: 20px ;">
+                        <%= f.submit "Search", class:"btn btn-outline-primary text-center float-right" %>
                     </div>
                 </div>
             </div>
@@ -27,7 +28,9 @@
         </div>
     </div>
     <% if Island.count > @islands.count %>
-    <%= link_to "Reset Search", request.path, class:"btn btn-outline-secondary" %>
+    <div>
+        <%= link_to "Reset Search", request.path, class:"btn btn-outline-secondary" %>
+    </div>
     <br><br>
     <% end %>
     <!-- Search Forms End -->
