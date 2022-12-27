@@ -44,7 +44,7 @@
                     <%= link_to 'Edit', edit_client_deep_well_path(@client, deep_well) %>
                 </td>
                 <td>
-                    <%= link_to 'Delete', [@client, deep_well], method: :delete, data: { confirm: 'Are you sure?' } %>
+                    <%= link_to 'Delete', [@client, deep_well], method: :delete, data: { confirm: 'Are you sure?' }, :class=>"link-danger" %> 
                 </td>
             </tr>
             <% end %>
