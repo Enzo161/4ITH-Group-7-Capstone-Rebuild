@@ -20,19 +20,17 @@
                         <%= f.label "Client Name:" %></b>
                     <%= f.text_field :clients_client_name_cont, :class => "form-control", placeholder:"Search Client" %>
                     <div style=" float: right; margin-top: 10px; margin-bottom: 20px ;">
-                        <%= f.submit "Search", class:"btn btn-outline-primary text-center float-right" %>
+                        <%= f.submit "Search", class:"btn btn-light text-center float-right" %>
+                        <% if Island.count > @islands.count %>
+                            <%= link_to "Reset Search", request.path, class:"btn btn-secondary" %>
+                        <br><br>
+                        <% end %>
                     </div>
                 </div>
             </div>
             <% end %>
         </div>
     </div>
-    <% if Island.count > @islands.count %>
-    <div>
-        <%= link_to "Reset Search", request.path, class:"btn btn-outline-secondary" %>
-    </div>
-    <br><br>
-    <% end %>
     <!-- Search Forms End -->
     <!-- Island Table Start -->
     <table class="table table-hover table-bordered ">
