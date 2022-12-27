@@ -1,6 +1,6 @@
 <%= form_with(model: [@client, deep_well], local: true) do |form| %>
   <% if deep_well.errors.any? %>
-    <div id="error_explanation">
+    <div class="alert alert-warning" id="error_explanation">
       <h2><%= pluralize(deep_well.errors.count, "error") %> prohibited this deep_well from being saved:</h2>
       <ul>
         <% deep_well.errors.full_messages.each do |message| %>
@@ -276,7 +276,7 @@
       <%= form.file_field :design, class:"form-control", multiple: true %>
   <!-- Deepwell Design Proposal End-->
   <div class="actions" style="margin-left: 10px; float: right;"> <br>
-    <%= form.submit :Submit, class: 'btn btn-outline-primary'%>
+    <%= form.submit :Submit, class: 'btn btn-primary'%>
   </div>
     
     <% end %>
