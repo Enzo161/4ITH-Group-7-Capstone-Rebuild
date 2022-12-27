@@ -38,8 +38,8 @@
                     <%= sort_link(@q, :client_name, "Client Name", default_order: :asc)%>
                 </th>
                 <th>Number of Deep Wells</th>
-                <th style="width: auto;">Edit</th>
-                <th style="width: auto;">Delete</th>
+                <th style="width: auto;">Edit Client</th>
+                <th style="width: auto;">Delete Client</th>
             </tr>
         </thead>
         <tbody>
@@ -55,7 +55,7 @@
                     <%= link_to 'Edit', edit_island_client_path(@island, client) %>
                 </td>
                 <td>
-                    <%= link_to 'Delete', [@island, client], method: :delete, data: { confirm: 'Are you sure?' } %>
+                    <%= link_to 'Delete', [@island, client], method: :delete, data: { confirm: 'Are you sure?' }, :class=>"link-danger" %>
                 </td>
             </tr>
             <% end %>
