@@ -11,9 +11,9 @@
 # Client.delete_all
 # Island.delete_all
 # AuditLog.delete_all
-# Island.create!(island_name: "Luzon")
-# Island.create!(island_name: "Visayas")
-# Island.create!(island_name: "Mindanao")
+Island.create!(island_name: "Luzon")
+Island.create!(island_name: "Visayas")
+Island.create!(island_name: "Mindanao")
 # User.create!(first_name: "Lorenzo", last_name: "Plantilla", email: "lorenzoplantilla@gmail.com", password: "Kahitano16!", role: "super admin")
 # User.create!(first_name: "Sophia Nicole", last_name: "Plantilla", email: "sophianicoleloste@gmail.com", password: "Kahitano16!", role: "admin")
 # User.create!(first_name: "Test", last_name: "Account 1", email: "1testaccount@gmail.com", password: "Kahitano16!", role: "user")
