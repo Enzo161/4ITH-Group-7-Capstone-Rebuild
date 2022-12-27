@@ -1,32 +1,40 @@
 <div class="container">
     <h1>User Management</h1>
     <!-- Search Start -->
-    <div>
-        <%= search_form_for @q do |f|%>
-        <div class="row">
-            <div class="col">
-                <%= f.label "First Name" %>:
-                <%= f.search_field :first_name_cont , placeholder: "Search First Name", class:'form-control' %>
-                <div style="float: left ; margin-top: 10px; margin-bottom: 20px ;">
-                    <%= link_to "User Invite", new_user_invitation_path, class:" btn btn-outline-primary float-end" %>
+    <p>
+        <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+            Search and Filter
+        </a>
+        <a>
+            <%= link_to "User Invite", new_user_invitation_path, class:" btn btn-danger float-end" %>
+        </a>
+    </p>
+    <div class="collapse" id="collapseExample">
+        <div class="card card-body" style="margin-bottom: 20px;">
+            <%= search_form_for @q do |f|%>
+            <div class="row">
+                <div class="col">
+                    <b>
+                        <%= f.label "First Name" %>:</b>
+                    <%= f.search_field :first_name_cont , placeholder: "Search First Name", class:'form-control' %>
+                </div>
+                <div class="col">
+                    <b>
+                        <%= f.label "Last Name" %>:</b>
+                    <%= f.search_field :last_name_cont , placeholder: "Search Last Name", class:'form-control' %>
+                </div>
+                <div class="col">
+                    <b>
+                        <%= f.label :email_cont %>:</b>
+                    <%= f.search_field :email_cont , placeholder: "Search Email", class:'form-control' %>
+                    <div style="float: right; margin-top: 10px; margin-bottom: 20px ;">
+                        <%= f.submit "Search", class: 'btn btn-light ' %>
+                        <%= link_to "Reset Search", request.path, class:"btn btn-secondary " %>
+                    </div>
                 </div>
             </div>
-            <div class="col">
-                <%= f.label "Last Name" %>:
-                <%= f.search_field :last_name_cont , placeholder: "Search First Name", class:'form-control' %>
-            </div>
-            <div class="col">
-                <%= f.label :email_cont %>:
-                <%= f.search_field :email_cont , placeholder: "Search Email", class:'form-control' %>
-                <div style="float: right; margin-top: 10px; margin-bottom: 20px ;">
-                    <%= f.submit "Search", class: 'btn btn-outline-primary ' %>
-                    <%= link_to "Reset Search", request.path, class:"btn btn-light " %>
-                </div>
-            </div>
+            <% end %>
         </div>
-        <div>
-        </div>
-        <% end %>
     </div>
     <!-- Search End -->
     <table class="table table-hover table-bordered">
@@ -42,9 +50,9 @@
                     <%= sort_link(@q, :role, "Role", default_order: :asc)%>
                 </th>
                 <th>Account Status</th>
-                <th>Delete</th>
+                <th>Delete Account</th>
                 <% if current_user.role == "super admin" %>
-                <th>Change Role</th>
+                <th>Change Account Role</th>
                 <% end %>
             </tr>
         </thead>
@@ -79,23 +87,24 @@
                 </td>
                 <td>
                     <% if user.created_by_invite? && user.invitation_accepted? == false %>
-                    <%= button_to 'Waiting for activation, Resend invitation?', resend_invitation_user_path(user), method: :patch, class:"btn btn-outline-warning text-wrap", style:"width: auto" %>
+                    <%= link_to 'Waiting for activation, resend invitation?', resend_invitation_user_path(user), method: :patch, class:"fw-bold", style:"width: auto" %>
                     <% else %>
-                    <p style="color:green">Account is active</p>
+                    <p style="color:green"><b>Active</b></p>
                     <% end %>
                 </td>
                 <td>
                     <div class="position-relative">
                         <% if current_user.role == "super admin" && current_user.email != user.email %>
-                        <%= button_to 'delete user', user, class:"btn btn-outline-danger", style:"width: 100%", method: :delete, data: { confirm: 'Are you sure?' } %>
+                        <%= link_to 'Delete', user, class:"link-danger text-center", style:"width: 100%", method: :delete, data: { confirm: 'Are you sure?' } %>
                         <% elsif current_user.email != user.email && user.role != "admin"%>
-                        <%= button_to 'delete user', user, class:"btn btn-outline-danger", style:"width: 100%", method: :delete, data: { confirm: 'Are you sure?' } %>
+                        <%= link_to 'Delete', user, class:"link-danger text-center ", style:"width: 100%", method: :delete, data: { confirm: 'Are you sure?' } %>
                         <% elsif current_user.email == user.email %>
-                        <div class="text-center">
-                            <p style="color:green">Current Account</p>
+                        <div class="">
+                            <b>
+                                <p style="color:green">Current Account</p><b>
                         </div>
                         <% else %>
-                        <div class="text-center">
+                        <div class="">
                             <p style="color:orange">Cannot be Deleted</p>
                         </div>
                         <% end %>
@@ -104,13 +113,13 @@
                 <% if current_user.role == "super admin" %>
                 <td>
                     <% if user.role == "user" %>
-                    <%= button_to "Promote to admin", promote_user_path(user), class:"btn btn-outline-primary", style:"width: 100%", method: :post %>
+                        <%= link_to "Promote to Admin", promote_user_path(user), class:"fw-bold", style:"width: 100%", method: :post %>
                     <% elsif user.role == "admin" %>
-                    <%= button_to "Demote to user", demote_user_path(user), class:"btn btn-outline-secondary", style:"width: 100%", method: :post %>
+                        <%= link_to "Demote to User", demote_user_path(user), class:"link-secondary fw-bold", style:"width: 100%", method: :post %>
                     <% elsif current_user.email == user.email %>
-                    <div class="text-center">
-                        <p style="color:green">Current Account</p>
-                    </div>
+                        <div class="">
+                            <b><p style="color:green">Current Account</p></b>
+                        </div>
                     <% end %>
                 </td>
                 <% end %>
