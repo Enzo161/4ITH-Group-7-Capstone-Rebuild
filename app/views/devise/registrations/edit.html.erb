@@ -44,7 +44,7 @@
                 </div>
                 <br>
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                    <%= f.submit "Update", class:'btn btn-outline-primary .btn-block' %>
+                    <%= f.submit "Update", class:'btn btn-primary .btn-block' %>
                     <%= link_to "Back", :back, class:'btn btn-light .btn-block' %>
                 </div>
                 <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -63,12 +63,12 @@
             <% if current_user.otp_required_for_login %>
             <p class="card-text">Two factor authentication is <strong>enabled</strong>.</p>
             <p>
-                <%= link_to('Disable Two Factor Authentication', two_factor_settings_path, class: 'btn btn-outline-danger', method: :delete, data: {confirm: 'Are you sure you want to disable two factor authentication?'}) %>
+                <%= link_to('Disable Two Factor Authentication', two_factor_settings_path, class: 'btn btn-danger', method: :delete, data: {confirm: 'Are you sure you want to disable two factor authentication?'}) %>
             </p>
             <% else %>
             <p>Two factor authentication is <strong>disabled</strong>.</p>
             <p>
-                <%= link_to('Enable Two Factor Authentication', new_two_factor_settings_path, class: 'btn btn-outline-success') %>
+                <%= link_to('Enable Two Factor Authentication', new_two_factor_settings_path, class: 'btn btn-success') %>
             </p>
             <% end %>
         </div>
