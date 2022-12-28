@@ -7,4 +7,5 @@ class DeepWell < ApplicationRecord
   has_many_attached :design
   has_many_attached :utviFile
   validates_presence_of :deep_well_name
+
 end
