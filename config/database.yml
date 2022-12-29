@@ -36,8 +36,14 @@ development:
   #schema_search_path: myapp,sharedapp,public
 
 production:
-  <<: *default
-  database: "bahaytubig"
+  adapter: postgresql
+  encoding: unicode
+  database: bahaytubig
+  pool: 5
+  username: postgres
+  password: Kahitano16
+  timeout: 5000
+ 
  
   # Minimum log levels, in increasing order:
   #   debug5, debug4, debug3, debug2, debug1,
