@@ -68,7 +68,8 @@ ActiveRecord::Schema.define(version: 2022_12_27_121127) do
     t.text "limit"
     t.text "driller_name"
     t.text "remarks"
-    t.string "units"
+    t.string "depthTotalUnits"
+    t.string "waterLimitUnits"
     t.index ["client_id"], name: "index_deep_wells_on_client_id"
   end
 

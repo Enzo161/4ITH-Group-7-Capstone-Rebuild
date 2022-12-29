@@ -47,6 +47,7 @@
             <p>
               <strong> WATER LIMIT:</strong>
               <%= @deep_well.limit %>
+              <%= @deep_well.waterLimitUnits%>
             </p>
           </td>         
         </tr>
@@ -78,7 +79,7 @@
           <td>
             <strong>TOTAL DEPTH:</strong>
             <%= @deep_well.depthTotal%>
-            <%= @deep_well.units%>
+            <%= @deep_well.depthTotalUnits%>
           </td>
         </tr>
         <tr>
