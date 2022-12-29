@@ -34,6 +34,10 @@ development:
  
   # Schema search path. The server defaults to $user,public
   #schema_search_path: myapp,sharedapp,public
+
+production:
+  <<: *default
+  database: "bahaytubig"
  
   # Minimum log levels, in increasing order:
   #   debug5, debug4, debug3, debug2, debug1,
