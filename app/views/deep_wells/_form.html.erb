@@ -1,284 +1,319 @@
 <%= form_with(model: [@client, deep_well], local: true) do |form| %>
-  <% if deep_well.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(deep_well.errors.count, "error") %> prohibited this deep_well from being saved:</h2>
-      <ul>
+<% if deep_well.errors.any? %>
+<div class="alert alert-warning" id="error_explanation">
+    <h2>
+        <%= pluralize(deep_well.errors.count, "error") %> prohibited this deep_well from being saved:</h2>
+    <ul>
         <% deep_well.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
+        <li>
+            <%= message %>
+        </li>
         <% end %>
-      </ul>
-    </div> 
-  <% end %>   
-
+    </ul>
+</div>
+<% end %>
 <!--Form Start-->
-  <div class="row" style="text-transform: uppercase;">
+<div class="row" style="text-transform: uppercase;">
     <!--Column 1-->
     <div class="col">
-      <div class="field" style="">
-        <strong><%= form.label "Deep Well Name:" %></strong>
-        <%= form.text_field :deep_well_name, class:"form-control",autofocus:true %>
-      </div>
-      <div class="field">
-        <strong><%= form.label "Client Name:" %> </strong>
-        <%= form.text_field :client_name, placeholder: @client.client_name, class:"form-control", :readonly=> true %>
-      </div>
-      <div class="field">
-        <strong><%= form.label "Well Location:" %></strong>
-        <%= form.text_field :wellLocation, class:"form-control" %>
-      </div>
-      <div class="field">
-        <strong><%= form.label "Name of Driller:" %></strong>
-        <%= form.text_field :driller_name, class:"form-control" %>
-      </div>
-      <div class="field">
-        <strong><%= form.label "Date Constructed:" %></strong>
-        <%= form.date_field :dateConstructed, class:"form-control" %>
-      </div>
-      <div class="field">
-        <strong><%= form.label "Total Depth:" %></strong>
-        <%= form.text_field :depthTotal, class:"form-control" %>
-      </div>   
-      <div class="field">
-        <strong><%= form.label "Well Coordinates:" %></strong>
-        <%= form.text_field :wellCoodinates, class:"form-control" %>
-      </div>
-
+        <div class="field" style="">
+            <strong>
+                <%= form.label "Deep Well Name:" %></strong>
+            <%= form.text_field :deep_well_name, class:"form-control",autofocus:true %>
+        </div>
+        <div class="field">
+            <strong>
+                <%= form.label "Client Name:" %> </strong>
+            <%= form.text_field :client_name, placeholder: @client.client_name, class:"form-control", :readonly=> true %>
+        </div>
+        <div class="field">
+            <strong>
+                <%= form.label "Well Location:" %></strong>
+            <%= form.text_field :wellLocation, class:"form-control" %>
+        </div>
+        <div class="field">
+            <strong>
+                <%= form.label "Name of Driller:" %></strong>
+            <%= form.text_field :driller_name, class:"form-control" %>
+        </div>
+        <div class="field">
+            <strong>
+                <%= form.label "Date Constructed:" %></strong>
+            <%= form.date_field :dateConstructed, class:"form-control" %>
+        </div>
+        <div class="field">
+            <strong>
+                <%= form.label "Total Depth:" %></strong>
+            <div class="row">
+                <div class="col" style="width: 90%;">
+                    <%= form.text_field :depthTotal, class:"form-control" %>
+                </div>
+                <div class="col">
+                    <%= form.select :depthTotalUnits, options_for_select([['Kilometer', 'km'], ['Meter', 'm'], ['Centimeter', 'cm'],
+                                                  ['Millimeter', 'mm'], ['Yard', 'yd'], ['Foot', 'ft'],
+                                                  ['Inch', 'in']],
+                                                  (@deep_well.depthTotalUnits)), { include_blank: 'Select Unit'}, class: "form-control form-select" %>
+                </div>
+            </div>
+        </div>
+        <div class="field">
+            <strong>
+                <%= form.label "Well Coordinates:" %></strong>
+            <%= form.text_field :wellCoodinates, class:"form-control" %>
+        </div>
     </div>
-
     <!--Column 2-->
     <div class="col">
-      <div class="field">
-        <strong><%= form.label "Water Permit Number:" %></strong>
-        <%= form.text_field :waterPermitNo, class:"form-control" %>
-      </div>
-      <div class="field">
-        <strong><%= form.label "Date Granted:" %></strong>
-        <%= form.date_field :dateGranted, class:"form-control" %>
-      </div>
-       <div class="field">
-        <strong><%= form.label "Water Limit:" %></strong>
-        <%= form.text_field :limit , class:"form-control"%>
-      </div>
-      <div class="field">
-        <strong><%= form.label "Remarks:" %></strong>
-        <%= form.text_area :remarks , class:"form-control input-large", style:";" %>
-      </div>
+        <div class="field">
+            <strong>
+                <%= form.label "Water Permit Number:" %></strong>
+            <%= form.text_field :waterPermitNo, class:"form-control" %>
+        </div>
+        <div class="field">
+            <strong>
+                <%= form.label "Date Granted:" %></strong>
+            <%= form.date_field :dateGranted, class:"form-control" %>
+        </div>
+        <div class="field">
+            <strong>
+                <%= form.label "Water Limit:" %></strong>
+
+            <div class="row">
+                <div class="col" style="width: 90%;">
+                                <%= form.text_field :limit , class:"form-control"%>
+                </div>
+                <div class="col">
+                    <%= form.select :waterLimitUnits, options_for_select([['Kilometer', 'km'], ['Meter', 'm'], ['Centimeter', 'cm'],
+                                                  ['Millimeter', 'mm'], ['Yard', 'yd'], ['Foot', 'ft'],
+                                                  ['Inch', 'in']],
+                                                  (@deep_well.waterLimitUnits)), { include_blank: 'Select Unit'}, class: "form-control form-select" %>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="field">
+            <strong>
+                <%= form.label "Remarks:" %></strong>
+            <%= form.text_area :remarks , class:"form-control input-large", style:";" %>
+        </div>
     </div>
-  </div>
-
+</div>
 <br>
-
-
 <!-- Lithologic File Start-->
 <% if @deep_well.log.attached? %>
-  <table class="table table-bordered ">
+<table class="table table-bordered ">
     <tbody>
-      <tr>
-        <td style="width: 30%">  <strong> Lithologic File </strong> </td>
-        <td style="width: 30%"> <strong> Date Uploaded </strong></td>
-        <td style="width: 30%">  <strong>Delete </strong></td>
-      </tr>
-      <tr>
-        <td style="width: 30%">
-          <% if @deep_well.log.attached? %>
-            <p>
-              <%= link_to @deep_well.log.filename, @deep_well.log, html_options = { target: "_blank"} if @deep_well.log.attached? %>
-            </p>
-          <% else %>
-            <p>
-              <i> File unavailable </i>
-            </p>
-          <% end %>
-        </td>
-        <td style="width: 30%">
-          <% if @deep_well.log.attached? %>
-            <p>
-              <%= @deep_well.log.created_at.to_datetime.strftime("%B %d, %Y at %H:%M:%S") %>
-            </p>
-          <% else %>
-            <p>
-              -
-            </p>
-          <% end %>
-        </td>
-        <td style="width: 30%">
-          <% if @deep_well.log.attached? %>
-            <p>
-              <%= link_to "Remove Attachment", purge_log_attachment_client_deep_well_path(@deep_well, deep_well.log.id), method: :delete, data: { confirm: 'Are you sure?' } %>
-            </p>
-          <% else %>
-            <p>
-              -
-            </p>
-          <% end %>
-        </td>
-      </tr>
+        <tr>
+            <td style="width: 30%"> <strong> Lithologic File </strong> </td>
+            <td style="width: 30%"> <strong> Date Uploaded </strong></td>
+            <td style="width: 30%"> <strong>Delete </strong></td>
+        </tr>
+        <tr>
+            <td style="width: 30%">
+                <% if @deep_well.log.attached? %>
+                <p>
+                    <%= link_to @deep_well.log.filename, @deep_well.log, html_options = { target: "_blank"} if @deep_well.log.attached? %>
+                </p>
+                <% else %>
+                <p>
+                    <i> File unavailable </i>
+                </p>
+                <% end %>
+            </td>
+            <td style="width: 30%">
+                <% if @deep_well.log.attached? %>
+                <p>
+                    <%= @deep_well.log.created_at.to_datetime.strftime("%B %d, %Y at %H:%M:%S") %>
+                </p>
+                <% else %>
+                <p>
+                    -
+                </p>
+                <% end %>
+            </td>
+            <td style="width: 30%">
+                <% if @deep_well.log.attached? %>
+                <p>
+                    <%= link_to "Remove Attachment", purge_log_attachment_client_deep_well_path(@deep_well, deep_well.log.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+                </p>
+                <% else %>
+                <p>
+                    -
+                </p>
+                <% end %>
+            </td>
+        </tr>
     </tbody>
-  </table>
+</table>
 <% else %>
- <strong> <%= form.label "Lithologic Log:" %> </strong> 
-  <%= form.file_field :log, class:"form-control" %> 
-<% end %> 
-  <!-- Lithologic File End-->
-  <br>
-
-  <!--Water Permit File Start-->
-
-  <% if @deep_well.waterPermit.attached? %>
-    <table class="table table-bordered ">
-      <tbody>
-        <tr>
-          <td style="width: 30%"> <strong>Water Permit File </strong> </td>
-          <td style="width: 30%"> <strong>Date Uploaded</strong>  </td>
-          <td style="width: 30%"> <strong> Delete</strong>  </td>
-        </tr>
-        <tr>
-          <td style="width: 30%">
-            <% if @deep_well.waterPermit.attached? %>
-              <p>
-                <%= link_to @deep_well.waterPermit.filename, @deep_well.waterPermit, html_options = { target: "_blank"} if @deep_well.waterPermit.attached? %>
-              </p>
-            <% else %>
-              <p>
-                <i> File unavailable </i>
-              </p>
-            <% end %>
-          </td>
-          <td style="width: 30%">
-            <% if @deep_well.waterPermit.attached? %>
-              <p>
-                <%= @deep_well.waterPermit.created_at.to_datetime.strftime("%B %d, %Y at %H:%M:%S") %>
-              </p>
-            <% else %>
-              <p>
-                -
-              </p>
-            <% end %>
-          </td>
-          <td style="width: 30%">
-            <% if @deep_well.waterPermit.attached? %>
-              <p>
-                <%= link_to "Remove Attachment", purge_waterPermit_attachment_client_deep_well_path(@deep_well, deep_well.waterPermit.id), method: :delete, data: { confirm: 'Are you sure?' } %>
-              </p>
-            <% else %>
-              <p>
-                -
-              </p>
-            <% end %>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  <% else %>
-    <strong> <%= form.label "Water Permit:" %> </strong>
-    <%= form.file_field :waterPermit, class:"form-control" %> 
-  <% end %> 
-
-  <!--Water Permit File End-->
-
-
+<strong>
+    <%= form.label "Lithologic Log:" %> </strong>
+<%= form.file_field :log, class:"form-control" %>
+<% end %>
+<!-- Lithologic File End-->
 <br>
-
-  <!--UTVI File Start-->
-
+<!--Water Permit File Start-->
+<% if @deep_well.waterPermit.attached? %>
+<table class="table table-bordered ">
+    <tbody>
+        <tr>
+            <td style="width: 30%"> <strong>Water Permit File </strong> </td>
+            <td style="width: 30%"> <strong>Date Uploaded</strong> </td>
+            <td style="width: 30%"> <strong> Delete</strong> </td>
+        </tr>
+        <tr>
+            <td style="width: 30%">
+                <% if @deep_well.waterPermit.attached? %>
+                <p>
+                    <%= link_to @deep_well.waterPermit.filename, @deep_well.waterPermit, html_options = { target: "_blank"} if @deep_well.waterPermit.attached? %>
+                </p>
+                <% else %>
+                <p>
+                    <i> File unavailable </i>
+                </p>
+                <% end %>
+            </td>
+            <td style="width: 30%">
+                <% if @deep_well.waterPermit.attached? %>
+                <p>
+                    <%= @deep_well.waterPermit.created_at.to_datetime.strftime("%B %d, %Y at %H:%M:%S") %>
+                </p>
+                <% else %>
+                <p>
+                    -
+                </p>
+                <% end %>
+            </td>
+            <td style="width: 30%">
+                <% if @deep_well.waterPermit.attached? %>
+                <p>
+                    <%= link_to "Remove Attachment", purge_waterPermit_attachment_client_deep_well_path(@deep_well, deep_well.waterPermit.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+                </p>
+                <% else %>
+                <p>
+                    -
+                </p>
+                <% end %>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<% else %>
+<strong>
+    <%= form.label "Water Permit:" %> </strong>
+<%= form.file_field :waterPermit, class:"form-control" %>
+<% end %>
+<!--Water Permit File End-->
+<br>
+<!--UTVI File Start-->
 <table class="table table-hover table-bordered ">
     <thead>
         <tr>
-          <td style="width: 30%">  <strong>UTVI Files</strong> </th>
-          <td style="width: 30%">  <strong>Date Uploaded </strong></th>
-          <td style="width: 30%">  <strong>Delete </strong></th>
+            <td style="width: 30%"> <strong>UTVI Files</strong> </th>
+            <td style="width: 30%"> <strong>Date Uploaded </strong></th>
+            <td style="width: 30%"> <strong>Delete </strong></th>
         </tr>
     </thead>
     <tbody>
-        <% if !@deep_well.utviFile.attached?%>    
-          <tr>
+        <% if !@deep_well.utviFile.attached?%>
+        <tr>
             <td> <i> File unavailable </i></td>
             <td> - </td>
             <td> - </td>
-          </tr>
+        </tr>
         <% else %>
-          <%@deep_well.utviFile.each do |utviFile|%>
-                <td> <%= link_to(utviFile.filename, rails_blob_path(utviFile),  target: '_blank', multiple: true) %></td>
-                <!--< link_to @deep_well.asbuilt, @deep_well.asbuilt, html_options = { target: "_blank"} if @deep_well.asbuilt.attached? %></td>-->
-                <td> <%= utviFile.created_at.to_datetime.strftime("%B %d, %Y at %H:%M:%S") %></td>
-                <td> <%= link_to 'Remove Attachment', purge_utviFile_attachment_client_deep_well_path(@client, utviFile), method: :delete, data: { confirm: 'Are you sure?' } %> </td> 
-              </tr>
-          <% end %>
+        <%@deep_well.utviFile.each do |utviFile|%>
+        <td>
+            <%= link_to(utviFile.filename, rails_blob_path(utviFile),  target: '_blank', multiple: true) %>
+        </td>
+        <!--< link_to @deep_well.asbuilt, @deep_well.asbuilt, html_options = { target: "_blank"} if @deep_well.asbuilt.attached? %></td>-->
+        <td>
+            <%= utviFile.created_at.to_datetime.strftime("%B %d, %Y at %H:%M:%S") %>
+        </td>
+        <td>
+            <%= link_to 'Remove Attachment', purge_utviFile_attachment_client_deep_well_path(@client, utviFile), method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+        </tr>
         <% end %>
-      </tbody>
-  </table>
-  <%= form.file_field :utviFile, class:"form-control", multiple: true %>
-
-  <!--UTVI File End-->
-
+        <% end %>
+    </tbody>
+</table>
+<%= form.file_field :utviFile, class:"form-control", multiple: true %>
+<!--UTVI File End-->
 <br>
-
-  <!-- Asbuilt Files Start-->
-
-  <table class="table table-hover table-bordered ">
+<!-- Asbuilt Files Start-->
+<table class="table table-hover table-bordered ">
     <thead>
         <tr>
-          <td style="width: 30%">  <strong>As-Built Design Files</strong> </th>
-          <td style="width: 30%">  <strong>Date Uploaded </strong></th>
-          <td style="width: 30%">  <strong>Delete </strong></th>
+            <td style="width: 30%"> <strong>As-Built Design Files</strong> </th>
+            <td style="width: 30%"> <strong>Date Uploaded </strong></th>
+            <td style="width: 30%"> <strong>Delete </strong></th>
         </tr>
     </thead>
     <tbody>
         <% if !@deep_well.asbuilt.attached? %>
-          <tr>
+        <tr>
             <td> <i> File unavailable </i></td>
             <td> - </td>
             <td> - </td>
-          </tr>
+        </tr>
         <% else %>
-          <%@deep_well.asbuilt.each do |asbuilt|%>
-                <td> <%= link_to(asbuilt.filename, rails_blob_path(asbuilt),  target: '_blank', multiple: true) %></td>
-                <!--< link_to @deep_well.asbuilt, @deep_well.asbuilt, html_options = { target: "_blank"} if @deep_well.asbuilt.attached? %></td>-->
-                <td> <%= asbuilt.created_at.to_datetime.strftime("%B %d, %Y at %H:%M:%S") %></td>
-                <td> <%= link_to 'Remove Attachment', purge_asbuilt_attachment_client_deep_well_path(@client, asbuilt), method: :delete, data: { confirm: 'Are you sure?' } %> </td> 
-              </tr>
-          <% end %>
+        <%@deep_well.asbuilt.each do |asbuilt|%>
+        <td>
+            <%= link_to(asbuilt.filename, rails_blob_path(asbuilt),  target: '_blank', multiple: true) %>
+        </td>
+        <!--< link_to @deep_well.asbuilt, @deep_well.asbuilt, html_options = { target: "_blank"} if @deep_well.asbuilt.attached? %></td>-->
+        <td>
+            <%= asbuilt.created_at.to_datetime.strftime("%B %d, %Y at %H:%M:%S") %>
+        </td>
+        <td>
+            <%= link_to 'Remove Attachment', purge_asbuilt_attachment_client_deep_well_path(@client, asbuilt), method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+        </tr>
         <% end %>
-      </tbody>
-  </table>
-  <%= form.file_field :asbuilt, class:"form-control", multiple: true %>
-
-  <!-- Asbuilt Files End--> <br><br>
-
-
-  <!-- Deepwell Design Proposal Start-->
-
-  <table class="table table-hover table-bordered ">
+        <% end %>
+    </tbody>
+</table>
+<%= form.file_field :asbuilt, class:"form-control", multiple: true %>
+<!-- Asbuilt Files End--> <br><br>
+<!-- Deepwell Design Proposal Start-->
+<table class="table table-hover table-bordered ">
     <thead>
         <tr>
-          <td style="width: 30%">  <strong>Deepwell Design Proposal Files </strong></th>
-          <td style="width: 30%">  <strong>Date Uploaded </strong></th>
-          <td style="width: 30%">  <strong>Delete </strong></th>
+            <td style="width: 30%"> <strong>Deepwell Design Proposal Files </strong></th>
+            <td style="width: 30%"> <strong>Date Uploaded </strong></th>
+            <td style="width: 30%"> <strong>Delete </strong></th>
         </tr>
     </thead>
     <tbody>
         <% if !@deep_well.design.attached? %>
-          <tr>
+        <tr>
             <td> <i> File unavailable </i> </td>
             <td> - </td>
             <td> - </td>
-          </tr>
+        </tr>
         <% else %>
         <%@deep_well.design.each do |design|%>
-          <tr>
-            <td> <%= link_to(design.filename, rails_blob_path(design),  target: '_blank') %></td>
-            <td> <%= design.created_at.to_datetime.strftime("%B %d, %Y at %H:%M:%S") %> </td>
-            <td> <%= link_to 'Remove Attachment', purge_design_attachment_client_deep_well_path(@client, design), method: :delete, data: { confirm: 'Are you sure?' } %> </tr>
+        <tr>
+            <td>
+                <%= link_to(design.filename, rails_blob_path(design),  target: '_blank') %>
+            </td>
+            <td>
+                <%= design.created_at.to_datetime.strftime("%B %d, %Y at %H:%M:%S") %>
+            </td>
+            <td>
+                <%= link_to 'Remove Attachment', purge_design_attachment_client_deep_well_path(@client, design), method: :delete, data: { confirm: 'Are you sure?' } %>
+        </tr>
         <% end %>
         <% end %>
-      </tbody>
-  </table>
-      <%= form.file_field :design, class:"form-control", multiple: true %>
-  <!-- Deepwell Design Proposal End-->
-  <div class="actions" style="margin-left: 10px; float: right;"> <br>
-    <%= form.submit :Submit, class: 'btn btn-outline-primary'%>
-  </div>
-    
-    <% end %>
+    </tbody>
+</table>
+<%= form.file_field :design, class:"form-control", multiple: true %>
+<!-- Deepwell Design Proposal End-->
+<div class="actions" style="margin-left: 10px; float: right;"> <br>
+    <%= form.submit :Submit, class: 'btn btn-primary'%>
+</div>
+<% end %>
 <br>
 <!--Form End-->

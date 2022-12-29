@@ -1,4 +1,9 @@
-    
+<style>
+nav li {  /* active case */
+    color: black;
+    font-weight: bold;
+}
+</style>
 <nav class="navbar navbar-expand-lg navbar-light" style="background: linear-gradient(to right, rgba(79,172,254,1), rgba(0,242,254,1)); ">
 
     <div class="container-fluid">
@@ -9,26 +14,26 @@
         <p style="padding-top: 17.5px; padding-right: auto; margin-right: auto;">Hello, <strong>
                 <%= current_user.first_name %>
                 <%= current_user.last_name %></strong>!
-            <% end %>
+            <% end %> 
         </p>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse " id="navbarNavDropdown">
+        <div  class="collapse navbar-collapse " id="navbarNavDropdown">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <%= link_to "Home", root_path, class:"nav-link" %>
+                    <%= link_to_unless_current "Home", root_path, class:"nav-link" %>
                 </li>
-                <% if current_user && current_user.role == "admin" || current_user.role == "super admin" %>
+                <% if current_user && current_user.role == "admin" || current_user.role == "super admin" %> 
                 <li class="nav-item">
-                    <%= link_to "System Audit Logs", audit_logs_path, class:"nav-link" %>
+                    <%= link_to_unless_current "System Audit Logs", audit_logs_path, class:"nav-link" %>
                 </li>
                 <li class="nav-item">
-                    <%= link_to "Manage Users", users_path, class:"nav-link" %>
+                    <%= link_to_unless_current "Manage Users", users_path, class:"nav-link" %>
                 </li>
                 <% end %>
                 <li class="nav-item">
-                    <%= link_to "Settings", edit_user_registration_path, class:"nav-link" %>
+                    <%= link_to_unless_current "Settings", edit_user_registration_path, class:"nav-link" %>
                 </li>
                 <li class="nav-item">
                     <%= link_to 'Log Out', destroy_user_session_path, class:"nav-link", method: :delete %>

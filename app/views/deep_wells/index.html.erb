@@ -6,14 +6,14 @@
         <%= search_form_for @q, url: client_deep_wells_path(params[:client_id]) do |f| %>
         <div class="row">
             <div class="col">
-                <%= f.label "Deepwell name"%>
+                <b><%= f.label "Deepwell name:"%></b>
                 <%= f.search_field :deep_well_name_cont, class:"form-control me-2", placeholder:"Search Deepwell" %>
             </div>
             <div class="col">
                 <br>
-                <%= f.submit "Search", class:"btn btn-outline-primary text-center" %>
+                <%= f.submit "Search", class:"btn btn-primary text-center" %>
                 <% if @current_client_deep_wells.count > @deep_wells.count %>
-                <%= link_to "Reset Search", request.path, class:"btn btn-outline-secondary" %>
+                    <%= link_to "Reset Search", request.path, class:"btn btn-secondary" %>
                 <br><br>
                 <% end %>
             </div>
@@ -44,7 +44,7 @@
                     <%= link_to 'Edit', edit_client_deep_well_path(@client, deep_well) %>
                 </td>
                 <td>
-                    <%= link_to 'Delete', [@client, deep_well], method: :delete, data: { confirm: 'Are you sure?' } %>
+                    <%= link_to 'Delete', [@client, deep_well], method: :delete, data: { confirm: 'Are you sure?' }, :class=>"link-danger" %> 
                 </td>
             </tr>
             <% end %>
@@ -56,7 +56,7 @@
         <%== pagy_bootstrap_nav(@pagy) %>
         <% end %>
         <div style="float:end; padding-bottom: 10px;">
-            <%= link_to 'New Deep Well', new_client_deep_well_path, class:"btn btn-outline-primary" %>
+            <%= link_to 'New Deep Well', new_client_deep_well_path, class:"btn btn-primary" %>
             <%= link_to 'Back', island_clients_path(@backclient), class:"btn btn-light"%>
         </div>
     </div>

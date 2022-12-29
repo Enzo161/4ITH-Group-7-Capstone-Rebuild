@@ -2,44 +2,68 @@
     <!-- <p id="notice"><%= notice %></p> -->
     <h1>System Audit Logs</h1>
     <!-- Search Form Start -->
+
+    <!-- Danger Alert for when Audit Logs is nearing 10,000 logs-->
+    <% if AuditLog.count > 10000  %>
+        <div class="alert alert-danger" role="alert">
+          Audit logs is greater than 10,000! Please save a copy of the System Audit Logs now.
+        </div>
+    <% end %>
+
+
     <p>
-        <a class="btn btn-outline-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+        <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
             Search and Filter
         </a>
+        <a >
+            <%= link_to "Export to PDF", audit_logs_path(@audit_logs, format: :pdf), target: '_blank', class:"btn btn-danger text-center float-end"%>
+        </a>
     </p>
+    
     <div class="collapse" id="collapseExample">
         <div class="card card-body" style="margin-bottom: 20px;">
             <%= search_form_for @q do |f| %>
             <div class="row">
                 <div class="col">
-                    <%= f.label "Event contains:"%>
+                    <b>
+                        <%= f.label "Event contains:"%></b>
                     <%= f.search_field :event_cont, class:"form-control me-2", placeholder:"Search Event" %>
-                    <%= f.label "Page contains:"%>
+                    <b>
+                        <%= f.label "Page contains:"%></b>
                     <%= f.search_field :table_name_cont, class:"form-control me-2", placeholder:"Search Page" %>
-                    <%= f.label "Start Date:"%>
+                    <b>
+                        <%= f.label "Start Date:"%></b>
                     <%= f.date_field :date_created_gteq, class:"form-control me-2", placeholder:"Search Date" %>
                 </div>
                 <div class="col">
-                    <%= f.label "User Email contains:"%>
+                    <b>
+                        <%= f.label "User Email contains:"%></b>
                     <%= f.search_field :modifier_cont, class:"form-control me-2", placeholder:"Search User Email" %>
-                    <%= f.label "Record name contains:"%>
+                    <b>
+                        <%= f.label "Record name contains:"%></b>
                     <%= f.search_field :object_name_cont, class:"form-control me-2", placeholder:"Search Record Name" %>
-                    <%= f.label "Date End:"%>
+                    <b>
+                        <%= f.label "Date End:"%></b>
                     <%= f.date_field :date_created_lteq, class:"form-control me-2 ", placeholder:"Search Date" %>
                 </div>
             </div>
             <!-- Buttons -->
             <div style="float: right; margin-top: 10px; margin-bottom: 20px ;">
-                <%= f.submit "Search", class:"btn btn-outline-primary text-center"%>
-                <%= link_to "Reset Search", request.path, class:"btn btn-light text-center " %>
+                <%= f.submit "Search", class:"btn btn-light text-center"%>
+                <%= link_to "Reset Search", request.path, class:"btn btn-secondary text-center " %>
             </div>
             <% end %>
         </div>
     </div>
+
+    <!--
     <% if AuditLog.count > @audit_logs.count %>
-    <%= link_to "Reset Search", request.path, class:"btn btn-outline-secondary" %>
+        <%= link_to "Reset Search", request.path, class:"btn btn-secondary text-center" %>
     <br><br>
     <% end %>
+-->
+
+
     <!-- Search Form End -->
     <% if AuditLog.count > 40 && @f.count > 40 %>
     <%== pagy_bootstrap_nav(@pagy) %>
@@ -133,8 +157,4 @@
     </table>
     <% end %>
     <!-- Content for PDF Export End -->
-    <!-- Button -->
-    <div style="margin-top: 10px; margin-bottom:50px  ; float: right;">
-        <%= link_to "Export to PDF", audit_logs_path(@audit_logs, format: :pdf), target: '_blank', class:"btn btn-outline-primary text-center"%>
-    </div>
 </div>

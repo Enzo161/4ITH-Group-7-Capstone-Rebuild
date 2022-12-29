@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_23_153829) do
+ActiveRecord::Schema.define(version: 2022_12_27_121127) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,6 +68,8 @@ ActiveRecord::Schema.define(version: 2022_11_23_153829) do
     t.text "limit"
     t.text "driller_name"
     t.text "remarks"
+    t.string "depthTotalUnits"
+    t.string "waterLimitUnits"
     t.index ["client_id"], name: "index_deep_wells_on_client_id"
   end
 
