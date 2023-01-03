@@ -1,0 +1,29 @@
+<p id="notice">
+    <%= notice %>
+</p>
+<h1>Archives</h1>
+<table class="table table-hover table-bordered ">
+    <thead>
+        <tr>
+            <th style="width: 60%">
+                Deep well Name
+            </th>
+            <th style="width: auto;">Delete Permanently?
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @deep_wells.each do |deep_well| %>
+        <tr>
+            <td>
+                <%= deep_well.deep_well_name %>
+            </td>
+            <td>
+              <td><%= link_to 'Destroy', deep_well, :confirm => 'Are you sure?', :class=>"link-danger" ,
+                                     :method => :delete %></td>
+            </td>
+        </tr>
+        <% end %>
+    </tbody>
+</table>
+<br>

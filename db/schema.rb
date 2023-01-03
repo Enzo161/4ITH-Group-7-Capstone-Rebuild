@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_12_27_121127) do
+ActiveRecord::Schema.define(version: 2023_01_03_120815) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,7 +70,9 @@ ActiveRecord::Schema.define(version: 2022_12_27_121127) do
     t.text "remarks"
     t.string "depthTotalUnits"
     t.string "waterLimitUnits"
+    t.datetime "discarded_at"
     t.index ["client_id"], name: "index_deep_wells_on_client_id"
+    t.index ["discarded_at"], name: "index_deep_wells_on_discarded_at"
   end
 
   create_table "islands", force: :cascade do |t|

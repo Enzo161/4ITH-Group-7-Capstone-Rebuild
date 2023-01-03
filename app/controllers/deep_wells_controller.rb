@@ -5,11 +5,15 @@ class DeepWellsController < ApplicationController
 
   # GET /deep_wells or /deep_wells.json
   def index 
-    @q = @client.deep_wells.ransack(params[:q])
+    @q = @client.deep_wells.kept.ransack(params[:q])
     @f = @q.result(distinct: true).includes(:client)
     @pagy, @deep_wells = pagy(@q.result(distinct: true).includes(:client))
-    @current_client_deep_wells = @client.deep_wells
+    @current_client_deep_wells = @client.deep_wells.kept
     @backclient = Island.find_by(id: @client.island_id)
+
+  end 
+  def archive
+    @deep_wells = @deep_wells.discarded
   end 
 
   # To delete log attachment
@@ -104,7 +108,7 @@ class DeepWellsController < ApplicationController
   if AuditLog.count > 10000
     AuditLog.first.delete
   end
-    @deep_well.destroy
+    @deep_well.discard
     respond_to do |format|
       format.html { redirect_to [@client, :deep_wells], notice: "Deep well was successfully destroyed." }
       format.json { head :no_content }
