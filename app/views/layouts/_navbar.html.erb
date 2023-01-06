@@ -24,10 +24,10 @@ nav li {  /* active case */
                 <li class="nav-item">
                     <%= link_to_unless_current "Home", root_path, class:"nav-link" %>
                 </li>
+                <% if current_user && current_user.role == "admin" || current_user.role == "super admin" %> 
                 <li class="nav-item">
                     <%= link_to_unless_current "Archive", archive_path, class:"nav-link" %>
                 </li>
-                <% if current_user && current_user.role == "admin" || current_user.role == "super admin" %> 
                 <li class="nav-item">
                     <%= link_to_unless_current "System Audit Logs", audit_logs_path, class:"nav-link" %>
                 </li>
