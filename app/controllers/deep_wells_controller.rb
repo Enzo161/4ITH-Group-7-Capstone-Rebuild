@@ -1,16 +1,25 @@
 class DeepWellsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_client, only: %i[ index show edit update new create destroy ]
-  before_action :set_deep_well, only: %i[ show edit update destroy ]
+  before_action :set_client, only: %i[ discard index show edit update new create destroy ]
+  before_action :set_deep_well, only: %i[ discard show edit update destroy ]
+  before_action :set_deep_well_archive, only: %i[ destroy_archive restore]
 
   # GET /deep_wells or /deep_wells.json
   def index 
-    @q = @client.deep_wells.ransack(params[:q])
+    @q = @client.deep_wells.kept.ransack(params[:q])
     @f = @q.result(distinct: true).includes(:client)
     @pagy, @deep_wells = pagy(@q.result(distinct: true).includes(:client))
-    @current_client_deep_wells = @client.deep_wells
+    @current_client_deep_wells = @client.deep_wells.kept
     @backclient = Island.find_by(id: @client.island_id)
   end 
+
+  def archive
+    @deep_wells = DeepWell.discarded
+  end
+
+  def show_archive
+    @deep_well = DeepWell.find(params[:id])
+  end
 
   # To delete log attachment
   def purge_log_attachment
@@ -98,15 +107,25 @@ class DeepWellsController < ApplicationController
     end
   end
 
-  # DELETE /deep_wells/1 or /deep_wells/1.json
+  def restore
+    @deep_well.undiscard
+    redirect_to archive_path, notice: "Deep well was restored."
+  end
+
   def destroy
+    @deep_well.discard
+    redirect_to [@client, :deep_wells], notice: "Deep well was successfully archived."
+  end
+
+  # DELETE /deep_wells/1 or /deep_wells/1.json
+  def permanent_destroy
   AuditLog.new(event: "delete", modifier: current_user.email, table_name: "Deep Well", object_name: @deep_well.deep_well_name, date_created: Date.today).save
   if AuditLog.count > 10000
     AuditLog.first.delete
   end
     @deep_well.destroy
     respond_to do |format|
-      format.html { redirect_to [@client, :deep_wells], notice: "Deep well was successfully destroyed." }
+      format.html { redirect_to archive_path, notice: "Deep well was successfully deleted." }
       format.json { head :no_content }
     end
   end
@@ -115,12 +134,14 @@ class DeepWellsController < ApplicationController
     def set_client
       @client = Client.find(params[:client_id])
     end
-      
-
+  
     # Use callbacks to share common setup or constraints between actions.
     def set_deep_well
-      # @deep_well = DeepWell.find(params[:id])
       @deep_well = @client.deep_wells.find(params[:id])
+    end
+
+    def set_deep_well_archive
+      @deep_well = DeepWell.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

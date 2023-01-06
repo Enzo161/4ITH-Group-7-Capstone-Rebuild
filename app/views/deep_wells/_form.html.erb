@@ -49,18 +49,14 @@
                     <%= form.text_field :depthTotal, class:"form-control" %>
                 </div>
                 <div class="col">
-                    <%= form.select :depthTotalUnits, options_for_select([['Kilometer', 'km'], ['Meter', 'm'],
-                                                  ['Meters Below Ground Surface', 'mbgs'],
-                                                  ['Millimeter', 'mm'], ['Yard', 'yd'], ['Foot', 'ft']],
+                    <%= form.select :depthTotalUnits, options_for_select([['Kilometer', 'km'], ['Meter', 'm'], ['Centimeter', 'cm'],
+                                                  ['Millimeter', 'mm'], ['Yard', 'yd'], ['Foot', 'ft'],
+                                                  ['Inch', 'in']],
                                                   (@deep_well.depthTotalUnits)), { include_blank: 'Select Unit'}, class: "form-control form-select" %>
                 </div>
             </div>
         </div>
-        <div class="field">
-            <strong>
-                <%= form.label "Well Coordinates:" %></strong>
-            <%= form.text_field :wellCoodinates, class:"form-control" %>
-        </div>
+
     </div>
     <!--Column 2-->
     <div class="col">

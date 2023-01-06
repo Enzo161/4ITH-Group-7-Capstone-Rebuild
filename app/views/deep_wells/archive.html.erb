@@ -1,0 +1,36 @@
+<div class="container">
+    <h1>
+    Archived Deep Wells
+    </h1>
+
+    <br>
+    <table class="table table-hover table-bordered ">
+        <thead>
+            <tr>
+                <th style="width: 60%">
+                Deep Well
+                </th>
+                <th>
+                Restore
+                </th>
+                <th style="width: auto;">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @deep_wells.each do |deep_well| %>
+            <tr>
+                <td>
+                    <%= link_to deep_well.deep_well_name, show_archive_path(deep_well) %>
+                </td>
+                <td>
+                    <%= link_to 'Restore Record?', restore_archive_path(deep_well), method: :put, data: { confirm: 'Are you sure?' }, :class=>"link-success" %>
+                </td>
+                <td>
+                    <%= link_to 'Permanently Delete Record?', destroy_archive_path(deep_well), method: :delete, data: { confirm: 'Are you sure?' }, :class=>"link-danger" %> 
+                </td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+    <br>
+</div>
