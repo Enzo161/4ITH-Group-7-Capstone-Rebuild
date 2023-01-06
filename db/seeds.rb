@@ -1,26 +1,18 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
-
 DeepWell.delete_all
 Client.delete_all
 Island.delete_all
 AuditLog.delete_all
+User.delete_all
 Island.create!(island_name: "Luzon")
 Island.create!(island_name: "Visayas")
 Island.create!(island_name: "Mindanao")
 User.create!(first_name: "Lorenzo", last_name: "Plantilla", email: "lorenzoplantilla@gmail.com", password: "Kahitano16!", role: "super admin")
 User.create!(first_name: "Sophia Nicole", last_name: "Plantilla", email: "sophianicoleloste@gmail.com", password: "Kahitano16!", role: "admin")
-# User.create!(first_name: "Test", last_name: "Account 1", email: "1testaccount@gmail.com", password: "Kahitano16!", role: "user")
-# User.create!(first_name: "Test", last_name: "Account 2", email: "2testaccount@gmail.com", password: "Kahitano16!", role: "user")
-# User.create!(first_name: "Test", last_name: "Account 3", email: "3testaccount@gmail.com", password: "Kahitano16!", role: "user")
-# User.create!(first_name: "Test", last_name: "Account 4", email: "4testaccount@gmail.com", password: "Kahitano16!", role: "user")
-# User.create!(first_name: "Test", last_name: "Account 5", email: "5testaccount@gmail.com", password: "Kahitano16!", role: "user")
+User.create!(first_name: "Test", last_name: "Account 1", email: "1testaccount@gmail.com", password: "Kahitano16!", role: "user")
+User.create!(first_name: "Test", last_name: "Account 2", email: "2testaccount@gmail.com", password: "Kahitano16!", role: "user")
+User.create!(first_name: "Test", last_name: "Account 3", email: "3testaccount@gmail.com", password: "Kahitano16!", role: "user")
+User.create!(first_name: "Test", last_name: "Account 4", email: "4testaccount@gmail.com", password: "Kahitano16!", role: "user")
+User.create!(first_name: "Test", last_name: "Account 5", email: "5testaccount@gmail.com", password: "Kahitano16!", role: "user")
 # User.create!(first_name: "Test", last_name: "Account 6", email: "6testaccount@gmail.com", password: "Kahitano16!", role: "user")
 # User.create!(first_name: "Test", last_name: "Account 7", email: "7testaccount@gmail.com", password: "Kahitano16!", role: "user")
 # User.create!(first_name: "Test", last_name: "Account 8", email: "8testaccount@gmail.com", password: "Kahitano16!", role: "user")
