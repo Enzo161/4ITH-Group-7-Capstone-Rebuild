@@ -31,7 +31,7 @@
                     <%= sort_link(@q, :deep_well_name, "Deep Well Name", default_order: :asc)%>
                 </th>
                 <th style="width: auto;">Edit</th>
-                <th style="width: auto;">Delete</th>
+                <th style="width: auto;">Archive</th>
             </tr>
         </thead>
         <tbody>
@@ -44,7 +44,7 @@
                     <%= link_to 'Edit', edit_client_deep_well_path(@client, deep_well) %>
                 </td>
                 <td>
-                    <%= link_to 'Delete', [@client, deep_well], method: :delete, data: { confirm: 'Are you sure?' }, :class=>"link-danger" %> 
+                    <%= link_to 'Archive', [@client, deep_well], method: :delete, data: { confirm: 'Are you sure?' }, :class=>"link-danger" %> 
                 </td>
             </tr>
             <% end %>

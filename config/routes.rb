@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :archives
   resources :audit_logs
   devise_for :users, controllers: {
       sessions: 'sessions'
@@ -30,4 +29,8 @@ Rails.application.routes.draw do
     end
   end
 
+  get '/archive', to: 'deep_wells#archive', as: 'archive'
+  get '/show_archive/:id', to: 'deep_wells#show_archive', as: 'show_archive'
+  delete '/archive/:id', to: 'deep_wells#permanent_destroy', as: 'destroy_archive'
+  put '/archive/:id', to: 'deep_wells#restore', as: 'restore_archive'
 end

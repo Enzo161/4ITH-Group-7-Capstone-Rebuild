@@ -1,0 +1,244 @@
+<div class="container" style="padding-bottom: 50px">
+
+  <h2> <%= @deep_well.deep_well_name %> Information </h2>
+  <!-- <p id="notice"><%= notice %></p>-->
+   
+  <!--Info. Table Start-->
+  <table class="table table-bordered" style="">
+    <tbody> 
+        <tr>
+          <td style="width: 50%">
+            <p>
+              <strong>NAME:</strong>
+              <%= @deep_well.deep_well_name %>
+            </p>
+          </td>
+          <td>
+            <p>
+              <strong>WATER PERMIT NUMBER:</strong>
+              <%= @deep_well.waterPermitNo %>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>
+              <strong>CLIENT NAME:</strong>
+              <% @client = Client.find_by(:id => @deep_well.client_id) %>
+              <%= @client.client_name %>
+            </p>
+          </td>
+          <td>
+            <p>
+              <strong>DATE GRANTED:</strong>
+              <% if @deep_well.dateGranted != nil %>
+                <%= @deep_well.dateGranted.to_date.strftime("%B %d, %Y") %>
+              <% end %>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>
+              <strong>DEEPWELL LOCATION:</strong>
+              <%= @deep_well.wellLocation %>
+            </p>
+          </td>
+          <td>
+            <p>
+              <strong> WATER LIMIT:</strong>
+              <%= @deep_well.limit %>
+              <%= @deep_well.waterLimitUnits%>
+            </p>
+          </td>         
+        </tr>
+        <tr>
+          <td>
+            <p>
+              <strong>NAME OF DRILLER:</strong>
+              <%= @deep_well.driller_name %>
+            </p>
+          </td>
+          <td rowspan="4">
+            <p>
+              <strong>REMARKS:</strong>
+              <%= @deep_well.remarks %>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>
+              <strong>DATE CONSTRUCTED:</strong>
+              <% if @deep_well.dateConstructed != nil %>
+              <%= @deep_well.dateConstructed.to_date.strftime("%B %d, %Y") %>
+              <% end %>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <strong>TOTAL DEPTH:</strong>
+            <%= @deep_well.depthTotal%>
+            <%= @deep_well.depthTotalUnits%>
+          </td>
+        </tr>
+        <tr>
+
+        </tr>
+    </tbody>
+  </table>
+  <!-- Info. Table End-->
+
+  <br>
+    <h2> File Attachments </h2>
+  <!-- Lithologic File Start-->
+  <table class="table table-bordered ">
+    <tbody>
+      <tr>
+        <th style="width: 50%"> Lithologic File</td>
+        <th style="width: 50%"> Date Uploaded</td>
+      </tr>
+      <tr>
+        <td>
+          <% if @deep_well.log.attached? %>
+            <%= link_to @deep_well.log.filename, @deep_well.log, html_options = { target: "_blank"} if @deep_well.log.attached? %>
+          <% else %>
+            <i> No file available </i>
+          <% end %>
+        </td>
+        <td>
+          <% if @deep_well.log.attached? %>
+            <p>
+              <%= @deep_well.log.created_at.to_datetime.strftime("%B %d, %Y at %H:%M:%S") %>
+            </p>
+          <% else %>
+            <p>
+              -
+            </p>
+          <% end %>
+        </td>
+
+      </tr>
+    </tbody>
+  </table>
+  <!-- Lithologic File End-->
+
+  <!--Water Permit File Start-->
+  <table class="table table-bordered ">
+    <tbody>
+      <tr>
+        <th style="width: 50%"> Water Permit File</td>
+        <th style="width: 50%"> Date Uploaded</td>
+      </tr>
+      <tr>
+        <td>
+          <% if @deep_well.waterPermit.attached? %>
+            <%= link_to @deep_well.waterPermit.filename, @deep_well.waterPermit, html_options = { target: "_blank"} if @deep_well.waterPermit.attached? %>
+          <% else %>
+            <i> No file available </i>
+          <% end %>
+        </td>
+        <td>
+          <% if @deep_well.waterPermit.attached? %>
+            <p>
+              <%= @deep_well.waterPermit.created_at.to_datetime.strftime("%B %d, %Y at %H:%M:%S") %>
+            </p>
+          <% else %>
+            <p>
+              -
+            </p>
+          <% end %>
+        </td>
+
+      </tr>
+    </tbody>
+  </table>
+  <!--Water Permit File End-->
+
+  <!--UTVI File Start-->
+
+  <table class="table table-bordered">
+    <thead>
+        <tr>
+          <th style="width: 50%">  UTVI Files</th>
+          <th style="width: 50%">  Date Uploaded </th>
+        </tr>
+    </thead>
+    <tbody>
+        <% if !@deep_well.utviFile.attached? %>
+          <tr>
+            <td> <i> No file available </i></td>
+            <td> - </td>
+          </tr>
+        <% else %>
+        <%@deep_well.utviFile.each do |utviFile|%>
+          <tr>
+            <td > <%= link_to(utviFile.filename, rails_blob_path(utviFile),  target: '_blank') %></td>
+            <td > <%= utviFile.created_at.to_datetime.strftime("%B %d, %Y at %H:%M:%S") %></td>
+          </tr>
+        <% end %>
+      <% end %>
+      </tbody>
+  </table>
+
+  <!--UTVI File End-->
+
+
+  <!-- Asbuilt Files Start-->
+  <table class="table table-bordered">
+    <thead>
+        <tr>
+          <th style="width: 50%">  As-Built Design Files</th>
+          <th style="width: 50%">  Date Uploaded </th>
+        </tr>
+    </thead>
+    <tbody>
+        <% if !@deep_well.asbuilt.attached? %>
+          <tr>
+            <td> <i> No file available </i></td>
+            <td> - </td>
+          </tr>
+        <% else %>
+        <%@deep_well.asbuilt.each do |asbuilt|%>
+          <tr>
+            <td ><%= link_to(asbuilt.filename, rails_blob_path(asbuilt),  target: '_blank') %></td>
+            <td > <%= asbuilt.created_at.to_datetime.strftime("%B %d, %Y at %H:%M:%S") %></td>
+          </tr>
+        <% end %>
+      <% end %>
+      </tbody>
+  </table>
+  <!-- Asbuilt Files End-->
+
+  <!-- Deepwell Design Proposal Start-->
+  <table class="table table-bordered">
+    <thead>
+        <tr>
+          <th style="width: 50%">  Deepwell Design Proposal Files</th>
+          <th style="width: 50%">  Date Uploaded </th>
+        </tr>
+    </thead>
+    <tbody>
+        <% if !@deep_well.design.attached? %>
+          <tr>
+            <td> <i> No file available </i> </td>
+            <td> - </td>
+          </tr>
+        <% else %>
+        <%@deep_well.design.each do |design|%>
+          <tr>
+            <td><%= link_to(design.filename, rails_blob_path(design),  target: '_blank') %></td>
+            <td> <%= design.created_at.to_datetime.strftime("%B %d, %Y at %H:%M:%S") %> </td>
+          </tr>
+        <% end %>
+        <% end %>
+      </tbody>
+  </table>
+  <!-- Deepwell Design Proposal End-->
+
+  <div style="float:right">
+        <%= link_to 'Back', archive_path, class: "btn btn-light" %>
+    <br>
+  </div>
+</div>
