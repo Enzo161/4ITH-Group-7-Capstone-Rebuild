@@ -17,8 +17,8 @@
                 </div>
                 <div class="col">
                     <b>
-                        <%= f.label "Client Name:" %></b>
-                    <%= f.text_field :clients_client_name_cont, :class => "form-control", placeholder:"Search Client" %>
+                        <%= f.label "Region Name:" %></b>
+                    <%= f.text_field :regions_region_name_cont, :class => "form-control", placeholder:"Search Region" %>
                     <div style=" float: right; margin-top: 10px; margin-bottom: 20px ;">
                         <%= f.submit "Search", class:"btn btn-light text-center float-right" %>
                         <% if Island.count > @islands.count %>
@@ -48,14 +48,11 @@
             <% @islands.each do |island| %>
             <tr>
                 <td>
-                    <%= link_to island.island_name, island_clients_path(island)%>
+                    <%= link_to island.island_name, island_regions_path(island)%>
                 </td>
                 <td>
-                    <%= Client.where(:island_id => island).count %>
+                    <%= Region.where(:island_id => island).count %>
                 </td>
-                <!-- <td><%#= link_to 'Edit', edit_island_path(island) %></td>
-          <td><%#= link_to 'Delete', island, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr> -->
                 <% end %>
         </tbody>
     </table>

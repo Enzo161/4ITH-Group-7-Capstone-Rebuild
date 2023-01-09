@@ -1,0 +1,65 @@
+<div class="container">
+    <h1>
+        <%= @island.island_name%> Regions </h1>
+    <!-- Search Forms Start -->
+    <p>
+        <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+            Search and Filter
+        </a>
+    </p>
+    <div class="collapse" id="collapseExample">
+        <div class="card card-body" style="margin-bottom: 20px;">
+            <%= search_form_for @q, url: island_regions_path(params[:island_id]) do |f| %>
+            <div class="row">
+                <div class="col">
+                    <b><%= f.label "Region Name:"%></b>
+                    <%= f.search_field :region_name_cont, class:"form-control me-2", placeholder:"Search Region"%>
+                </div>
+                <div class="col">
+                    <b><%= f.label "Client Name:"%></b>
+                    <%= f.text_field :clients_client_name_cont, :class => "form-control", placeholder:"Search Client" %>
+                    <div style="float: right; margin-top: 10px; margin-bottom: 20px ;">
+                        <%= f.submit "Search", class:"btn btn-light text-center" %>
+                    <% if @current_island_regions.count > @regions.count %>
+                        <%= link_to "Reset Search", request.path, class:"btn btn-secondary" %>
+                    <br><br>
+                    <% end %>
+                    </div>
+                </div>
+            </div>
+            <% end %>
+        </div>
+    </div>
+    <!-- Search Forms End -->
+    <table class="table table-hover table-bordered ">
+        <thead>
+            <tr>
+                <th>
+                    <%= sort_link(@q, :client_name, "Client Name", default_order: :asc)%>
+                </th>
+                <th>Number of Clients</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @regions.each do |region| %>
+            <tr>
+                <td>
+                    <%= link_to region.region_name, region_clients_path(region) %>
+                </td>
+                <td>
+                    <%= Client.where(region_id: region).count %>
+                </td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+    <br>
+    <div class="d-flex justify-content-between">
+        <% if @current_island_regions.count > 10 && @f.count > 10 %>
+        <%== pagy_bootstrap_nav(@pagy) %>
+        <% end %>
+        <div style="float:end; padding-bottom: 10px;">
+            <%= link_to 'Back', islands_path, class:"btn btn-light" %> &nbsp;
+        </div>
+    </div>
+</div>

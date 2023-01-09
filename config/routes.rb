@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root to: 'islands#index'
+  
   resources :audit_logs
   devise_for :users, controllers: {
       sessions: 'sessions'
@@ -11,9 +13,12 @@ Rails.application.routes.draw do
     end
   end
   resource :two_factor_settings, except: [:index, :show]
-  root to: 'islands#index'
 
   resources :islands do
+    resources :regions
+  end
+
+  resources :regions do
     resources :clients
   end
 

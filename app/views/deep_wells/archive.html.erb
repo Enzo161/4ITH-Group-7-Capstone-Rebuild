@@ -7,8 +7,11 @@
     <table class="table table-hover table-bordered ">
         <thead>
             <tr>
-                <th style="width: 60%">
+                <th>
                 Deep Well
+                </th>
+                <th>
+                Island & Client
                 </th>
                 <th>
                 Restore
@@ -21,6 +24,12 @@
             <tr>
                 <td>
                     <%= link_to deep_well.deep_well_name, show_archive_path(deep_well) %>
+                </td>
+                <td>
+                    <% @client = deep_well.client %>
+                    <% @island = @client.island %> 
+                    <%= @island.island_name %> -
+                    <%= deep_well.client.client_name %>
                 </td>
                 <td>
                     <%= link_to 'Restore Record?', restore_archive_path(deep_well), method: :put, data: { confirm: 'Are you sure?' }, :class=>"link-success" %>

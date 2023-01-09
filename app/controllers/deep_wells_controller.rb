@@ -2,7 +2,7 @@ class DeepWellsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_client, only: %i[ discard index show edit update new create destroy ]
   before_action :set_deep_well, only: %i[ discard show edit update destroy ]
-  before_action :set_deep_well_archive, only: %i[ destroy_archive restore]
+  before_action :set_deep_well_archive, only: %i[ restore permanent_destroy]
 
   # GET /deep_wells or /deep_wells.json
   def index 
@@ -11,6 +11,7 @@ class DeepWellsController < ApplicationController
     @pagy, @deep_wells = pagy(@q.result(distinct: true).includes(:client))
     @current_client_deep_wells = @client.deep_wells.kept
     @backclient = Island.find_by(id: @client.island_id)
+    # @deep_wells = DeepWell.all
   end 
 
   def archive
@@ -108,11 +109,13 @@ class DeepWellsController < ApplicationController
   end
 
   def restore
+    AuditLog.new(event: "restore", modifier: current_user.email, table_name: "Deep Well", object_name: @deep_well.deep_well_name, date_created: Date.today).save
     @deep_well.undiscard
     redirect_to archive_path, notice: "Deep well was restored."
   end
 
   def destroy
+    AuditLog.new(event: "archive", modifier: current_user.email, table_name: "Deep Well", object_name: @deep_well.deep_well_name, date_created: Date.today).save
     @deep_well.discard
     redirect_to [@client, :deep_wells], notice: "Deep well was successfully archived."
   end

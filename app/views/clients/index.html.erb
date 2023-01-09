@@ -1,6 +1,6 @@
 <div class="container">
     <h1>
-        <%= @island.island_name%> Clients</h1>
+        <%= @region.region_name%> Clients</h1>
     <!-- Search Forms Start -->
     <p>
         <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
@@ -9,7 +9,7 @@
     </p>
     <div class="collapse" id="collapseExample">
         <div class="card card-body" style="margin-bottom: 20px;">
-            <%= search_form_for @q, url: island_clients_path(params[:island_id]) do |f| %>
+            <%= search_form_for @q, url: region_clients_path(params[:region_id]) do |f| %>
             <div class="row">
                 <div class="col">
                     <b><%= f.label "Client Name:"%></b>
@@ -20,7 +20,7 @@
                     <%= f.text_field :deep_wells_deep_well_name_cont, :class => "form-control", placeholder:"Search Deepwell" %>
                     <div style="float: right; margin-top: 10px; margin-bottom: 20px ;">
                         <%= f.submit "Search", class:"btn btn-light text-center" %>
-                    <% if @current_island_clients.count > @clients.count %>
+                    <% if @current_region_clients.count > @clients.count %>
                         <%= link_to "Reset Search", request.path, class:"btn btn-secondary" %>
                     <br><br>
                     <% end %>
@@ -49,13 +49,17 @@
                     <%= link_to client.client_name, client_deep_wells_path(client) %>
                 </td>
                 <td>
-                    <%= DeepWell.where(:client_id => client).count %>
+                    <%= DeepWell.where(client_id: client, discarded_at: nil).count %>
                 </td>
                 <td>
-                    <%= link_to 'Edit', edit_island_client_path(@island, client) %>
+                    <%= link_to 'Edit', edit_region_client_path(@region, client) %>
                 </td>
                 <td>
-                    <%= link_to 'Delete', [@island, client], method: :delete, data: { confirm: 'Are you sure?' }, :class=>"link-danger" %>
+                    <% if DeepWell.where(client_id: client).count == 0 %>
+                        <%= link_to 'Delete', [@island, client], method: :delete, data: { confirm: 'Are you sure?' }, :class=>"link-danger" %>
+                    <% elsif DeepWell.where(client_id: client).count >= 1 %>
+                        <p> Client has Deep Wells or Archived Deep Wells and cannot be deleted </p>
+                    <% end %>
                 </td>
             </tr>
             <% end %>
@@ -63,13 +67,13 @@
     </table>
     <br>
     <div class="d-flex justify-content-between">
-        <% if @current_island_clients.count > 10 && @f.count > 10 %>
+        <% if @current_region_clients.count > 10 && @f.count > 10 %>
         <%== pagy_bootstrap_nav(@pagy) %>
         <% end %>
         <div style="float:end; padding-bottom: 10px;">
-            <%= link_to 'New Client', new_island_client_path, class:"btn btn-primary"%>
+            <%= link_to 'New Client', new_region_client_path, class:"btn btn-primary"%>
             &nbsp;
-            <%= link_to 'Back', islands_path, class:"btn btn-light" %> &nbsp;
+            <%= link_to 'Back', island_regions_path(@backregion), class:"btn btn-light"%>
         </div>
     </div>
 </div>

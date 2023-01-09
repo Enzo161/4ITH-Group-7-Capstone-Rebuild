@@ -72,3 +72,4 @@ gem 'wkhtmltopdf-heroku', '2.12.6.0'
 
 #archiving/soft deletion
 gem 'discard', '~> 1.2'
+gem 'active_storage_validations'

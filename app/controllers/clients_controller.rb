@@ -1,14 +1,15 @@
 class ClientsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_island
+  before_action :set_region
   before_action :set_client, only: %i[ show edit update destroy ]
 
   # GET /clients or /clients.json
   def index
-    @q = @island.clients.ransack(params[:q])
-    @f = @q.result(distinct: true).includes(:island, :deep_wells)
-    @pagy, @clients = pagy(@q.result.includes(:island, :deep_wells))
-    @current_island_clients = @island.clients
+    @q = @region.clients.ransack(params[:q])
+    @f = @q.result(distinct: true).includes(:region, :deep_wells)
+    @pagy, @clients = pagy(@q.result.includes(:region, :deep_wells))
+    @current_region_clients = @region.clients
+    @backregion = Island.find_by(id: @region.island_id)
     # @clients = Client.all
   end
 
@@ -18,7 +19,7 @@ class ClientsController < ApplicationController
 
   # GET /clients/new
   def new
-    @client = @island.clients.build
+    @client = @region.clients.build
     # @client = Client.new
   end
 
@@ -28,7 +29,7 @@ class ClientsController < ApplicationController
 
   # POST /clients or /clients.json
   def create
-    @client = @island.clients.build(client_params)
+    @client = @region.clients.build(client_params)
     # @client = Client.new(client_params)
 
     respond_to do |format|
@@ -37,7 +38,7 @@ class ClientsController < ApplicationController
         if AuditLog.count > 10000
           AuditLog.first.delete
         end
-        format.html { redirect_to [@island, :clients], notice: "Client was successfully created." }
+        format.html { redirect_to [@region, :clients], notice: "Client was successfully created." }
         format.json { render :show, status: :created, location: @client }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -54,7 +55,7 @@ class ClientsController < ApplicationController
         if AuditLog.count > 10000
           AuditLog.first.delete
         end
-        format.html { redirect_to [@island, :clients], notice: "Client was successfully updated." }
+        format.html { redirect_to [@region, :clients], notice: "Client was successfully updated." }
         format.json { render :show, status: :ok, location: @client }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -71,22 +72,22 @@ class ClientsController < ApplicationController
     end
     @client.destroy
     respond_to do |format|
-      format.html { redirect_to [@island, :clients], notice: "Client was successfully destroyed." }
+      format.html { redirect_to [@region, :clients], notice: "Client was successfully destroyed." }
       format.json { head :no_content }
     end
   end
 
   private
-    def set_island
-      @island = Island.find(params[:island_id])
+    def set_region
+      @region = Region.find(params[:region_id])
     end
 
     def set_client
+      @client = @region.clients.find(params[:id])
       # @client = Client.find(params[:id])
-      @client = @island.clients.find(params[:id])
     end
 
     def client_params
-      params.require(:client).permit(:client_name, :island_id)
+      params.require(:client).permit(:client_name, :region_id)
     end
 end

@@ -120,7 +120,7 @@
             <td style="width: 30%">
                 <% if @deep_well.log.attached? %>
                 <p>
-                    <%= @deep_well.log.created_at.to_datetime.strftime("%B %d, %Y at %H:%M:%S") %>
+                    <#%= @deep_well.log.created_at.to_datetime.strftime("%B %d, %Y at %H:%M:%S") %>
                 </p>
                 <% else %>
                 <p>
@@ -131,7 +131,7 @@
             <td style="width: 30%">
                 <% if @deep_well.log.attached? %>
                 <p>
-                    <%= link_to "Remove Attachment", purge_log_attachment_client_deep_well_path(@deep_well, deep_well.log.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+                    <#%= link_to "Remove Attachment", purge_log_attachment_client_deep_well_path(@deep_well, deep_well.log.id), method: :delete, data: { confirm: 'Are you sure?' } %>
                 </p>
                 <% else %>
                 <p>

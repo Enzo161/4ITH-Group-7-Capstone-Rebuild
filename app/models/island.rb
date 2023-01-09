@@ -1,3 +1,3 @@
 class Island < ApplicationRecord
-	has_many :clients, dependent: :destroy
+	has_many :regions, dependent: :destroy
 end

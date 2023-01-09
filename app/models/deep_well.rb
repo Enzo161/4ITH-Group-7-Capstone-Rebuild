@@ -9,4 +9,6 @@ class DeepWell < ApplicationRecord
   has_many_attached :design
   has_many_attached :utviFile
   validates_presence_of :deep_well_name
+
+  validates :log, content_type: ['application/pdf']
 end

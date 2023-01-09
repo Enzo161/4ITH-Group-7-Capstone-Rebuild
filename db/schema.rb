@@ -47,10 +47,10 @@ ActiveRecord::Schema.define(version: 2023_01_03_120815) do
 
   create_table "clients", force: :cascade do |t|
     t.text "client_name"
-    t.bigint "island_id", null: false
+    t.bigint "region_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["island_id"], name: "index_clients_on_island_id"
+    t.index ["region_id"], name: "index_clients_on_region_id"
   end
 
   create_table "deep_wells", force: :cascade do |t|
@@ -79,6 +79,14 @@ ActiveRecord::Schema.define(version: 2023_01_03_120815) do
     t.text "island_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "regions", force: :cascade do |t|
+    t.text "region_name"
+    t.bigint "island_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["island_id"], name: "index_regions_on_island_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -118,6 +126,7 @@ ActiveRecord::Schema.define(version: 2023_01_03_120815) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "clients", "islands"
+  add_foreign_key "clients", "regions"
   add_foreign_key "deep_wells", "clients"
+  add_foreign_key "regions", "islands"
 end
