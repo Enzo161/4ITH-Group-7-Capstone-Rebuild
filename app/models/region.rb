@@ -1,4 +1,4 @@
 class Region < ApplicationRecord
-    belongs_to :region
-    has_many :deep_wells
+    belongs_to :island
+    has_many :clients, dependent: :destroy
 end

@@ -4,12 +4,12 @@
     <!-- Search Form Start -->
 
     <!-- Danger Alert for when Audit Logs is nearing 10,000 logs-->
-    <% if AuditLog.count > 10000  %>
+    <% $counter ||= 0 %>
+    <% if $counter > 0  %>
         <div class="alert alert-danger" role="alert">
-          Audit logs is greater than 10,000! Please save a copy of the System Audit Logs now.
+          Audit logs is currently at <%= $counter %> logs! Please save a copy of the System Audit Logs now.
         </div>
     <% end %>
-
 
     <p>
         <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
@@ -111,8 +111,11 @@
             <% end %>
         </tbody>
     </table>
+
+
     <!-- Content for PDF Export Start -->
     <% content_for :pdf do %>
+        <% $counter == 0 %>
     <table class="table table-hover table-bordered ">
         <thead>
             <tr>

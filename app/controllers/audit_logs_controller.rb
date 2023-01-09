@@ -9,7 +9,7 @@ class AuditLogsController < ApplicationController
 		@pagy, @audit_logs = pagy(@q.result(distinct: true).order( 'id DESC' ), items: 40)
 		@all_audit_logs = AuditLog.all
 
-		 respond_to do |format|
+		respond_to do |format|
 	      format.html
 	      format.pdf do
 	        render pdf: "Logs: #{@audit_logs.count}", 

@@ -10,7 +10,7 @@ class DeepWellsController < ApplicationController
     @f = @q.result(distinct: true).includes(:client)
     @pagy, @deep_wells = pagy(@q.result(distinct: true).includes(:client))
     @current_client_deep_wells = @client.deep_wells.kept
-    @backclient = Island.find_by(id: @client.island_id)
+    @backclient = Region.find_by(id: @client.region_id)
     # @deep_wells = DeepWell.all
   end 
 
@@ -58,6 +58,8 @@ class DeepWellsController < ApplicationController
 
   # GET /deep_wells/1 or /deep_wells/1.json
   def show
+    $counter ||= 0
+    $counter += 1
     AuditLog.new(event: "view", modifier: current_user.email, table_name: "Deep Well", object_name: @deep_well.deep_well_name, date_created: Date.today).save
   end
 
@@ -78,6 +80,8 @@ class DeepWellsController < ApplicationController
 
     respond_to do |format|
       if @deep_well.save
+        $counter ||= 0
+        $counter += 1
         AuditLog.new(event: "create", modifier: current_user.email, table_name: "Deep Well", object_name: @deep_well.deep_well_name, date_created: Date.today).save
         if AuditLog.count > 10000
           AuditLog.first.delete
@@ -95,6 +99,8 @@ class DeepWellsController < ApplicationController
   def update
     respond_to do |format| 
       if @deep_well.update(deep_well_params)
+        $counter ||= 0
+        $counter += 1
         AuditLog.new(event: "update", modifier: current_user.email, table_name: "Deep Well", object_name: @deep_well.deep_well_name, date_created: Date.today).save
         if AuditLog.count > 10000
           AuditLog.first.delete
@@ -109,12 +115,16 @@ class DeepWellsController < ApplicationController
   end
 
   def restore
+    $counter ||= 0
+    $counter += 1
     AuditLog.new(event: "restore", modifier: current_user.email, table_name: "Deep Well", object_name: @deep_well.deep_well_name, date_created: Date.today).save
     @deep_well.undiscard
     redirect_to archive_path, notice: "Deep well was restored."
   end
 
   def destroy
+    $counter ||= 0
+    $counter += 1
     AuditLog.new(event: "archive", modifier: current_user.email, table_name: "Deep Well", object_name: @deep_well.deep_well_name, date_created: Date.today).save
     @deep_well.discard
     redirect_to [@client, :deep_wells], notice: "Deep well was successfully archived."
@@ -122,6 +132,8 @@ class DeepWellsController < ApplicationController
 
   # DELETE /deep_wells/1 or /deep_wells/1.json
   def permanent_destroy
+  $counter ||= 0
+  $counter += 1
   AuditLog.new(event: "delete", modifier: current_user.email, table_name: "Deep Well", object_name: @deep_well.deep_well_name, date_created: Date.today).save
   if AuditLog.count > 10000
     AuditLog.first.delete

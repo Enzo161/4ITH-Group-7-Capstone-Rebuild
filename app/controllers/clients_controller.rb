@@ -1,6 +1,6 @@
 class ClientsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_region
+  before_action :set_region, only: %i[ index show edit update new create destroy ]
   before_action :set_client, only: %i[ show edit update destroy ]
 
   # GET /clients or /clients.json
@@ -34,6 +34,8 @@ class ClientsController < ApplicationController
 
     respond_to do |format|
       if @client.save
+        $counter ||= 0
+        $counter += 1
         AuditLog.new(event: "create", modifier: current_user.email, table_name: "Client", object_name: @client.client_name, date_created: Date.today).save
         if AuditLog.count > 10000
           AuditLog.first.delete
@@ -51,6 +53,8 @@ class ClientsController < ApplicationController
   def update
     respond_to do |format|
       if @client.update(client_params)
+        $counter ||= 0
+        $counter += 1
         AuditLog.new(event: "update", modifier: current_user.email, table_name: "Client", object_name: @client.client_name, date_created: Date.today).save
         if AuditLog.count > 10000
           AuditLog.first.delete
@@ -66,6 +70,8 @@ class ClientsController < ApplicationController
 
   # DELETE /clients/1 or /clients/1.json
   def destroy
+    $counter ||= 0
+    $counter += 1
     AuditLog.new(event: "delete", modifier: current_user.email, table_name: "Client", object_name: @client.client_name, date_created: Date.today).save
     if AuditLog.count > 10000
       AuditLog.first.delete

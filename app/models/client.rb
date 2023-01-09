@@ -1,6 +1,6 @@
 class Client < ApplicationRecord
-  belongs_to :island
+  belongs_to :region
+
   has_many :deep_wells, dependent: :destroy
 
-  
 end
