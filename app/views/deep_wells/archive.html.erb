@@ -11,7 +11,7 @@
                 Deep Well
                 </th>
                 <th>
-                Island & Client
+                Region & Client
                 </th>
                 <th>
                 Restore
@@ -27,8 +27,8 @@
                 </td>
                 <td>
                     <% @client = deep_well.client %>
-                    <% @island = @client.island %> 
-                    <%= @island.island_name %> -
+                    <% @region = @client.region %> 
+                    <%= @region.region_name %> -
                     <%= deep_well.client.client_name %>
                 </td>
                 <td>
