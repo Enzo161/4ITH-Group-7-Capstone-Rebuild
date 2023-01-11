@@ -79,7 +79,7 @@
                     <%= form.number_field :limit , class:"form-control"%>
                 </div>
                 <div class="col">
-                    <%= form.select :waterLimitUnits, options_for_select([['liter/second', 'lps'], ['Kilometer', 'km'], ['Meter', 'm'], ['Centimeter', 'cm'],
+                    <%= form.select :waterLimitUnits, options_for_select([['Liters per Second', 'lps'], ['Kilometer', 'km'], ['Meter', 'm'], ['Centimeter', 'cm'],
                                                   ['Millimeter', 'mm'], ['Yard', 'yd'], ['Foot', 'ft'],
                                                   ['Inch', 'in']],
                                                   (@deep_well.waterLimitUnits)), { include_blank: "Select Unit"}, class: "form-control form-select" %>
