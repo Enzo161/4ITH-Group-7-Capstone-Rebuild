@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 2023_01_03_120815) do
     t.text "object_name", null: false
     t.datetime "created_at", null: false
     t.date "date_created", null: false
+    t.integer "counter", null: false
   end
 
   create_table "clients", force: :cascade do |t|
@@ -61,7 +62,8 @@ ActiveRecord::Schema.define(version: 2023_01_03_120815) do
     t.date "dateGranted"
     t.text "clientName"
     t.text "wellLocation"
-    t.text "wellCoodinates"
+    t.decimal "xCoordinate"
+    t.decimal "yCoordinate"
     t.text "waterPermitNo"
     t.text "depthTotal"
     t.date "dateConstructed"

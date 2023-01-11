@@ -1,16 +1,17 @@
 <div class="container" style=" margin-bottom: 50px;">
     <!-- <p id="notice"><%= notice %></p> -->
     <h1>System Audit Logs</h1>
-    <!-- Search Form Start -->
 
     <!-- Danger Alert for when Audit Logs is nearing 10,000 logs-->
-    <% $counter ||= 0 %>
-    <% if $counter > 0  %>
+    <% a = AuditLog.last
+    a = a.counter
+    if a > 9000 %>
         <div class="alert alert-danger" role="alert">
-          Audit logs is currently at <%= $counter %> logs! Please save a copy of the System Audit Logs now.
+          Audit logs is currently at <% a %> logs! Please save a copy of the System Audit Logs now.
         </div>
     <% end %>
-
+    
+    <!-- Search Form Start -->
     <p>
         <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
             Search and Filter

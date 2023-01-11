@@ -12,3 +12,7 @@
  *
  *= require_self
  */
+ .elegant-divider {
+    border-top: 10px solid #014988;
+    margin: 10px auto;
+  }

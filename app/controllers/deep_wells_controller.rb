@@ -3,6 +3,7 @@ class DeepWellsController < ApplicationController
   before_action :set_client, only: %i[ discard index show edit update new create destroy ]
   before_action :set_deep_well, only: %i[ discard show edit update destroy ]
   before_action :set_deep_well_archive, only: %i[ restore permanent_destroy]
+  before_action :set_counter, only: %i[ create update destroy show restore permanent_destroy ]
 
   # GET /deep_wells or /deep_wells.json
   def index 
@@ -58,9 +59,7 @@ class DeepWellsController < ApplicationController
 
   # GET /deep_wells/1 or /deep_wells/1.json
   def show
-    $counter ||= 0
-    $counter += 1
-    AuditLog.new(event: "view", modifier: current_user.email, table_name: "Deep Well", object_name: @deep_well.deep_well_name, date_created: Date.today).save
+    AuditLog.new(event: "view", modifier: current_user.email, table_name: "Deep Well", object_name: @deep_well.deep_well_name, date_created: Date.today, counter: @counter).save
   end
 
   # GET /deep_wells/new
@@ -80,9 +79,7 @@ class DeepWellsController < ApplicationController
 
     respond_to do |format|
       if @deep_well.save
-        $counter ||= 0
-        $counter += 1
-        AuditLog.new(event: "create", modifier: current_user.email, table_name: "Deep Well", object_name: @deep_well.deep_well_name, date_created: Date.today).save
+        AuditLog.new(event: "create", modifier: current_user.email, table_name: "Deep Well", object_name: @deep_well.deep_well_name, date_created: Date.today, counter: @counter).save
         if AuditLog.count > 10000
           AuditLog.first.delete
         end
@@ -99,9 +96,7 @@ class DeepWellsController < ApplicationController
   def update
     respond_to do |format| 
       if @deep_well.update(deep_well_params)
-        $counter ||= 0
-        $counter += 1
-        AuditLog.new(event: "update", modifier: current_user.email, table_name: "Deep Well", object_name: @deep_well.deep_well_name, date_created: Date.today).save
+        AuditLog.new(event: "update", modifier: current_user.email, table_name: "Deep Well", object_name: @deep_well.deep_well_name, date_created: Date.today, counter: @counter).save
         if AuditLog.count > 10000
           AuditLog.first.delete
         end
@@ -115,26 +110,20 @@ class DeepWellsController < ApplicationController
   end
 
   def restore
-    $counter ||= 0
-    $counter += 1
-    AuditLog.new(event: "restore", modifier: current_user.email, table_name: "Deep Well", object_name: @deep_well.deep_well_name, date_created: Date.today).save
+    AuditLog.new(event: "restore", modifier: current_user.email, table_name: "Deep Well", object_name: @deep_well.deep_well_name, date_created: Date.today, counter: @counter).save
     @deep_well.undiscard
     redirect_to archive_path, notice: "Deep well was restored."
   end
 
   def destroy
-    $counter ||= 0
-    $counter += 1
-    AuditLog.new(event: "archive", modifier: current_user.email, table_name: "Deep Well", object_name: @deep_well.deep_well_name, date_created: Date.today).save
+    AuditLog.new(event: "archive", modifier: current_user.email, table_name: "Deep Well", object_name: @deep_well.deep_well_name, date_created: Date.today, counter: @counter).save
     @deep_well.discard
     redirect_to [@client, :deep_wells], notice: "Deep well was successfully archived."
   end
 
   # DELETE /deep_wells/1 or /deep_wells/1.json
   def permanent_destroy
-  $counter ||= 0
-  $counter += 1
-  AuditLog.new(event: "delete", modifier: current_user.email, table_name: "Deep Well", object_name: @deep_well.deep_well_name, date_created: Date.today).save
+  AuditLog.new(event: "delete", modifier: current_user.email, table_name: "Deep Well", object_name: @deep_well.deep_well_name, date_created: Date.today, counter: @counter).save
   if AuditLog.count > 10000
     AuditLog.first.delete
   end
@@ -162,6 +151,11 @@ class DeepWellsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def deep_well_params
       params.require(:deep_well).permit(:log, :waterPermit, :deep_well_name, :client_id, :dateGranted, :clientName, :wellLocation, :wellCoodinates, :waterPermitNo, :contractor, :depthTotal, :dateofUTVI, :reason, :remarks, :limit, :driller_name, :depthTotalUnits, :waterLimitUnits, :dateConstructed, asbuilt: [], design: [], utviFile: [])
+    end
+
+    def set_counter
+      @counter = AuditLog.last
+      @counter = @counter.counter + 1
     end
 
 end
