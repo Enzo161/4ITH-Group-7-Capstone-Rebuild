@@ -33,9 +33,6 @@ Region.create!(region_name: "Region XII", island_id: Island.find_by(island_name:
 Region.create!(region_name: "Region XIII", island_id: Island.find_by(island_name: "Mindanao").id)
 Region.create!(region_name: "BARMM", island_id: Island.find_by(island_name: "Mindanao").id)
 
-# Clients
-Client.create!(client_name: "Coca Cola", region_id: Region.find_by(region_name: "Region III").id)
-
 # Users
 User.create!(first_name: "Lorenzo", last_name: "Plantilla", email: "lorenzoplantilla@gmail.com", password: "Kahitano16!", role: "super admin")
 User.create!(first_name: "Sophia Nicole", last_name: "Plantilla", email: "sophianicoleloste@gmail.com", password: "Kahitano16!", role: "admin")
