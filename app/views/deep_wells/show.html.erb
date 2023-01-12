@@ -10,13 +10,13 @@
           <td style="width: 50%">
             <p>
               <strong>NAME:</strong>
-              <%= @deep_well.deep_well_name %>
+              <h6><%= @deep_well.deep_well_name %></h6>
             </p>
           </td>
           <td>
             <p>
               <strong>WATER PERMIT NUMBER:</strong>
-              <%= @deep_well.waterPermitNo %>
+              <h6><%= @deep_well.waterPermitNo %></h6>
             </p>
           </td>
         </tr>
@@ -24,14 +24,14 @@
           <td>
             <p>
               <strong>CLIENT NAME:</strong>
-              <%= @client.client_name%>
+              <h6><%= @client.client_name%></h6>
             </p>
           </td>
           <td>
             <p>
               <strong>DATE GRANTED:</strong>
               <% if @deep_well.dateGranted != nil %>
-                <%= @deep_well.dateGranted.to_date.strftime("%B %d, %Y") %>
+                <h6><%= @deep_well.dateGranted.to_date.strftime("%B %d, %Y") %></h6>
               <% end %>
             </p>
           </td>
@@ -40,14 +40,14 @@
           <td>
             <p>
               <strong>DEEPWELL LOCATION:</strong>
-              <%= @deep_well.wellLocation %>
+              <h6><%= @deep_well.wellLocation %></h6>
             </p>
           </td>
           <td>
             <p>
-              <strong> WATER LIMIT:</strong>
-              <%= @deep_well.limit %>
-              <%= @deep_well.waterLimitUnits%>
+              <strong> EXTRACTION GRANTED:</strong>
+              <h6><%= @deep_well.limit %>
+              <%= @deep_well.waterLimitUnits%></h6>
             </p>
           </td>         
         </tr>
@@ -55,7 +55,23 @@
           <td>
             <p>
               <strong>NAME OF DRILLER:</strong>
-              <%= @deep_well.driller_name %>
+              <h6><%= @deep_well.driller_name %></h6>
+            </p>
+          </td>
+          <td>
+            <p>
+              <strong>COORDINATES:</strong>
+              <h6> X - <%= @deep_well.xCoordinate %> | Y - <%= @deep_well.yCoordinate %></h6> 
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>
+              <strong>DATE CONSTRUCTED:</strong>
+              <% if @deep_well.dateConstructed != nil %> 
+              <h6><%= @deep_well.dateConstructed.to_date.strftime("%B %d, %Y") %></h6>
+              <% end %>
             </p>
           </td>
           <td rowspan="4">
@@ -67,19 +83,9 @@
         </tr>
         <tr>
           <td>
-            <p>
-              <strong>DATE CONSTRUCTED:</strong>
-              <% if @deep_well.dateConstructed != nil %>
-              <%= @deep_well.dateConstructed.to_date.strftime("%B %d, %Y") %>
-              <% end %>
-            </p>
-          </td>
-        </tr>
-        <tr>
-          <td>
             <strong>TOTAL DEPTH:</strong>
-            <%= @deep_well.depthTotal%>
-            <%= @deep_well.depthTotalUnits%>
+            <h6><%= @deep_well.depthTotal%>
+            <%= @deep_well.depthTotalUnits%></h6>
           </td>
         </tr>
         <tr>

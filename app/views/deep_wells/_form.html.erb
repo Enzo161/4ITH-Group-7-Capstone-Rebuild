@@ -85,9 +85,22 @@
                                                   (@deep_well.waterLimitUnits)), { include_blank: "Select Unit"}, class: "form-control form-select" %>
                 </div>
             </div>
-
-
         </div>
+
+        <div class="field">
+            <strong>
+                <%= form.label "Well Coordinates:" %></strong>
+
+            <div class="row">
+                <div class="col" style="width: auto;">
+                    <%= form.number_field :xCoordinate, step: :any, class:"form-control", placeholder:"X-Coordinate"%>
+                </div>
+                <div class="col" style="width: auto;">
+                    <%= form.number_field :yCoordinate, step: :any, class:"form-control", placeholder:"Y-Coordinate"%>
+                </div>
+            </div>
+        </div>  
+        
         <div class="field">
             <strong>
                 <%= form.label "Remarks:" %></strong>
