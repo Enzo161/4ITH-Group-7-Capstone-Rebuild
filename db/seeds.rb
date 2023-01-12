@@ -47,4 +47,5 @@ User.create!(first_name: "Panel", last_name: "One", email: "panel_one@gmail.com"
 User.create!(first_name: "Panel", last_name: "Two", email: "panel_two@gmail.com", password: "Password123!", role: "admin")
 User.create!(first_name: "Panel", last_name: "Three", email: "panel_three@gmail.com", password: "Password123!", role: "admin")
 
+# Log for initializing system
 AuditLog.create!(event: "Data Seed", modifier: "System", table_name: "-", object_name: "-", date_created: Date.today, counter: 1)
