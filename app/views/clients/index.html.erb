@@ -56,7 +56,7 @@
                 </td>
                 <td>
                     <% if DeepWell.where(client_id: client).count == 0 %>
-                        <%= link_to 'Delete', [@island, client], method: :delete, data: { confirm: 'Are you sure?' }, :class=>"link-danger" %>
+                        <%= link_to 'Delete', [@region, client], method: :delete, data: { confirm: 'Are you sure?' }, :class=>"link-danger" %>
                     <% elsif DeepWell.where(client_id: client).count >= 1 %>
                         <p> Client has Deep Wells or Archived Deep Wells and cannot be deleted </p>
                     <% end %>

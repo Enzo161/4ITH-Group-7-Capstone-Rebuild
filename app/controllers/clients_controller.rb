@@ -1,6 +1,6 @@
 class ClientsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_region, only: %i[ index show edit update new create destroy ]
+  before_action :set_region
   before_action :set_client, only: %i[ show edit update destroy ]
   before_action :set_counter, only: %i[ create update destroy ]
 
